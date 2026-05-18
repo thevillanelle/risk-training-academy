@@ -906,8 +906,8 @@ html[data-theme="light"] #kb-slideshow{background:transparent}
 const KB = [
 // ── GLOSSARY ──────────────────────────────────────────────────────
 {id:"d-aml",cat:"glossary",title:"AML — Anti-Money Laundering",body:"In this tool, AML = Anti-Money Laundering: legal controls requiring institutions and entities to prevent, detect, and report money laundering activities.\n\n⚠️ Apple internal note: In other Apple contexts, AML may refer to Automated Machine Learning (a different team/technology entirely). When you see AML in this tool or in compliance procedures, it always means Anti-Money Laundering.",tags:["aml","anti-money laundering","financial crime","legal","automated machine learning","disambiguation"]},
-{id:"d-amp",cat:"glossary",title:"Media Platform — Apple Media Products",body:"Manages iTunes, the Apple App Store, and Apple Services. Compliance screens anyone with access to iTunes Connect, which allows a person or company to distribute media. Vendors, Banks, and Bank Account Holders receive funding from those sales.",tags:["amp","client","itunes","app store"]},
-{id:"d-api",cat:"glossary",title:"API — Apple Payments Inc.",body:"A subsidiary of Apple Inc. that supports the disbursement platform covering daily cash rebates to customers from Apple Card and allows for Direct Bill Payment by customers from Apple Cash to Apple Card.",tags:["api","payments","apple card","client"]},
+{id:"d-amp",cat:"glossary",title:"Media Platform Client",body:"A compliance screening client that covers digital content distribution platforms — including content creators, vendors, and bank account holders who receive disbursements. Screening events include new enrollments, vendor onboarding, bank account additions, and nightly batch re-screens.",tags:["amp","client","itunes","app store"]},
+{id:"d-api",cat:"glossary",title:"API — Application Programming Interface",body:"In compliance contexts, APIs are used to integrate screening tools with case management systems, submit batch records for sanctions checks, and retrieve results programmatically. Compliance teams interact with APIs to automate alert generation and case creation without manual data entry.",tags:["api","payments","apple card","client"]},
 {id:"d-cip",cat:"glossary",title:"CIP — Customer Identification Program",body:"A United States requirement for financial institutions to verify a customer's identity.",tags:["cip","kyc","identity","us"]},
 {id:"d-client",cat:"glossary",title:"Client",body:"The application or program from which the screened case data originated. Current clients: Media Platform, Developer Program, API, Digital ID Program.",tags:["client","amp","wwdr","api","idms"]},
 {id:"d-common",cat:"glossary",title:"Common Name",body:"A popular name many individuals have, or a generic name used by many companies. Common names often cause false positives in sanctions screening.",tags:["common name","false positive"]},
@@ -919,7 +919,7 @@ const KB = [
 {id:"d-event",cat:"glossary",title:"Event",body:"The interaction, transaction, enrollment, or account update that triggered CMS to open a case. Must be noted in every Case Overview. Examples: rt_user_invitation, batch_type_a_registrant, enrollment_pre_check.",tags:["event","enrollment","trigger","event type"]},
 {id:"d-fp",cat:"glossary",title:"False Positive / False Hit",body:"A system-identified potential match that is NOT a true sanctions match — caused by a common name, missing information, a weak alias, or partial name similarity.",tags:["false positive","false hit","common name","partial match"]},
 {id:"d-full",cat:"glossary",title:"Full Match",body:"The entire name of the Screened Entity matches the name from the sanctions list (Primary Name or AKA). A full name match generally requires escalation unless a clear DOB or location variance can be established.",tags:["full match","name match","entire name","sanctions"]},
-{id:"d-idms",cat:"glossary",title:"Digital ID Program — Identity Management Services",body:"Provides authentication and authorization services and is the repository for all Apple identities. The Digital ID Program compliance client screens Apple IDs when customers in high-risk countries add a payment method to their Apple Wallet. Phase 1: 35 high-risk countries. If confirmed as a true sanctions match, the account is deactivated.",tags:["idms","identity management","apple id","wallet","payment","high risk"]},
+{id:"d-idms",cat:"glossary",title:"Digital ID Program Client",body:"A compliance screening client that screens user identities when customers in high-risk countries add a payment method to a digital wallet or financial service. Typically covers 30–40 high-risk jurisdictions. If confirmed as a true sanctions match, the account is restricted or deactivated.",tags:["idms","identity management","apple id","wallet","payment","high risk"]},
 {id:"d-inclusion",cat:"glossary",title:"Inclusion Term",body:"A trigger created when a Screened Entity name contains a word on Apple's corporate compliance inclusion list. Always a direct escalation for every client. For batch_type_a_registrant: the ONLY direct escalation reason.",tags:["inclusion term","direct escalation","apple compliance"]},
 {id:"d-ip",cat:"glossary",title:"IP Address",body:"A numerical code that identifies the geographical location of a computer accessing the internet. Captured via Ekata for Developer Program cases and included in the Case Overview notation.",tags:["ip","ip address","ekata","location","wwdr"]},
 {id:"d-kyc",cat:"glossary",title:"KYC — Know Your Customer",body:"A business process of verifying customer identity. Part of the broader AML compliance framework.",tags:["kyc","know your customer","identity","verification"]},
@@ -950,7 +950,7 @@ const KB = [
 {id:"d-entity-type",cat:"glossary",title:"Entity Type",body:"The classification of who or what is being screened. Types include: Individual, Company, Bank, Vendor, Developer, Vessel/Ship/Aircraft.\n\nAn entity type MISMATCH between the Screened Entity and a Matched Data Hit always results in a CLEAR — a company cannot be the same sanctioned party as an individual.\n\nFound in the 'Entity Label' field in the Screened Entity details in CMS.",tags:["entity type","individual","company","vessel","ship","aircraft","mismatch","entity label","hcm"]},
 {id:"d-aka",cat:"glossary",title:"AKA / Also Known As",body:"Alternative names listed alongside the primary name on a sanctions entry. When comparing names, ALL AKAs must be reviewed — a match to any AKA counts as a name match.\n\nExample: A Matched Data entry may list 'Mohammad Al-Hassan' as primary with AKAs 'Mohammed Hassan' and 'M. Al Hassan.' If the Screened Entity name matches any of these → name match.\n\nAlso applies to 2/3 Name Match criteria for Digital ID Program: the SE name matching 2 of 3 components of any AKA qualifies.",tags:["aka","also known as","alias","alternative name","primary name","name comparison","matched data"]},
 {id:"d-primary-name",cat:"glossary",title:"Primary Name",body:"The main legal name of the sanctioned party as it appears on the sanctions list. When evaluating a case, compare the Screened Entity name against both the Primary Name AND all AKA names. A match to either qualifies as a name match.",tags:["primary name","sanctions list","ofac","matched data","name comparison","aka"]},
-{id:"d-dsid",cat:"glossary",title:"DSID — Directory Services ID",body:"Apple's internal unique identifier for customer accounts. Used to search in research tools — MZ Support, ASO ACM, and iCloud Support Tool all accept DSID as a search parameter. The DSID links an Apple ID to an individual's account activity across Apple systems.",tags:["dsid","directory services id","apple id","customer identifier","mz support","icloud","research tool"]},
+{id:"d-dsid",cat:"glossary",title:"DSID — Directory Services ID",body:"A unique internal identifier assigned to each customer account by the platform's identity management system. Used to search across research tools and link case data to a specific individual's account activity. Also referred to as a User ID, Customer ID, or DSID depending on the organization's system architecture.",tags:["dsid","directory services id","apple id","customer identifier","mz support","icloud","research tool"]},
 {id:"d-dor",cat:"glossary",title:"DOR — Date of Registration",body:"The date a company was officially registered with a government authority. For companies, DOR functions similarly to DOB for individuals — it is a comparison data point in your Summary notation.\n\nIf available on submitted PII, note it in CMS. If unavailable, the PII may still be used. In your notation, DOR appears in place of 'Is the Date of Birth a match?' for company cases.",tags:["dor","date of registration","company","registration date","hcm fields","summary notation","companies"]},
 {id:"d-pob",cat:"glossary",title:"POB — Place of Birth",body:"The city and/or country where an individual was born. Used as a location comparison data point for individual Screened Entities. In CMS, City of Birth and Country of Birth fields capture this from submitted PII. If the City of Birth from System Notes uses non-romanized characters, it must be translated before entry.",tags:["pob","place of birth","city of birth","country of birth","location","hcm fields","translate","non-romanized"]},
 {id:"d-yob",cat:"glossary",title:"YOB — Year of Birth (Digital ID Program shortcut)",body:"The year of birth visible in the Screened Entity panel in CMS for Digital ID Program cases. This is a research shortcut unique to Digital ID Program: if the YOB shown in the CMS panel differs from the Matched Data Hit's year of birth, you can CLEAR the case immediately — no external research tools needed.\n\nThis shortcut does not require customer-submitted PII and is specific to Digital ID Program. For other clients, use DOB from customer PII.",tags:["yob","year of birth","idms","shortcut","hcm panel","screened entity panel","clear","no research"]},
@@ -998,7 +998,7 @@ True sanctions match → ESCALATE (Potential Sanction Match) — do not request 
 DUNS returns different name → SUSPEND (PCD 30 days) + attach findings
 No evidence company exists → ESCALATE with recommendation
 Previously suspended + PCD expired → do NOT suspend again → ESCALATE: "T2 Escalation Required: Previously suspended - no new information"
-[Note: Use DNB.com / Public Sources before LexisNexis. If affiliated with Apple Inc. → escalate]
+[Note: Use DNB.com / Public Sources before LexisNexis. If affiliated with major platforms Inc. → escalate]
 
 BATCH_FREE_DEVELOPER RESEARCH — Individuals:
 Name appears to be individual → SUSPEND (PCD 30 days)
@@ -1056,7 +1056,7 @@ OWNERSHIP PERCENTAGES: < 100% → escalate. Full review first.`},
 tags:["idms","lifecycle","suspend","pcd","14 days","year of birth","yob","2/3 name match","mz account age","vessel","ship","aircraft","inclusion term","double suspend","direct escalation","gesc","previously submitted pii"],
 body:`Compliance Operations Procedure - SC-00 | Updated 5/7/2026 | Source: risktraininghub.io/reference
 
-OVERVIEW: Screens Apple IDs when customers in 35 high-risk countries add payment to Apple Wallet. True match = account deactivated.
+OVERVIEW: Screens customer identities when users in 30-40 high-risk countries add payment methods to digital wallets. True match = account restricted or deactivated.
 
 LIFECYCLE: Case created → T1 reviews (no PII) → Suspend (PCD 14 days, triggers PII request text+email+in-app) OR Direct Escalate → PII submitted → case reopens → T1 reviews → Clear / Escalate T2 → T2: clear/reject/escalate T3 → >2 rejections = T3.
 ⚠️ NEVER double-suspend. Suspension fires customer notifications. If PII already submitted and you can't clear → ESCALATE, never re-suspend.
@@ -1110,7 +1110,7 @@ ADVANCED RESEARCH:
 Individuals US: ID Verification Tool, Due Diligence Person Report
 Individuals All: MZ Support, iCloud Support Tool, Google, UK Company Officer Search
 Companies US: LexisNexis Due Diligence Business Report
-Companies All: D&B WorldBase / DNB.com, Public Sources, Google, Apple App Store
+Companies All: D&B WorldBase / DNB.com, Public Sources, Google, public platforms
 US MD address + no DOB → LexisNexis. End of day: delete files, empty Trash.
 
 DIRECT ESCALATION / ESCALATED HOLD: No research. Note reason + "ESCALATED HOLD".
@@ -1242,7 +1242,7 @@ TYPINATOR | https://istweb.vilecorp.com/scv/en/typinator — keyboard shortcuts 
 
 ICLOUD SUPPORT TOOL | https://support.icloud.vilecorp.com/support/client/index.html
 ⚠️ NO SCREENSHOTS PERMITTED. Email/DSID search: all results relevant. Name/phone: filter irrelevant accounts.
-Identity tab: address/phone/Apple ID. Security tab: 2FA devices + Enrollment Device location. General tab: Apple Account Creation Date (for account age).
+Identity tab: address/phone/Account ID. Security tab: 2FA devices + Enrollment Device location. General tab: Apple Account Creation Date (for account age).
 
 D&B BUSINESS DIRECTORY | https://www.dnb.com/business-directory.html
 T1 company research. DUNS numbers + company names. If DUNS returns different company → suspend (PCD 30 days).`},
@@ -1357,7 +1357,7 @@ True sanctions match → Escalate (do not request PII)
 DUNS returns different name → Suspend (30 days) + attach findings
 No evidence company exists → Escalate with recommendation
 Previously suspended + PCD expired → Escalate only ("Previously suspended - no new information")
-⚠️ Use DNB.com / Public Sources before LexisNexis. If Screened Entity has Apple Inc. affiliation → escalate.
+⚠️ Use DNB.com / Public Sources before LexisNexis. If Screened Entity is associated with major platforms Inc. affiliation → escalate.
 
 Individual names (batch_type_a_registrant): Name = person → Suspend (30 days). PII uploaded + can't clear → Escalate. Previously suspended + PCD expired → Escalate only.
 Prior PII: only usable if prior case was also Media Platform. Screenshot/attach + note "PII found on TID: ___".
@@ -1529,7 +1529,7 @@ RESEARCH TOOLS:
 Individuals US: ID Verification Tool, Due Diligence Person Report
 Individuals All: MZ Support, iCloud Support Tool, Google, UK Company Officer Search
 Companies US: LexisNexis Due Diligence Business Report
-Companies All: D&B WorldBase / DNB.com, Public Sources, Google, Apple App Store
+Companies All: D&B WorldBase / DNB.com, Public Sources, Google, public platforms
 US Matched Data address + no DOB → LexisNexis. End of day: delete files, empty Trash.
 
 TYPINATOR SNIPPETS:
