@@ -8,24 +8,35 @@ const KB = [
 // DICTIONARY — individual term definitions
 // ══════════════════════════════════════════════
 
+
+{id:"d-pep", cat:"glossary", title:"PEP — Politically Exposed Person", body:"An individual who holds or has held a prominent public position — including heads of state, senior government officials, senior executives of state-owned enterprises, judicial officials, and military commanders. PEPs carry elevated money laundering and corruption risk due to their access to public funds. Many screening programs require enhanced due diligence for PEPs and their close associates.", tags:["pep","politically exposed","public official","enhanced due diligence","corruption"]},
+{id:"d-adverse-media", cat:"glossary", title:"Adverse Media / Negative News", body:"Negative news coverage or publicly available information linking an entity to financial crime, fraud, corruption, sanctions violations, or other regulatory concerns. Adverse media screening is a key component of enhanced due diligence for high-risk customers. Sources include news databases, government publications, NGO reports, and legal filings.", tags:["adverse media","negative news","negative screening","financial crime","edd"]},
+{id:"d-beneficial-owner", cat:"glossary", title:"Beneficial Owner", body:"The natural person(s) who ultimately own or control a legal entity, either directly or through a chain of ownership or control. Regulators typically define beneficial ownership as holding 25% or more equity interest, though some programs use lower thresholds (10% or 5%). Identifying the beneficial owner is critical for corporate entity screening — the screened company must be traced back to real individuals.", tags:["beneficial owner","ubo","ultimate beneficial owner","ownership","control","25%","corporate","shell company"]},
+{id:"d-cdd", cat:"glossary", title:"CDD — Customer Due Diligence", body:"The process of verifying customer identity, understanding the nature of a customer's business, and assessing the risk they pose. CDD is a core requirement of KYC/AML programs. Standard CDD collects: name, date of birth, address, and ID number. Ongoing CDD involves monitoring customer activity for changes in risk profile.", tags:["cdd","customer due diligence","kyc","aml","verification","risk profile"]},
+{id:"d-fuzzy-match", cat:"glossary", title:"Fuzzy Matching / Phonetic Matching", body:"Algorithmic name-matching techniques that identify potential sanctions matches even when spellings differ due to transliteration, transcription errors, or aliases. Common algorithms include Jaro-Winkler, Levenshtein distance, Soundex, and Metaphone. A higher fuzzy match threshold produces more potential hits (and more false positives); a lower threshold produces fewer hits but increases true match risk.", tags:["fuzzy match","phonetic","transliteration","algorithm","name matching","jaro","levenshtein","false positive"]},
+{id:"d-derisking", cat:"glossary", title:"De-risking", body:"The practice of financial institutions exiting or restricting relationships with entire categories of customers deemed high-risk — such as money service businesses, cryptocurrency exchanges, or entities in certain jurisdictions — rather than managing risk on a case-by-case basis. De-risking can have significant financial inclusion consequences for affected populations.", tags:["de-risking","correspondent banking","high risk","financial inclusion","exit","terminate"]},
+{id:"d-typology", cat:"glossary", title:"Typology", body:"A documented pattern or method of financial crime. Typology reports — published by bodies like FATF, OFAC, and FinCEN — describe how criminal actors structure transactions, use shell companies, exploit loopholes, or layer funds to avoid detection. Familiarity with common typologies improves an analyst's ability to spot suspicious patterns beyond simple name matches.", tags:["typology","financial crime","pattern","money laundering","fatf","fincen","structuring","layering"]},
+{id:"d-correspondent", cat:"glossary", title:"Correspondent Banking", body:"A relationship where one bank (the correspondent) provides services to another bank (the respondent), typically to enable cross-border transactions. Correspondent banking relationships are a major focus of AML regulation because they can be exploited to move funds across jurisdictions. Banks must conduct enhanced due diligence on respondent banks, including their AML controls and customer base.", tags:["correspondent banking","respondent","cross-border","wire transfer","nostro","aml","de-risking"]},
+{id:"d-aml-layering", cat:"glossary", title:"Money Laundering Stages", body:"Money laundering typically occurs in three stages:\n\n1. **Placement** — Introducing illicit funds into the financial system (e.g., cash deposits, structuring).\n2. **Layering** — Creating distance between the funds and their source through complex transactions (e.g., wire transfers, shell companies, crypto conversions).\n3. **Integration** — Reintroducing laundered funds into the legitimate economy (e.g., real estate purchases, business investments).\n\nSanctions screening primarily targets placement and layering stages.", tags:["money laundering","placement","layering","integration","three stages","financial crime","structuring"]},
+{id:"d-screening-list", cat:"glossary", title:"Sanctions Screening Lists", body:"Major sanctions lists used in global compliance screening:\n\n• **OFAC SDN List** — U.S. Specially Designated Nationals (Treasury)\n• **OFAC Non-SDN Lists** — Foreign Sanctions Evaders, Sectoral Sanctions, etc.\n• **UN Consolidated List** — United Nations Security Council\n• **EU Consolidated List** — European Union\n• **UK HMT/OFSI List** — His Majesty's Treasury\n• **DFAT List** — Australia\n• **OSFI List** — Canada\n\nGlobal compliance programs typically screen against multiple lists simultaneously.", tags:["sanctions list","sdn","ofac","un","eu","uk","hmt","ofsi","dfat","osfi","screening"]},
 {id:"d-aml",       cat:"glossary", title:"AML — Anti-Money Laundering",          body:"Legal controls requiring institutions and entities to prevent, detect, and report money laundering activities.", tags:["aml","financial crime","legal"]},
-{id:"d-amp",       cat:"glossary", title:"Program Alpha — Apple Media Products",            body:"Manages iTunes, the Apple App Store, and Apple Services. Compliance screens anyone with access to iTunes Connect, which allows a person or company to distribute media. Vendors, Banks, and Bank Account Holders receive funding from those sales.", tags:["amp","client","itunes","app store"]},
-{id:"d-api",       cat:"glossary", title:"API — Apple Payments Inc.",             body:"A subsidiary of Apple Inc. that supports the disbursement platform covering daily cash rebates to customers from Apple Card and allows for Direct Bill Payment by customers from Apple Cash to Apple Card.", tags:["api","payments","apple card","client"]},
+{id:"d-amp",       cat:"glossary", title:"Media Platform — Apple Media Products",            body:"Manages iTunes, the Apple App Store, and Apple Services. Compliance screens anyone with access to iTunes Connect, which allows a person or company to distribute media. Vendors, Banks, and Bank Account Holders receive funding from those sales.", tags:["amp","client","itunes","app store"]},
+{id:"d-api",       cat:"glossary", title:"API — Application Programming Interface",             body:"A subsidiary of Apple Inc. that supports the disbursement platform covering daily cash rebates to customers from Apple Card and allows for Direct Bill Payment by customers from Apple Cash to Apple Card.", tags:["api","payments","apple card","client"]},
 {id:"d-cip",       cat:"glossary", title:"CIP — Customer Identification Program", body:"A United States requirement for financial institutions to verify a customer's identity.", tags:["cip","kyc","identity","us"]},
-{id:"d-client",    cat:"glossary", title:"Client",                                body:"The application or program from which the screened case data originated. Current clients: Program Alpha, Program Beta, API, Program Gamma.", tags:["client","amp","wwdr","api","idms"]},
+{id:"d-client",    cat:"glossary", title:"Client",                                body:"The application or program from which the screened case data originated. Current clients: Media Platform, Developer Program, API, Digital ID Program.", tags:["client","amp","wwdr","api","idms"]},
 {id:"d-common",    cat:"glossary", title:"Common Name",                           body:"A popular name many individuals have, or a generic name used by many companies. Common names often cause false positives in sanctions screening.", tags:["common name","false positive"]},
-{id:"d-core",      cat:"glossary", title:"Core Case",                             body:"The first Transaction ID in a sequence of cases. Contains the original screened name (including any DBA names) and Matched Data hits. To find it: search the TID prefix — everything before the underscore — in the CMS search bar.", tags:["core case","tid","transaction id","underscore"]},
+{id:"d-core",      cat:"glossary", title:"Core Case",                             body:"The first Transaction ID in a sequence of cases. Contains the original screened name (including any DBA names) and Matched Data hits. To find it: search the TID prefix — everything before the underscore — in the the system search bar.", tags:["core case","tid","transaction id","underscore"]},
 {id:"d-dba",       cat:"glossary", title:"DBA — Doing Business As",              body:"A trade name, assumed name, or fictitious business name — a registered name under which a business operates that is different from its official legal name. In CMS, DBA names appear as: [Name] ; [DBA Name]. Only the portion triggering the sanctions review is being screened.", tags:["dba","trade name","fictitious","semicolon"]},
 {id:"d-dd",        cat:"glossary", title:"Due Diligence",                         body:"Taking every possible precaution and conducting thorough investigation to identify businesses or persons subject to sanctions. Apple may be audited to verify due diligence was performed — your documentation is the proof.", tags:["due diligence","audit","investigation","documentation"]},
-{id:"d-duns",      cat:"glossary", title:"DUNS Number",                           body:"A unique nine-digit number that identifies a business, issued by Dun & Bradstreet. If a DUNS search returns a different company name than the Screened Entity, suspend and set PCD to 30 days (batch_type_a_registrant).", tags:["duns","dun bradstreet","dnb","business identifier"]},
+{id:"d-duns",      cat:"glossary", title:"DUNS Number",                           body:"A unique nine-digit number that identifies a business, issued by Dun & Bradstreet. If a DUNS search returns a different company name than the Screened Entity, suspend and set PCD to 30 days (batch registrant).", tags:["duns","dun bradstreet","dnb","business identifier"]},
 {id:"d-edd",       cat:"glossary", title:"Enhanced Due Diligence",               body:"Extra investigative measures taken because of elevated risk that a business or person may be subject to sanctions.", tags:["enhanced due diligence","high risk"]},
 {id:"d-entity",    cat:"glossary", title:"Entity",                                body:"An individual, organization, business, or company that has the legal capacity to enter a contract or agreement. The 'Entity Label' field in CMS tells you whether a case involves an individual or company.", tags:["entity","individual","company","entity label"]},
-{id:"d-event",     cat:"glossary", title:"Event",                                 body:"The interaction, transaction, enrollment, or account update that triggered CMS to open a case. Must be noted in every Case Overview. Examples: rt_user_invitation, batch_type_a_registrant, enrollment_pre_check.", tags:["event","enrollment","trigger","event type"]},
+{id:"d-event",     cat:"glossary", title:"Event",                                 body:"The interaction, transaction, enrollment, or account update that triggered CMS to open a case. Must be noted in every Case Overview. Examples: enrollment_check, batch registrant, enrollment check.", tags:["event","enrollment","trigger","event type"]},
 {id:"d-fp",        cat:"glossary", title:"False Positive / False Hit",           body:"A system-identified potential match that is NOT a true sanctions match — caused by a common name, missing information, a weak alias, or partial name similarity.", tags:["false positive","false hit","common name","partial match"]},
 {id:"d-full",      cat:"glossary", title:"Full Match",                            body:"The entire name of the Screened Entity matches the name from the sanctions list (Primary Name or AKA). A full name match generally requires escalation unless a clear DOB or location variance can be established.", tags:["full match","name match","entire name","sanctions"]},
-{id:"d-idms",      cat:"glossary", title:"Program Gamma — Identity Management Services",  body:"Provides authentication and authorization services and is the repository for all Apple identities. The Program Gamma compliance client screens Apple IDs when customers in high-risk countries add a payment method to their Apple Wallet. Phase 1: 35 high-risk countries. If confirmed as a true sanctions match, the account is deactivated.", tags:["idms","identity management","apple id","wallet","payment","high risk"]},
-{id:"d-inclusion", cat:"glossary", title:"Inclusion Term",                        body:"A trigger created when a Screened Entity name contains a word on Apple's corporate compliance inclusion list. Always a direct escalation for every client. For batch_type_a_registrant: the ONLY direct escalation reason.", tags:["inclusion term","direct escalation","apple compliance"]},
-{id:"d-ip",        cat:"glossary", title:"IP Address",                            body:"A numerical code that identifies the geographical location of a computer accessing the internet. Captured via Ekata for Program Beta cases and included in the Case Overview notation.", tags:["ip","ip address","ekata","location","wwdr"]},
+{id:"d-idms",      cat:"glossary", title:"Digital ID Program — Identity Management Services",  body:"Provides authentication and authorization services and is the repository for all Apple identities. The Digital ID Program compliance client screens Apple IDs when customers in high-risk countries add a payment method to their Apple Wallet. Phase 1: 35 high-risk countries. If confirmed as a true sanctions match, the account is deactivated.", tags:["idms","identity management","apple id","wallet","payment","high risk"]},
+{id:"d-inclusion", cat:"glossary", title:"Inclusion Term",                        body:"A trigger created when a Screened Entity name contains a word on the organization's watch-term list. Always a direct escalation for every client. For batch registrant: the ONLY direct escalation reason.", tags:["inclusion term","direct escalation","apple compliance"]},
+{id:"d-ip",        cat:"glossary", title:"IP Address",                            body:"A numerical code that identifies the geographical location of a computer accessing the internet. Captured via Ekata for Developer Program cases and included in the Case Overview notation.", tags:["ip","ip address","ekata","location","wwdr"]},
 {id:"d-kyc",       cat:"glossary", title:"KYC — Know Your Customer",             body:"A business process of verifying customer identity. Part of the broader AML compliance framework.", tags:["kyc","know your customer","identity","verification"]},
 {id:"d-lexid",     cat:"glossary", title:"LexID",                                 body:"A unique identifier assigned to individuals by LexisNexis. Document in your research notation when found.", tags:["lexid","lexisnexis","identifier"]},
 {id:"d-mdhit",     cat:"glossary", title:"Matched Data Hit",                      body:"A specific entry on a sanctions list that the system has identified as a potential match to the Screened Entity. A single case may have multiple Matched Data Hits — each must be individually evaluated.", tags:["matched data","matched data hit","potential match","sanctions list"]},
@@ -33,18 +44,18 @@ const KB = [
 {id:"d-ofaclist",  cat:"glossary", title:"OFAC List / SDN List",                 body:"The Specially Designated Nationals and Blocked Persons List. Maintained by OFAC. Lists terrorists, narcotics traffickers, and other entities that U.S. persons are generally prohibited from dealing with.", tags:["sdn","specially designated nationals","ofac list","blocked persons"]},
 {id:"d-ownership", cat:"glossary", title:"Ownership",                             body:"The structure of who ultimately controls and benefits from a company, whether directly or indirectly. If owner percentage is less than 100% to the Screened Entity, the case must be escalated so the other owner(s) may be screened.", tags:["ownership","co-owner","percentage","escalate"]},
 {id:"d-partial",   cat:"glossary", title:"Partial Match",                         body:"One of the Screened Entity names matches any of the Matched Data names (Primary or AKA), but not the complete name.", tags:["partial match","name match","aka"]},
-{id:"d-pcd",       cat:"glossary", title:"PCD — Pending Cancel Date",            body:"The date on which a suspended case automatically cancels if no action is taken. Program Gamma: 14 days. Program Alpha batch_type_a_registrant: 30 days. After cancellation, a new case auto-generates with the same TID plus a suffix (_1, _2, etc.).", tags:["pcd","pending cancel date","suspend","cancel","14 days","30 days"]},
+{id:"d-pcd",       cat:"glossary", title:"PCD — Pending Cancel Date",            body:"The date on which a suspended case automatically cancels if no action is taken. Digital ID Program: 14 days. Media Platform batch registrant: 30 days. After cancellation, a new case auto-generates with the same TID plus a suffix (_1, _2, etc.).", tags:["pcd","pending cancel date","suspend","cancel","14 days","30 days"]},
 {id:"d-pii",       cat:"glossary", title:"PII — Personally Identifiable Information", body:"Information that identifies a specific individual — passport, national ID, date of birth, ID number. Customer-submitted PII must meet Acceptable PII Criteria before it can be used to clear a case.", tags:["pii","personally identifiable","passport","national id","identification"]},
 {id:"d-risk-cat",  cat:"glossary", title:"Risk Category",                         body:"A rating of Low, Medium, or High based on the Risk Score. Low: 0.0 (Inclusion Terms) or 72.0–79.9. Medium: 80.0–89.9. High: 90.0–100.0.", tags:["risk category","low","medium","high","risk score"]},
-{id:"d-risk-sc",   cat:"glossary", title:"Risk Score",                            body:"A numerical score (0–100) calculated by CMS based on the similarity of the Screened Entity to the Matched Data hit. Higher similarity = higher risk.", tags:["risk score","hcm","numerical","similarity"]},
+{id:"d-risk-sc",   cat:"glossary", title:"Risk Score",                            body:"A numerical score (0–100) calculated by the screening system based on the similarity of the Screened Entity to the Matched Data hit. Higher similarity = higher risk.", tags:["risk score","hcm","numerical","similarity"]},
 {id:"d-sar",       cat:"glossary", title:"SAR — Suspicious Activity Report",      body:"A document filed with the Financial Crimes Enforcement Network (FinCEN) after a suspected incident of financial crime or money laundering.", tags:["sar","suspicious activity","fincen","financial crime"]},
 {id:"d-se",        cat:"glossary", title:"Screened Entity",                       body:"The individual or entity whose name triggered a potential match on a sanctions list. In CMS, may be labeled as: Customer, Individual, Company, Bank, Vendor, or Developer.", tags:["screened entity","customer","individual","company","potential match"]},
-{id:"d-sla",       cat:"glossary", title:"SLA — Service Level Agreement",         body:"The target timeframe within which a case must be reviewed and resolved. All current clients (Program Alpha, Program Beta, Program Gamma, API) have a 48-hour SLA.", tags:["sla","48 hours","service level","deadline"]},
+{id:"d-sla",       cat:"glossary", title:"SLA — Service Level Agreement",         body:"The target timeframe within which a case must be reviewed and resolved. All current clients (Media Platform, Developer Program, Digital ID Program, API) have a 48-hour SLA.", tags:["sla","48 hours","service level","deadline"]},
 {id:"d-tid",       cat:"glossary", title:"TID — Transaction ID",                  body:"The unique ID number CMS assigns to each case. When a case expires and is auto-regenerated, the new TID shares the same prefix plus a suffix (_1, _2, _3…).", tags:["tid","transaction id","case id","regenerated"]},
 {id:"d-truematch", cat:"glossary", title:"True Match",                             body:"When research confirms the Screened Entity is the same individual or company as the sanctioned party on the Matched Data list. Requires escalation.", tags:["true match","confirmed","sanctions","escalate"]},
 {id:"d-weak",      cat:"glossary", title:"Weak Alias / Low Quality AKA",          body:"A generic or common nickname that alone is insufficient to establish a true sanctions match. OFAC guidance: https://ofac.treasury.gov/faqs/topic/1646", tags:["weak alias","low quality","aka","nickname","insufficient"]},
-{id:"d-wwdr",      cat:"glossary", title:"Program Beta — Worldwide Developer Relations",  body:"The Apple team supporting developers globally. The Program Beta compliance client screens developer enrollments into the Apple Developer Program. Events: enrollment_pre_check (individual level, first screening) and rt_enrollment_final (entity level, completion).", tags:["wwdr","worldwide developer relations","developer","enrollment","precheck","final"]},
-{id:"d-23match",   cat:"glossary", title:"2/3 Name Match (Program Gamma Only)",            body:"Program Gamma cases only, without PII: the Screened Entity's full name matches 2 of 3 name components in the Matched Data name. Classified as a partial match.\n\nExamples:\n• John Smith vs John Jacob Smith → 2/3 match (first + last match; middle missing)\n• Aleksandr Muskov vs Aleksandr Muskov Sergeevich → 2/3 match\n\nNOT a 2/3 match (regular partial match, can clear):\n• John Allen Smith vs John Jacob Smith — different middle names\n• Aleksandr Vladimirovich Muskov vs Aleksandr Muskov Sergeevich", tags:["2/3 name match","two thirds","idms","partial match","name criteria"]},
+{id:"d-wwdr",      cat:"glossary", title:"Developer Program — Worldwide Developer Relations",  body:"The Apple team supporting developers globally. The Developer Program compliance client screens developer enrollments into the Apple Developer Program. Events: enrollment check (individual level, first screening) and rt_enrollment_final (entity level, completion).", tags:["wwdr","worldwide developer relations","developer","enrollment","precheck","final"]},
+{id:"d-23match",   cat:"glossary", title:"2/3 Name Match (Digital ID Program Only)",            body:"Digital ID Program cases only, without PII: the Screened Entity's full name matches 2 of 3 name components in the Matched Data name. Classified as a partial match.\n\nExamples:\n• John Smith vs John Jacob Smith → 2/3 match (first + last match; middle missing)\n• Aleksandr Muskov vs Aleksandr Muskov Sergeevich → 2/3 match\n\nNOT a 2/3 match (regular partial match, can clear):\n• John Allen Smith vs John Jacob Smith — different middle names\n• Aleksandr Vladimirovich Muskov vs Aleksandr Muskov Sergeevich", tags:["2/3 name match","two thirds","idms","partial match","name criteria"]},
 {id:"d-close",     cat:"glossary", title:"Close Name Match (Companies)",          body:"When a company's brand name is the same as the Matched Data but the legal identifier differs (e.g., LLC vs. GmbH). Classified as a partial match.\n\nExamples:\n• Biotech vs. Biotech LLC → close match\n• Cheer Flyer Company Unlimited vs. Cheer Flyer Company → close match\n\nEquivalent legal identifiers: LLC (US) = GmbH (Germany) = OOO (Russia)", tags:["close name match","brand name","legal identifier","llc","gmbh","ooo","company"]},
 {id:"d-sanctioned",cat:"glossary", title:"Sanctioned Countries & Regions",       body:"Any connection to these countries or regions is a direct escalation for ALL clients, regardless of the Matched Data comparison.\n\nSanctioned Countries:\n• Cuba (CUB)\n• Iran (IRN)\n• North Korea (PRK)\n\nSanctioned Regions in Ukraine:\n• Crimea\n• Donetsk People's Republic\n• Luhansk People's Republic\n• Kherson region\n• Zaporizhzhia region\n\nA 'connection' includes: doing business with, PII issued by, or address in any of the above.", tags:["sanctioned countries","cuba","iran","north korea","ukraine","crimea","donetsk","luhansk","kherson","zaporizhzhia","direct escalation"]},
 
@@ -52,12 +63,12 @@ const KB = [
 // ORIGINALS — full source text from procedure sites
 // ══════════════════════════════════════════════
 
-{id:"orig-cp002", cat:"amp", docType:"original", title:"CP002 — Program Alpha Review Guidelines (Original)",
-tags:["amp","batch_type_a_registrant","batch_type_b_registrant","rt_agreement","pii","escalate","suspend","dba","ownership","25+ hits","linked cases"],
-body:`SDS Compliance Procedure - CP002 | Updated 5/7/2026
+{id:"orig-cp002", cat:"amp", docType:"original", title:"SC-02 — Media Platform Review Guidelines (Original)",
+tags:["amp","batch registrant","batch bank record","rt_agreement","pii","escalate","suspend","dba","ownership","25+ hits","linked cases"],
+body:`Compliance Operations Procedure - SC-02 | Updated 5/7/2026
 
 OVERVIEW
-This document serves as a step by step guide to manually reviewing a case for the Apple Media Products (Program Alpha) client in CMS Non-Regulated.
+This document serves as a step by step guide to manually reviewing a case for the Apple Media Products (Media Platform) client in CMS Non-Regulated.
 
 DEFINING CMS NON-REGULATED
 Cases in CMS Non-Regulated include business activity that is not strictly controlled by laws. These cases screen developer enrollment and digital content distributed in the Apple ecosystem. Doing business with a sanctioned entity will result in an OFAC violation, including fines and publication.
@@ -65,17 +76,17 @@ Cases in CMS Non-Regulated include business activity that is not strictly contro
 CLIENTS AND EVENTS
 
 amp-itc-users:
-• rt_user_invitation — Newly added individual team members/employees of the content providers.
-• batch_user — Same population as rt_user_invitation, plus developers enrolled from Program Beta program.
+• enrollment_check — Newly added individual team members/employees of the content providers.
+• batch_user — Same population as enrollment_check, plus developers enrolled from Developer Program program.
 
 amp-itc-atb:
 • rt_agreement — Content providers who sign PaidApp Agreement for the first time, and existing vendors with changes to the structure of legal entity.
 • rt_bank_account_holder — Content providers who sign PaidApp Agreement for the first time, and existing vendors with changes to the structure of legal entity.
 • batch_bank_account_holder — First batch screening of a bank account holder of the legal entity after a real-time screening, and nightly batch screening of existing bank account holders.
 • batch_vendor_master — First time batch screening for legal entity from previous real-time screening, updates on existing legal entity, and nightly batch screening of existing vendors.
-• batch_type_b_registrant — Updates on a bank with list provided from Accuity and nightly screenings on existing banks.
+• batch bank record — Updates on a bank with list provided from Accuity and nightly screenings on existing banks.
 • batch_vendor_extra_info
-• batch_type_a_registrant
+• batch registrant
 
 LOGGING IN AND ASSIGNING A CASE
 1. Log into non-regulated CMS: https://acm-nonregulated.g.vilecorp.com
@@ -115,8 +126,8 @@ Individuals — Enter in CMS fields (clicking outside auto-saves):
 Companies:
 Create a manual note including date of registration and/or company ID number if available. Do not input data into CMS fields.
 
-RESEARCH AND DOCUMENT (batch_type_a_registrant only)
-When an Program Alpha case for the Free App Developer event is created, communication is automatically sent to the developer company making them aware that they need to upload documentation. Cases can be assigned for manual review prior to document submission.
+RESEARCH AND DOCUMENT (batch registrant only)
+When an Media Platform case for the Free App Developer event is created, communication is automatically sent to the developer company making them aware that they need to upload documentation. Cases can be assigned for manual review prior to document submission.
 
 Note: If the Screened Entity is or has any affiliation to Apple Inc., please complete research and summary as normal, then escalate the case.
 Note: Use Public Sources for Company Data, Dun & Bradstreet business directory search, or Google to validate a business prior to conducting a LexisNexis search.
@@ -147,17 +158,17 @@ Companies:
 • Previously suspended + PCD expired + no docs → Do NOT suspend again. ESCALATE.
   Notate: T2 Escalation Required: Previously suspended - no new information | Decision: Escalate
 
-Individuals (batch_type_a_registrant):
+Individuals (batch registrant):
 • Name appears to be an individual rather than a company → SUSPEND, PCD 30 days.
 • PII uploaded + still can't clear → ESCALATE. Do not suspend when PII is already attached.
 • Previously suspended + PCD expired → Do NOT suspend again. ESCALATE.
   Notate: T2 Escalation Required: Previously suspended - no new information | Decision: Escalate
 
 Reviewing a Case When PII is Available:
-Previously submitted PII may only be used if the previous case was also an Program Alpha case.
+Previously submitted PII may only be used if the previous case was also an Media Platform case.
 Note: If referencing previously submitted PII, screenshot or download it and attach to current case, along with: "PII found on TID: __________".
 
-ADVANCED RESEARCH (batch_type_a_registrant only)
+ADVANCED RESEARCH (batch registrant only)
 Individuals — US Only: ID Verification Tool, LexisNexis Phone Finder, LexisNexis Due Diligence Person Report
 Individuals — US and International: Case Support Tool, iCloud Support Tool, Google (name + company), UK Company Officer Search
 Companies — US Only: LexisNexis Due Diligence Business Report (last resort)
@@ -198,21 +209,21 @@ Suspend: Set PCD to 30 days.
 Escalate: "Potential sanction match" (full match to Matched Data); "Invalid Customer Submitted Info" (invalid PII); "Unable to waive compliance concerns" (all other reasons).
 
 DIRECT ESCALATION SCENARIOS
-1. Complete Case Overview as normal. (batch_type_b_registrant: no overview required.)
+1. Complete Case Overview as normal. (batch bank record: no overview required.)
 2. Create manual note: "T2 Escalation Required: [reason]"
    If reason is Invalid/Expired PII: add specific context (e.g., "ID is too blurry to read" or "Passport expired 2024").
 3. Resolve → Escalate → "Unable to waive compliance concerns."
 
 Direct Escalation Reasons:
-• batch_type_b_registrant event type.
-• Inclusion Term: "Case created because name contains Apple corporate compliance inclusion list words." (Only direct escalation reason for batch_type_a_registrant. For cases with multiple hits where only one is an inclusion term: complete research and summary for the other hits normally.)
+• batch bank record event type.
+• Inclusion Term: "Case created because name contains Apple corporate compliance inclusion list words." (Only direct escalation reason for batch registrant. For cases with multiple hits where only one is an inclusion term: complete research and summary for the other hits normally.)
 • Sanctioned Countries: Cuba (CUB), Iran (IRN), North Korea (PRK), or sanctioned Ukrainian regions.
 • Names Do Not Match: ID/registration name ≠ Screened Entity name.
 • Partial ID: Back of ID submitted, or name/DOB obscured.
 • Invalid PII: Non-ID document, altered, or illegible.
 • Unable to translate ID.
 
-Other Escalation Reasons for batch_type_a_registrant (not direct — complete full review first):
+Other Escalation Reasons for batch registrant (not direct — complete full review first):
 • Full review + not enough location/DOB/name info to decide.
 • Full name match to any Matched Data name (primary or AKA). Romanized name and native script should be reviewed.
 • Location is the ONLY variance → not enough to clear; escalate.
@@ -233,7 +244,7 @@ Your case = In Progress. Open cases are also yours. Pending cases must NOT be ac
 
 CASE CREATED BY THE BUSINESS
 "Case created at the request of the business" = original case expired, auto-regenerated.
-1. Search TID prefix (before the underscore) in CMS search bar to find the core case.
+1. Search TID prefix (before the underscore) in the system search bar to find the core case.
 2. Use core case Matched Data to evaluate the current case.
 3. Action case.
 
@@ -261,18 +272,18 @@ If owner percentage < 100% to the Screened Entity, the case must be escalated so
 NOT a direct escalation — complete full case review first.
 Final action: Escalate. Note: "Escalate due to ownership percentages listed."`},
 
-{id:"orig-cp001", cat:"wwdr", docType:"original", title:"CP001 — Program Beta Review Guidelines (Original)",
-tags:["wwdr","enrollment_pre_check","rt_enrollment_final","ip location","ekata","pii","direct escalation","dba","ownership"],
-body:`SDS Compliance Procedure - CP001 | Updated 5/7/2026
+{id:"orig-cp001", cat:"wwdr", docType:"original", title:"SC-01 — Developer Program Review Guidelines (Original)",
+tags:["wwdr","enrollment check","rt_enrollment_final","ip location","ekata","pii","direct escalation","dba","ownership"],
+body:`Compliance Operations Procedure - SC-01 | Updated 5/7/2026
 
 OVERVIEW
-This document serves as a step by step guide to manually reviewing a case for the Worldwide Developer Relations (Program Beta) client in CMS Non-Regulated.
+This document serves as a step by step guide to manually reviewing a case for the Worldwide Developer Relations (Developer Program) client in CMS Non-Regulated.
 
 DEFINING CMS NON-REGULATED
 Cases in CMS Non-Regulated include business activity that is not strictly controlled by laws. These cases screen developer enrollment and digital content distributed in the Apple ecosystem. Doing business with a sanctioned entity will result in an OFAC violation, including fines and publication.
 
 EVENTS
-enrollment_pre_check — All applicants enrolling into the Apple Developer Program at an individual level. This is the first screening.
+enrollment check — All applicants enrolling into the Apple Developer Program at an individual level. This is the first screening.
 rt_enrollment_final — After passing the precheck, the applicant provides information for the final check, this time on the entity. If cleared, the organization's enrollment is complete.
 
 LOGGING IN AND ASSIGNING A CASE
@@ -290,7 +301,7 @@ CASE OVERVIEW
 
 Example:
 Screening Date: 2026-01-13
-Client & Event: Program Beta, enrollment_pre_check
+Client & Event: Developer Program, enrollment check
 Entity Type: Individual
 Screened Entity Name: Johnny Appleseed
 Screened Entity Location: Cupertino, USA
@@ -299,7 +310,7 @@ Screenshot: EKATA.PNG
 PII attached: PII is attached and has been reviewed
 
 REVIEW PII AND DOCUMENT
-1. In Notes section, locate the Program Beta_PII entry and click attachment.
+1. In Notes section, locate the Developer Program_PII entry and click attachment.
    Note: Some attachments require downloading. Remove from downloads folder at end of each day.
 2. Review against Acceptable PII Criteria.
 3. If valid PII submitted:
@@ -338,7 +349,7 @@ DECISION: Clear based on name, DOB, location variance
 
 ACTIONING A CASE
 1. Select Resolve.
-2. Select Clear or Escalate. (No Suspend option for Program Beta.)
+2. Select Clear or Escalate. (No Suspend option for Developer Program.)
 Note: If ANY hit requires escalation, the entire case escalates.
 
 Clear: "Cleared by DOB" (DOB mismatch used) or "Not a sanction match" (all other reasons).
@@ -384,12 +395,12 @@ Owner percentage < 100% → escalate so other owner(s) can be screened.
 NOT a direct escalation — complete full case review first.
 Final action: Escalate. Note: "Escalate due to ownership percentages listed."`},
 
-{id:"orig-cp000", cat:"idms", docType:"original", title:"CP000 — Program Gamma Review Guidelines (Original)",
+{id:"orig-cp000", cat:"idms", docType:"original", title:"SC-00 — Digital ID Program Review Guidelines (Original)",
 tags:["idms","lifecycle","suspend","pcd","14 days","year of birth","yob","2/3 name match","mz account age","vessel","inclusion term","double suspend","direct escalation"],
-body:`SDS Compliance Procedure - CP000 | Updated 5/7/26
+body:`Compliance Operations Procedure - SC-00 | Updated 5/7/26
 
 OVERVIEW
-The Identity Management Services (Program Gamma) case review procedure serves as a step by step guide to manually reviewing a case. In this line of business, we are screening Apple IDs. When a customer adds a form of payment to their Apple wallet, they must be screened to ensure they are not a sanctioned party. Phase 1 is limited to customers in 35 high risk countries. Payment restriction is applied when a person is a possible match. If confirmed as a true sanctions match, their account is deactivated.
+The Identity Management Services (Digital ID Program) case review procedure serves as a step by step guide to manually reviewing a case. In this line of business, we are screening Apple IDs. When a customer adds a form of payment to their Apple wallet, they must be screened to ensure they are not a sanctioned party. Phase 1 is limited to customers in 35 high risk countries. Payment restriction is applied when a person is a possible match. If confirmed as a true sanctions match, their account is deactivated.
 
 THE LIFECYCLE OF AN IDMS CASE
 1. Customer in high-risk country adds payment to Apple account → name matches sanctions list → case created in CMS.
@@ -465,7 +476,7 @@ Due diligence must be conducted to verify that a company exists.
 Reviewing Without PII:
 If CMS lists a US address → use LexisNexis first (reliable DOB data). If record found and enough to clear → no further research needed.
 Not US → use MZ Support and iCloud Support Tool.
-Click SILPH icon to open Ekata (auto-fills from CMS).
+Click Quick-Launch Research Button to open Ekata (auto-fills from CMS).
 Fill Screened Entity Research template with new names, locations, emails, phone numbers not already in CMS. "No new data" if nothing found.
 Take screenshots and attach in CMS.
 Note: Screenshots from iCloud Support Tool are not permitted.
@@ -542,12 +553,12 @@ CASE CREATED AT THE REQUEST OF THE BUSINESS
 Search TID prefix in CMS to find core case. Use core case Matched Data.
 Special scenario: If core case Screened Entity name is completely different from current case → compare current Screened Entity to original Matched Data, and clear by name and/or DOB variance.`},
 
-{id:"orig-cp003", cat:"pending", docType:"original", title:"CP003 — Pending Case Review Guidelines (Original)",
+{id:"orig-cp003", cat:"pending", docType:"original", title:"SC-03 — Pending Case Review Guidelines (Original)",
 tags:["pending","pending case tracker","quip","escalated hold","gibberish","scripted account","full name match","2/3 name match","load tids","query builder","typinator","2025 CI onboarding"],
-body:`SDS Compliance Procedure - CP003 | Updated 12/22/25
+body:`Compliance Operations Procedure - SC-03 | Updated 12/22/25
 
 OVERVIEW
-Non-regulated Program Alpha and Program Beta cases are created in CMS without PII attachments. Cases remain in Pending status until the Screened Entity uploads PII or company documentation, which changes the case status to Open. Reviews of Pending cases are conducted by investigators when Open case volume is finished or when otherwise instructed.
+Non-regulated Media Platform and Developer Program cases are created in CMS without PII attachments. Cases remain in Pending status until the Screened Entity uploads PII or company documentation, which changes the case status to Open. Reviews of Pending cases are conducted by investigators when Open case volume is finished or when otherwise instructed.
 
 ACCESSING THE PENDING CASE TRACKER
 The Pending Case Tracker is a spreadsheet with each Non-Regulated client's pending cases from the previous 7 days. The document is collaborative so each investigator only reviews the cases assigned to them within the spreadsheet.
@@ -597,7 +608,7 @@ If the case cannot be cleared by name variance, perform a full case review:
 The "Cleared by DOB" reason code is only chosen when customer PII is used to support the decision. Otherwise, choose "Not a Sanction Match" when clearing.
 
 NOTATING DBA NAME CASES
-Cases with DBA names are reviewed according to the Program Beta Review Guidelines. If PII is available on a previous case but does not match the name being screened, this counts as a "PII Name Does Not Match" scenario and should be notated as such.
+Cases with DBA names are reviewed according to the Developer Program Review Guidelines. If PII is available on a previous case but does not match the name being screened, this counts as a "PII Name Does Not Match" scenario and should be notated as such.
 
 ADVANCED RESEARCH
 Individuals — US Only: ID Verification Tool, LexisNexis Due Diligence Person Report
@@ -660,9 +671,9 @@ Direct Escalation:
 [Select reason: No full name given / Inclusion term / Gibberish/Scripting pattern / Previous case rejected for doing business in embargoed country / Full name match / 2/3 name and country match]
 ESCALATED HOLD`},
 
-{id:"orig-cr005", cat:"ref", docType:"original", title:"CR005 — Compliance Terms and Notations (Original)",
+{id:"orig-cr005", cat:"ref", docType:"original", title:"RC-05 — Compliance Terms and Notations (Original)",
 tags:["terms","notation","templates","case overview template","research template","summary template","glossary","aml","ofac","pii","screened entity"],
-body:`SDS Compliance Reference - CR005 | Updated 5/7/2026
+body:`Compliance Operations Reference - RC-05 | Updated 5/7/2026
 
 OVERVIEW
 Discover common terms used in compliance investigation along with proper notation techniques to utilize.
@@ -670,7 +681,7 @@ Discover common terms used in compliance investigation along with proper notatio
 COMMON TERMS GLOSSARY
 AML: Anti Money Laundering - Legal controls requiring institutions and entities to prevent, detect, and report money laundering activities.
 Apple Developer Program: A program for customers around the world to access beta software, advanced app capabilities, extensive beta testing tools, and app analytics.
-Apple Media Products (Program Alpha): Manages the iTunes, Apple App Store, and Apple Services. Compliance screens anyone with access to those accounts on iTunes Connect which allows a person or company to distribute media. Vendors, Banks, and Bank Account Holders receive funding from those sales.
+Apple Media Products (Media Platform): Manages the iTunes, Apple App Store, and Apple Services. Compliance screens anyone with access to those accounts on iTunes Connect which allows a person or company to distribute media. Vendors, Banks, and Bank Account Holders receive funding from those sales.
 applepaymentsinc (API): Apple Payments Inc - a subsidiary of Apple Inc. that supports the disbursement platform covering daily cash rebates to customers from Apple Card and allows for Direct Bill Payment by customers from Apple Cash to Apple Card.
 CIP: The Customer Identification Program, a United States requirement for financial institutions to verify a customers identity.
 Client: The application or program from which the screened case data originated.
@@ -708,7 +719,7 @@ SDN: Specially Designated Nationals and Blocked Persons List (SDN).
 TID: Transaction ID - The unique ID number CMS assigns to each case.
 True Match: When research confirms the Screened Entity is the same as the sanctions list hit.
 Weak Alias/Low Quality Aliases/AKA: A generic or common nickname that may be used in place of a legal or formal name.
-Program Beta: World Wide Developer Relations - a team supporting Apple Developers.
+Developer Program: World Wide Developer Relations - a team supporting Apple Developers.
 
 NOTATIONS
 The goal of the notation is to clearly document the evidence that supports the decision made on each Matched Data Hit. Documentation with supporting screenshots is critical because Apple may be audited to verify due diligence was performed in government compliance screenings.
@@ -726,8 +737,8 @@ Client & Event:
 Entity Type:
 Screened Entity Name:
 Screened Entity Location:
-**IP Location: [Program Beta only]
-**Screenshot: EKATA.PNG [Program Beta only]
+**IP Location: [Developer Program only]
+**Screenshot: EKATA.PNG [Developer Program only]
 PII attached:
 
 Research:
@@ -782,7 +793,7 @@ ADDITIONAL NOTES TIPS
 • For "Invalid or expired PII" reason: additional context is needed. Example: "T2 Escalation Required: Invalid PII - ID is too blurry to read"
 • Translate any foreign languages into English.
 
-NOTES EXProgram AlphaLES
+NOTES EXMedia PlatformLES
 
 Individual Entity:
 Screened Entity Data:
@@ -823,9 +834,9 @@ Summary: Partial name match. SE: American Broadcasting Company ; ABC. MD: Arab B
 Locations don't match. SE: USA. MD: Bahrain.
 Decision: Clear based on name and location variance.`},
 
-{id:"orig-cr003", cat:"ref", docType:"original", title:"CR003 — Compliance Review Model (Original)",
+{id:"orig-cr003", cat:"ref", docType:"original", title:"RC-03 — Compliance Review Model (Original)",
 tags:["review model","4 steps","case overview","research","summary","action","clear","escalate","suspend","reject","pcd","direct escalation"],
-body:`SDS Compliance Reference - CR003 | Updated 4/22/26
+body:`Compliance Operations Reference - RC-03 | Updated 4/22/26
 
 OVERVIEW
 The compliance Review Model is a framework to help guide the process of manually reviewing a case for compliance concerns. The model will ensure investigations are thorough, efficient, and consistent.
@@ -847,7 +858,7 @@ Research the Screened Entity: Without PII
 • If the Screened Entity is an entity type variance from the Matched Data Hit(s) → clear the case.
 • If a DOB is available for the Matched Data, and we are able to locate a DOB for the Screened Entity in LexisNexis, no further research is needed. Document DOB, LexID, new names and locations. Attach screenshots.
 • If research is inconclusive or there is a DOB match → proceed with full path of progression.
-• (Program Gamma only) If the year of birth for the Screened Entity (with a valid name) differs from the year of birth for the Matched Data Hit(s) → no external research needed.
+• (Digital ID Program only) If the year of birth for the Screened Entity (with a valid name) differs from the year of birth for the Matched Data Hit(s) → no external research needed.
 • For full research: follow the Tools Path of Progression to capture all names, dates of birth, addresses, phone numbers, emails, and Apple interaction history. Capture and attach screenshots.
 
 Research the Screened Entity: With PII
@@ -857,7 +868,7 @@ Research the Screened Entity: With PII
 
 The below scenarios require escalation to Tier 3 — no research needed:
 • Name in CMS does not match submitted PII attachment.
-• Event type batch_type_b_registrant.
+• Event type batch bank record.
 • Incomplete Identification (no name and/or DOB visible).
 • Sanctioned country or region (CUB, PRK, IRN or sanctioned Ukrainian regions).
 • Invalid PII submitted (photos that do not include ID documents, doctored PII).
@@ -900,28 +911,28 @@ Select:
 • "Unable to waive compliance concerns" for all other reasons.
 
 Suspend:
-Reserved for Program Gamma and Program Alpha batch_type_a_registrant:
+Reserved for Digital ID Program and Media Platform batch registrant:
 
-Program Gamma:
+Digital ID Program:
 • Assigned without PII AND decision cannot be made after due diligence.
 • NOTE: If PII uploaded but decision cannot be reached → Escalate, not Suspend.
 • Set PCD to 14 days.
 
-Program Alpha, batch_type_a_registrant:
+Media Platform, batch registrant:
 • DUNS number results in a different company name.
 • Screened Entity name belongs to an individual instead of a company.
 • Full name match to Matched Data Hit but country variance.
 • Set PCD to 30 days.
 
-Reject (Tier 2 only, Program Gamma only):
+Reject (Tier 2 only, Digital ID Program only):
 • "Invalid Customer Submitted Info" or "Sanctioned Country / Region."
 • All other reason codes are for Tier 3 use only.
 
 If a case is cleared, rejected, or suspended in error → immediately notify team manager with: TID, date, summary of what happened, intended action.`},
 
-{id:"orig-cp007", cat:"ref", docType:"original", title:"CP007 — Match Determination & Acceptable PII Criteria (Original)",
+{id:"orig-cp007", cat:"ref", docType:"original", title:"SC-07 — Match Determination & Acceptable PII Criteria (Original)",
 tags:["match determination","entity type","full match","partial match","false positive","date of birth","location","2/3 name match","close name match","china","acceptable pii","expired pii","individuals","companies"],
-body:`SDS Compliance Reference - CP007 | Updated 04/21/26
+body:`Compliance Operations Reference - SC-07 | Updated 04/21/26
 
 OVERVIEW
 When reviewing a Compliance Case, matching determination guidelines depend on whether the Screened Entity is an individual or company.
@@ -944,7 +955,7 @@ Names:
 Note: Notate whether the name matches the primary name or an AKA.
 
 Individuals — 2/3 Name Match Criteria:
-Applies only to Program Gamma cases where Screened Entity has no previously submitted PII, and FULL name matches 2 of 3 names in the Matched Data name. Classified as a partial match.
+Applies only to Digital ID Program cases where Screened Entity has no previously submitted PII, and FULL name matches 2 of 3 names in the Matched Data name. Classified as a partial match.
 Examples: John Smith vs John Jacob Smith / Aleksandr Muskov vs Aleksandr Muskov Sergeevich.
 Note: If both individuals show first, middle, and last names and one is different → CLEARED as regular partial match.
 Examples: John Allen Smith vs John Jacob Smith / Aleksandr Vladimirovich Muskov vs Aleksandr Muskov Sergeevich.
@@ -1006,9 +1017,9 @@ ACCEPTABLE PII CRITERIA — INDIVIDUALS
 4. Locate Passport Number or National ID number. Notate in CMS. If unobtainable but name and DOB are clearly visible → PII may still be used (omit ID number from CMS fields).
 5. If identification appears modified → escalate (includes blurry/illegible images).`},
 
-{id:"orig-cr004", cat:"ref", docType:"original", title:"CR004 — Compliance Tools (Original)",
+{id:"orig-cr004", cat:"ref", docType:"original", title:"RC-04 — Compliance Tools (Original)",
 tags:["lexisnexis","mz support","aso acm","ekata","typinator","icloud support","dun bradstreet","path of progression","tools","research","no pii"],
-body:`SDS Compliance Reference - CR004 | Updated 03/31/26
+body:`Compliance Operations Reference - RC-04 | Updated 03/31/26
 
 OVERVIEW
 This document outlines the tools available for Compliance Investigators that assist with the steps of the Compliance Review Model for support tiers 1 and 2.
@@ -1045,7 +1056,7 @@ Note: Screenshots must contain only information relevant to the individual being
 
 MZ Support
 URL: https://mzsupport.vilecorp.com/WebObjects/MZSupport.woa
-Contains: iTunes and Program Alpha purchases, registered devices, storefronts, payment methods and billing information.
+Contains: iTunes and Media Platform purchases, registered devices, storefronts, payment methods and billing information.
 
 1. Search DSID, email or phone number.
 2. Click "Display Full Address" to reveal current billing information.
@@ -1069,7 +1080,7 @@ Ekata
 URL: https://app.ekata.com/search
 Contains: Public records, IP address and digital identity data.
 
-1. Click the SILPH icon in CMS (located by the Screened Entity name) to open Ekata.
+1. Click the Quick-Launch Research Button in CMS (located by the Screened Entity name) to open Ekata.
 2. The information from the Screened Entity details will auto-fill in Ekata.
 3. Document DOB, names, locations, phone numbers.
 4. Screenshot any new information and attach to the case in CMS.
@@ -1097,15 +1108,15 @@ Dun & Bradstreet Business Directory
 URL: https://www.dnb.com/business-directory.html
 Public records for foreign and domestic companies. Search by DUNS number and company names.`},
 
-{id:"orig-cr002", cat:"ref", docType:"original", title:"CR002 — CMS User Guide (Original)",
+{id:"orig-cr002", cat:"ref", docType:"original", title:"RC-02 — CMS User Guide (Original)",
 tags:["hcm","hermes","dashboard","case header","case details","resolve","sla","binocs","related cases","attach file","logging notes","availability status"],
-body:`SDS Compliance Reference - CR002 | Updated 4/24/25
+body:`Compliance Operations Reference - RC-02 | Updated 4/24/25
 
 OVERVIEW
 Case Management System (CMS) streamlines the process of comparing individuals, banks, and business entities against potential matches on lists of sanctioned parties.
 
 ACCESS CMS
-• Non-Regulated (Program Alpha, Program Beta, Program Gamma): https://acm-nonregulated.g.vilecorp.com
+• Non-Regulated (Media Platform, Developer Program, Digital ID Program): https://acm-nonregulated.g.vilecorp.com
 • Regulated (API): https://acm-regulated.g.vilecorp.com
 Log in with AppleConnect credentials. Two-Step verification may be required. Ensure Sanctions is selected from the lines of business.
 
@@ -1195,9 +1206,9 @@ ATTACH A FILE
 5. Refresh the case to confirm files and notes were saved.
 6. Delete all applicable files containing PII from your Mac.`},
 
-{id:"orig-cr0007", cat:"ref", docType:"original", title:"CR0007 — Decisioning Matrix (Original)",
+{id:"orig-cr0007", cat:"ref", docType:"original", title:"RC-007 — Decisioning Matrix (Original)",
 tags:["decisioning matrix","with pii","idms no pii","companies","batch free developer","clear","escalate","suspend","2/3 name match","pcd","entity type mismatch"],
-body:`SDS Compliance Reference - CR0007 | Updated 4/13/26
+body:`Compliance Operations Reference - RC-007 | Updated 4/13/26
 
 OVERVIEW
 This document serves as a guideline for making a decision on a Compliance case. Note: If you are unsure of what your decision should be after reviewing this document, escalate.
@@ -1252,33 +1263,33 @@ Note: Previously suspended + PCD expired + no new docs → do NOT suspend again 
 // TECH EDITS — clean, restructured rewrites
 // ══════════════════════════════════════════════
 
-{id:"edit-cp002", cat:"amp", docType:"edit", title:"CP002 — Program Alpha Review Guidelines (Tech Edit)",
-tags:["amp","batch_type_a_registrant","batch_type_b_registrant","rt_agreement","pii","escalate","suspend","dba","ownership"],
-body:`Program Alpha Review Guidelines | Tech Edit | May 2026
+{id:"edit-cp002", cat:"amp", docType:"edit", title:"SC-02 — Media Platform Review Guidelines (Tech Edit)",
+tags:["amp","batch registrant","batch bank record","rt_agreement","pii","escalate","suspend","dba","ownership"],
+body:`Media Platform Review Guidelines | Tech Edit | May 2026
 
-WHAT IS Program Alpha?
+WHAT IS Media Platform?
 Apple Media Products manages iTunes, the App Store, and Apple Services. Compliance screens developers, vendors, banks, and bank account holders who access iTunes Connect to distribute media.
 
 BEFORE YOU BEGIN — QUICK REFERENCE
 
 CMS URL: https://acm-nonregulated.g.vilecorp.com
-Suspend PCD: 30 days (batch_type_a_registrant only)
-No suspend option: All other Program Alpha events use Clear or Escalate only.
+Suspend PCD: 30 days (batch registrant only)
+No suspend option: All other Media Platform events use Clear or Escalate only.
 
 CLIENTS & EVENTS
 
 amp-itc-users events:
-• rt_user_invitation — New individual team members of content providers
-• batch_user — Same as above + developers from Program Beta
+• enrollment_check — New individual team members of content providers
+• batch_user — Same as above + developers from Developer Program
 
 amp-itc-atb events:
 • rt_agreement — PaidApp Agreement signers (first-time or legal entity changes)
 • rt_bank_account_holder — Same population as rt_agreement
 • batch_bank_account_holder — First batch + nightly screening of bank account holders
 • batch_vendor_master — First batch + nightly screening of vendors/legal entities
-• batch_type_b_registrant — Bank updates from Accuity + nightly bank screenings [ALWAYS DIRECT ESCALATE]
+• batch bank record — Bank updates from Accuity + nightly bank screenings [ALWAYS DIRECT ESCALATE]
 • batch_vendor_extra_info — Additional vendor info batch
-• batch_type_a_registrant — Free app developer screening [has extended workflow below]
+• batch registrant — Free app developer screening [has extended workflow below]
 
 REASON CODES AT A GLANCE
 Clear — Cleared by DOB: Use when DOB mismatch drove the decision AND customer PII was submitted.
@@ -1286,7 +1297,7 @@ Clear — Not a Sanction Match: All other clear reasons.
 Escalate — Potential Sanction Match: Full name AND full location match to Matched Data.
 Escalate — Invalid Customer Submitted Info: Invalid or unacceptable PII.
 Escalate — Unable to Waive Compliance Concerns: All other escalation reasons.
-Suspend: Set PCD to 30 days. batch_type_a_registrant only.
+Suspend: Set PCD to 30 days. batch registrant only.
 
 STEP 1 — LOG IN AND GET A CASE
 1. Go to https://acm-nonregulated.g.vilecorp.com and log in.
@@ -1321,7 +1332,7 @@ For Companies — do NOT use CMS fields. Create a manual note with:
 • Company ID number (if available)
 Omit if unavailable — PII can still be used.
 
-STEP 4 — RESEARCH (batch_type_a_registrant only)
+STEP 4 — RESEARCH (batch registrant only)
 Research is required when no documentation has been uploaded yet.
 
 Company research path:
@@ -1337,15 +1348,15 @@ Previously suspended + PCD expired + no new docs → Escalate only; note: "Previ
 [Note: If researching — use DNB.com or Public Sources before LexisNexis]
 [Note: If Screened Entity has any affiliation with Apple Inc. → complete research and summary, then escalate]
 
-Individual name (batch_type_a_registrant):
+Individual name (batch registrant):
 If the name appears to be a person rather than a company → Suspend (PCD 30 days).
 Once PII is uploaded and you still can't clear → Escalate (do NOT suspend).
 Previously suspended + PCD expired → Escalate only.
 
 Using previously submitted PII:
-Only usable if the previous case was also Program Alpha. Screenshot or download it, attach to current case, add note: "PII found on TID: ___"
+Only usable if the previous case was also Media Platform. Screenshot or download it, attach to current case, add note: "PII found on TID: ___"
 
-Advanced research tools (batch_type_a_registrant):
+Advanced research tools (batch registrant):
 Individuals (US): ID Verification Tool, Phone Finder, Due Diligence Person Report
 Individuals (US + International): MZ Support, iCloud Support Tool, Google, UK Company Officer Search
 Companies (US): LexisNexis Due Diligence Business Report [last resort]
@@ -1384,21 +1395,21 @@ STEP 6 — ACTION THE CASE
 OTHER GUIDELINES
 
 Direct Escalation (no full summary needed — just overview + note + action):
-1. Complete Case Overview (skip for batch_type_b_registrant)
+1. Complete Case Overview (skip for batch bank record)
 2. Create note: "T2 Escalation Required: [reason]"
    For Invalid/Expired PII → add context: e.g., "ID too blurry to read" or "Passport expired 2024"
 3. Resolve → Escalate → Unable to Waive Compliance Concerns
 
 Direct Escalation Reasons:
-• batch_type_b_registrant event
-• Inclusion Term (the ONLY direct escalation for batch_type_a_registrant; for multiple hits where only one is inclusion term — work the others normally)
+• batch bank record event
+• Inclusion Term (the ONLY direct escalation for batch registrant; for multiple hits where only one is inclusion term — work the others normally)
 • Sanctioned country/region connection (Cuba/Iran/North Korea/Ukrainian sanctioned regions)
 • Names Do Not Match (ID name ≠ Screened Entity name)
 • Partial ID (back of ID submitted, or name/DOB obscured)
 • Invalid PII (non-ID doc, altered, or illegible)
 • Unable to translate ID
 
-Non-direct escalation (for batch_type_a_registrant — full review required first):
+Non-direct escalation (for batch registrant — full review required first):
 • Full review + not enough name/DOB/location info to decide
 • Full name match to any Matched Data name (including AKAs; check Romanized + native script)
 • Location is the ONLY variance → not enough to clear
@@ -1430,31 +1441,31 @@ Owner < 100% → other owner(s) unscreened → must escalate.
 NOT a direct escalation — complete full review first.
 Final action: always Escalate → Unable to Waive. Note: "Escalate due to ownership percentages listed."`},
 
-{id:"edit-cp001", cat:"wwdr", docType:"edit", title:"CP001 — Program Beta Review Guidelines (Tech Edit)",
-tags:["wwdr","enrollment_pre_check","rt_enrollment_final","ip location","ekata","pii","direct escalation","dba","ownership"],
-body:`Program Beta Review Guidelines | Tech Edit | May 2026
+{id:"edit-cp001", cat:"wwdr", docType:"edit", title:"SC-01 — Developer Program Review Guidelines (Tech Edit)",
+tags:["wwdr","enrollment check","rt_enrollment_final","ip location","ekata","pii","direct escalation","dba","ownership"],
+body:`Developer Program Review Guidelines | Tech Edit | May 2026
 
-WHAT IS Program Beta?
+WHAT IS Developer Program?
 Worldwide Developer Relations screens developer enrollments into the Apple Developer Program. Two events:
-• enrollment_pre_check — Individual-level screening (first check)
+• enrollment check — Individual-level screening (first check)
 • rt_enrollment_final — Entity-level screening (completes enrollment if cleared)
 
 BEFORE YOU BEGIN
 
 CMS URL: https://acm-nonregulated.g.vilecorp.com
-Available actions: Clear or Escalate ONLY (no Suspend for Program Beta)
-IP Location + Ekata screenshot: Required for ALL Program Beta cases — capture in Case Overview
+Available actions: Clear or Escalate ONLY (no Suspend for Developer Program)
+IP Location + Ekata screenshot: Required for ALL Developer Program cases — capture in Case Overview
 
 STEP 1 — LOG IN AND GET A CASE
 1. Go to https://acm-nonregulated.g.vilecorp.com and log in.
 2. Set status (Ready / CMS Classic / Not Ready). Wait for case assignment.
 
 STEP 2 — CASE OVERVIEW
-Capture IP Location from Ekata (click SILPH icon next to Screened Entity name). Translate any non-English names or locations.
+Capture IP Location from Ekata (click Quick-Launch Research Button next to Screened Entity name). Translate any non-English names or locations.
 
 Template:
 Screening Date: [from Case Header]
-Client & Event: [e.g., Program Beta, enrollment_pre_check]
+Client & Event: [e.g., Developer Program, enrollment check]
 Entity Type: [from Entity Label field]
 Screened Entity Name: [copy as shown; add English translation if needed]
 Screened Entity Location: [city, state, country]
@@ -1530,9 +1541,9 @@ Case Created by the Business: Find core case by searching TID prefix. Use core c
 DBA Scenarios: PII matches screened name → review normally. PII matches non-screened name → direct escalate.
 Ownership Percentages: < 100% ownership → escalate. NOT direct — complete full review first.`},
 
-{id:"edit-cp000", cat:"idms", docType:"edit", title:"CP000 — Program Gamma Review Guidelines (Tech Edit)",
+{id:"edit-cp000", cat:"idms", docType:"edit", title:"SC-00 — Digital ID Program Review Guidelines (Tech Edit)",
 tags:["idms","lifecycle","suspend","pcd","14 days","year of birth","yob","2/3 name match","vessel","double suspend","direct escalation"],
-body:`Program Gamma Review Guidelines | Tech Edit | May 2026
+body:`Digital ID Program Review Guidelines | Tech Edit | May 2026
 
 WHAT IS IDMS?
 Identity Management Services screens Apple IDs when customers in high-risk countries (Phase 1: 35 countries) add a payment method to Apple Wallet. A potential match creates a case in CMS. Confirmed true matches → account deactivated.
@@ -1605,12 +1616,12 @@ Invalid name submitted:
 
 PII has been submitted:
 Validate PII against Acceptable PII Criteria.
-Note: Previously submitted PII can only be used if it's from another Program Gamma case.
+Note: Previously submitted PII can only be used if it's from another Digital ID Program case.
 
 Researching without PII (when full research is required):
 • US address listed → start with LexisNexis (reliable DOB data)
 • Non-US → use MZ Support + iCloud Support Tool
-• Click SILPH icon → Ekata auto-fills from CMS
+• Click Quick-Launch Research Button → Ekata auto-fills from CMS
 • Research template:
   SCREENED ENTITY RESEARCH
   DATE OF BIRTH: | LEXID: | NAMES: | LOCATIONS: | EMAILS: | PHONE NUMBERS:
@@ -1669,12 +1680,12 @@ Case Created at the Request of the Business:
 Find core case (search TID prefix). Use core case Matched Data.
 If core case SE name is completely different → compare current SE to original Matched Data → clear by name/DOB variance if applicable.`},
 
-{id:"edit-cp003", cat:"pending", docType:"edit", title:"CP003 — Pending Case Review Guidelines (Tech Edit)",
+{id:"edit-cp003", cat:"pending", docType:"edit", title:"SC-03 — Pending Case Review Guidelines (Tech Edit)",
 tags:["pending","pending case tracker","quip","escalated hold","gibberish","full name match","2/3 name match","typinator","2025 CI onboarding"],
 body:`Pending Case Review | Tech Edit | December 2025
 
 WHAT IS A PENDING CASE REVIEW?
-Program Alpha and Program Beta (non-regulated) cases start in Pending status because no PII is attached yet. The Pending Case Tracker (Quip) lists cases from the past 7 days that have not yet moved to Open. Review these when your Open queue is finished, or when instructed.
+Media Platform and Developer Program (non-regulated) cases start in Pending status because no PII is attached yet. The Pending Case Tracker (Quip) lists cases from the past 7 days that have not yet moved to Open. Review these when your Open queue is finished, or when instructed.
 
 BEFORE YOU BEGIN
 ⚠️ Do NOT download the Quip tracker. Edit in-browser only — downloading blocks real-time updates.
@@ -1718,7 +1729,7 @@ Decision tree:
 DOB clears without customer PII: Use "Not a Sanction Match" — NOT "Cleared by DOB."
 
 NOTATING DBA CASES
-Review per Program Beta Review Guidelines. If prior PII doesn't match the screened name → "PII Name Does Not Match" scenario.
+Review per Developer Program Review Guidelines. If prior PII doesn't match the screened name → "PII Name Does Not Match" scenario.
 
 RESEARCH TOOLS
 Individuals (US): ID Verification Tool, Due Diligence Person Report
@@ -1769,7 +1780,7 @@ Direct Escalation snippet expands to:
 [Selected reason]
 ESCALATED HOLD`},
 
-{id:"edit-cr005", cat:"ref", docType:"edit", title:"CR005 — Compliance Terms and Notations (Tech Edit)",
+{id:"edit-cr005", cat:"ref", docType:"edit", title:"RC-05 — Compliance Terms and Notations (Tech Edit)",
 tags:["terms","notation","templates","case overview template","research template","summary template"],
 body:`Compliance Terms and Notations | Tech Edit | May 2026
 
@@ -1794,8 +1805,8 @@ Client & Event:
 Entity Type:
 Screened Entity Name:       [translate if non-English; format: Original / English Translation]
 Screened Entity Location:   [city, state, country; translate if non-English]
-IP Location:                [Program Beta cases only — from Ekata]
-Screenshot:                 [EKATA.PNG — Program Beta only]
+IP Location:                [Developer Program cases only — from Ekata]
+Screenshot:                 [EKATA.PNG — Developer Program only]
 PII attached:               [PII is attached and has been reviewed]
 
 2. SCREENED ENTITY RESEARCH
@@ -1834,7 +1845,7 @@ Use instead of a full summary when a direct escalation criterion is met.
 T2 Escalation Required: [reason]
 [Add specifics if reason is "Invalid or Expired PII"]
 
-FULL NOTATION EXProgram AlphaLES
+FULL NOTATION EXMedia PlatformLES
 
 Individual with multiple hits:
 Screening Date: 2026-01-13
@@ -1876,7 +1887,7 @@ SUMMARY: Partial name match. SE: American Broadcasting Company ; ABC. MD: Arab B
 Locations differ — SE: USA, MD: Bahrain.
 DECISION: Clear based on name and location variance.`},
 
-{id:"edit-cr003", cat:"ref", docType:"edit", title:"CR003 — Compliance Review Model (Tech Edit)",
+{id:"edit-cr003", cat:"ref", docType:"edit", title:"RC-03 — Compliance Review Model (Tech Edit)",
 tags:["review model","4 steps","case overview","research","summary","action","clear","escalate","suspend","reject"],
 body:`Compliance Review Model | Tech Edit | April 2026
 
@@ -1889,7 +1900,7 @@ THE FOUR STEPS
 STEP 1 — CASE OVERVIEW
 Ask: What type of case is this? Why is it under review?
 Capture: Screening Date, Client & Event, Entity Type, Screened Entity Name/Location, PII status.
-Program Beta additionally: IP Location + Ekata screenshot.
+Developer Program additionally: IP Location + Ekata screenshot.
 Translate any non-English names or locations.
 
 STEP 2 — RESEARCH & DOCUMENT
@@ -1897,7 +1908,7 @@ STEP 2 — RESEARCH & DOCUMENT
 Without PII — take these shortcuts first (stop when you can decide):
 • Entity type mismatch → CLEAR. No further research needed.
 • DOB found in LexisNexis differs from Matched Data DOB → CLEAR. Document DOB + LexID only.
-• Program Gamma only: Year of Birth in CMS Screened Entity panel differs from Matched Data YOB → CLEAR. No external research needed.
+• Digital ID Program only: Year of Birth in CMS Screened Entity panel differs from Matched Data YOB → CLEAR. No external research needed.
 • If no shortcut applies → run the full Tools Path of Progression:
   LexisNexis → MZ Support → ASO ACM → Ekata → Secondary tools
 
@@ -1908,7 +1919,7 @@ With PII — validate, then document:
 
 Direct escalation triggers (no research needed — just overview + note + action):
 • PII name ≠ Screened Entity name
-• batch_type_b_registrant event
+• batch bank record event
 • Incomplete ID (no visible name or DOB)
 • Sanctioned country/region (Cuba, Iran, North Korea, Ukrainian sanctioned regions)
 • Invalid PII (non-ID doc, doctored, illegible)
@@ -1946,22 +1957,22 @@ Escalate reason codes:
 "Invalid Customer Submitted Info" — invalid PII.
 "Unable to Waive Compliance Concerns" — all other reasons.
 
-Suspend — Program Gamma only (PCD = 14 days):
+Suspend — Digital ID Program only (PCD = 14 days):
 • Reviewed without PII AND can't clear after due diligence.
 • Do NOT suspend if PII is already attached — escalate instead.
 
-Suspend — Program Alpha batch_type_a_registrant (PCD = 30 days):
+Suspend — Media Platform batch registrant (PCD = 30 days):
 • DUNS returns a different company name
 • SE name belongs to an individual, not a company
 • Full name match but country variance
 
-Reject — Tier 2 only, Program Gamma only:
+Reject — Tier 2 only, Digital ID Program only:
 "Invalid Customer Submitted Info" or "Sanctioned Country/Region."
 All other reject codes: Tier 3 only.
 
 ⚠️ If a case is actioned in error: notify your team manager immediately with TID, date, what happened, and intended action.`},
 
-{id:"edit-cp007", cat:"ref", docType:"edit", title:"CP007 — Match Determination & PII Criteria (Tech Edit)",
+{id:"edit-cp007", cat:"ref", docType:"edit", title:"SC-07 — Match Determination & PII Criteria (Tech Edit)",
 tags:["match determination","entity type","full match","partial match","close name match","china","acceptable pii","individuals","companies"],
 body:`Match Determination & Acceptable PII Criteria | Tech Edit | April 2026
 
@@ -1989,7 +2000,7 @@ Unknown: Insufficient location information.
 
 SPECIAL CASES
 
-2/3 Name Match (Program Gamma without PII only):
+2/3 Name Match (Digital ID Program without PII only):
 Definition: Full name matches 2 of 3 name components in the Matched Data name.
 Classified as: Partial match.
 Examples (2/3 match): "John Smith" vs "John Jacob Smith" / "Aleksandr Muskov" vs "Aleksandr Muskov Sergeevich"
@@ -2071,7 +2082,7 @@ ACCEPTABLE PII — COMPANIES
 
 DOR/Company number: Note in CMS if available. If unavailable, PII can still be used.`},
 
-{id:"edit-cr004", cat:"ref", docType:"edit", title:"CR004 — Compliance Tools (Tech Edit)",
+{id:"edit-cr004", cat:"ref", docType:"edit", title:"RC-04 — Compliance Tools (Tech Edit)",
 tags:["lexisnexis","mz support","aso acm","ekata","typinator","icloud support","dun bradstreet","path of progression"],
 body:`Compliance Tools | Tech Edit | March 2026
 
@@ -2088,7 +2099,7 @@ PATH OF PROGRESSION — ORDER
 Stop early if you find a decisive datapoint:
 • Entity type mismatch → CLEAR (no tools needed)
 • DOB found in LexisNexis differs from Matched Data → CLEAR, stop research
-• Program Gamma: YOB in CMS panel differs from Matched Data YOB → CLEAR, no tools needed
+• Digital ID Program: YOB in CMS panel differs from Matched Data YOB → CLEAR, no tools needed
 
 TOOL QUICK REFERENCE
 
@@ -2103,10 +2114,10 @@ Tip: If Matched Data has a US address but no DOB → search the Matched Data hit
 
 MZ Support
 URL: https://mzsupport.vilecorp.com/WebObjects/MZSupport.woa
-What it has: iTunes/Program Alpha purchases, devices, storefronts, payment methods, billing info
+What it has: iTunes/Media Platform purchases, devices, storefronts, payment methods, billing info
 Search by: DSID, email, or phone
 Steps: Search → click "Display Full Address" → check Family Sharing → click Billing Infos link if present → document new names, locations, emails, phones → screenshot
-Account age note (Program Gamma): Accounts >30 days old = reliable location data.
+Account age note (Digital ID Program): Accounts >30 days old = reliable location data.
 
 ASO ACM
 URL: https://acm-nonregulated.g.vilecorp.com/ui-service/home/lobs/AOS
@@ -2116,8 +2127,8 @@ How to access: CMS dashboard → CMS Classic status → ASO line of business →
 Ekata
 URL: https://app.ekata.com/search
 What it has: Public records, IP address, digital identity
-How to access: Click SILPH icon next to Screened Entity name in CMS → auto-fills from case data → document DOB, names, locations, phones → screenshot
-Program Beta: Always capture IP Location from Ekata and include in Case Overview.
+How to access: Click Quick-Launch Research Button next to Screened Entity name in CMS → auto-fills from case data → document DOB, names, locations, phones → screenshot
+Developer Program: Always capture IP Location from Ekata and include in Case Overview.
 
 Typinator
 URL: https://istweb.vilecorp.com/scv/en/typinator
@@ -2134,7 +2145,7 @@ Tabs: Identity (address/phone/Apple ID), Security (2FA devices + enrollment devi
 
 D&B Business Directory
 URL: https://www.dnb.com/business-directory.html
-Use for: T1 company research (batch_type_a_registrant, Pending Cases)
+Use for: T1 company research (batch registrant, Pending Cases)
 Search by: DUNS number or company name
 Note: If DUNS returns a different company name → Suspend (PCD 30 days), attach findings.
 
@@ -2143,12 +2154,12 @@ Safari → File → Export as PDF → Attach File in CMS → Upload → Apply.
 LexisNexis: Use the built-in PDF download button. If multiple records shown → check only relevant records before downloading.
 End of day: Delete all downloaded files. Empty Trash.`},
 
-{id:"edit-cr002", cat:"ref", docType:"edit", title:"CR002 — CMS User Guide (Tech Edit)",
+{id:"edit-cr002", cat:"ref", docType:"edit", title:"RC-02 — CMS User Guide (Tech Edit)",
 tags:["hcm","hermes","dashboard","case header","sla","binocs","attach file","logging notes","availability status"],
 body:`CMS User Guide | Tech Edit | April 2025
 
 ACCESSING CMS
-Non-Regulated (Program Alpha, Program Beta, Program Gamma): https://acm-nonregulated.g.vilecorp.com
+Non-Regulated (Media Platform, Developer Program, Digital ID Program): https://acm-nonregulated.g.vilecorp.com
 Regulated (API): https://acm-regulated.g.vilecorp.com
 Login: AppleConnect credentials + Two-Step verification. Select Sanctions from Lines of Business.
 Display tip: Zoom out in Safari (Command –) until all key widgets are visible on one screen.
@@ -2160,7 +2171,7 @@ CMS Classic / No timer. Cases assigned only when you click "Next Case."
 Not Ready / Default at login. No cases assigned. Dashboard widgets inactive.
 
 SLA DEADLINES
-All clients (Program Alpha, Program Beta, Program Gamma, API): 48 hours.
+All clients (Media Platform, Developer Program, Digital ID Program, API): 48 hours.
 CMS auto-assigns the highest-priority case based on your tier, skilling, and SLA deadlines.
 
 CASE HEADER — FIELD REFERENCE
@@ -2212,7 +2223,7 @@ Advanced Search: Magnifying glass → Advanced Search → Add Rule → select fi
 Basic Search: From dashboard, choose Sanctions from LOB dropdown → type name/address/billing info.
 Multiple TIDs: Separate with commas in either search method.`},
 
-{id:"edit-cr0007", cat:"ref", docType:"edit", title:"CR0007 — Decisioning Matrix (Tech Edit)",
+{id:"edit-cr0007", cat:"ref", docType:"edit", title:"RC-007 — Decisioning Matrix (Tech Edit)",
 tags:["decisioning matrix","with pii","idms no pii","companies","batch free developer","clear","escalate","suspend","pcd"],
 body:`Decisioning Matrix | Tech Edit | April 2026
 
@@ -2258,7 +2269,7 @@ Any | Full address match | 🔺 ESCALATE | Potential Sanction Match
 
 China exception: Same brand name in different Chinese cities → ESCALATE (likely same company).
 
-MATRIX 4 — BATCH FREE DEVELOPER (Program Alpha)
+MATRIX 4 — BATCH FREE DEVELOPER (Media Platform)
 
 Screened Entity | Docs Uploaded? | Name | Country | Action
 Individual (name = person) | N/A | Any | Any | ⏸ SUSPEND (30 days)

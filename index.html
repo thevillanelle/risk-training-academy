@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RTH — Risk Training Academy</title>
+<title>RTH — Risk Training Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:#07091a; --bg-mid:#0d1130; --bg-card:#121836; --bg-hover:#182040;
-  --gold:#c9a227; --gold-light:#e8c96a; --gold-pale:#f5e8b0;
+  --accent:#00b4d8; --accent-light:#e8c96a; --gold-pale:#f5e8b0;
   --text:#f0ead6; --text-sub:#9d95b8; --text-muted:#5c5680;
   --border:rgba(201,162,39,.18); --border-hi:rgba(201,162,39,.55);
   --green:#2ecc71; --red:#e74c3c; --amber:#f39c12; --blue:#3b9eff;
-  --glow:0 0 24px rgba(201,162,39,.14); --glow-hi:0 0 40px rgba(201,162,39,.28);
+  --accent-glow:0 0 24px rgba(201,162,39,.14); --glow-hi:0 0 40px rgba(201,162,39,.28);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden}
@@ -20,11 +20,11 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;displ
 
 /* ── NAV ── */
 nav{flex-shrink:0;height:60px;background:rgba(7,9,26,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.5rem;gap:2rem;z-index:100}
-.logo{font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:.5rem;cursor:pointer;flex-shrink:0}
+.logo{font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:.5rem;cursor:pointer;flex-shrink:0}
 .nav-links{display:flex;gap:.4rem;flex:1;justify-content:center}
 .nav-btn{background:none;border:1px solid transparent;color:var(--text-sub);font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.45rem 1rem;border-radius:5px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center}
-.nav-btn:hover{color:var(--gold-light);border-color:var(--border);background:rgba(201,162,39,.05)}
-.nav-btn.active{color:var(--gold);border-color:var(--gold);background:rgba(201,162,39,.1)}
+.nav-btn:hover{color:var(--accent-light);border-color:var(--border);background:rgba(201,162,39,.05)}
+.nav-btn.active{color:var(--accent);border-color:var(--accent);background:rgba(201,162,39,.1)}
 
 /* ── PAGES ── */
 .pages{flex:1;overflow:hidden;position:relative}
@@ -36,10 +36,10 @@ nav{flex-shrink:0;height:60px;background:rgba(7,9,26,.96);backdrop-filter:blur(2
 ══════════════════════════════════ */
 #page-kb{flex-direction:row}
 .kb-sidebar{width:220px;flex-shrink:0;background:var(--bg-mid);border-right:1px solid var(--border);overflow-y:auto;padding:1.25rem .875rem;display:flex;flex-direction:column;gap:.15rem}
-.sb-label{font-family:'Cinzel',serif;font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);opacity:.6;padding:.2rem .5rem .5rem;margin-top:.5rem}
+.sb-label{font-family:'Cinzel',serif;font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);opacity:.6;padding:.2rem .5rem .5rem;margin-top:.5rem}
 .sb-item{display:flex;align-items:center;gap:.55rem;padding:.55rem .75rem;border-radius:6px;cursor:pointer;color:var(--text-sub);font-size:.8rem;transition:all .15s;border:1px solid transparent}
 .sb-item:hover{background:rgba(201,162,39,.07);color:var(--text);border-color:var(--border)}
-.sb-item.active{background:rgba(201,162,39,.13);color:var(--gold-light);border-color:var(--border)}
+.sb-item.active{background:rgba(201,162,39,.13);color:var(--accent-light);border-color:var(--border)}
 .sb-divider{height:1px;background:var(--border);margin:.5rem 0}
 
 /* KB main area */
@@ -48,28 +48,28 @@ nav{flex-shrink:0;height:60px;background:rgba(7,9,26,.96);backdrop-filter:blur(2
 /* Search bar */
 .kb-search-wrap{position:relative;margin-bottom:1rem;flex-shrink:0}
 .kb-search{width:100%;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem .9rem 2.8rem;color:var(--text);font-family:'Inter',sans-serif;font-size:1rem;outline:none;transition:border-color .2s,box-shadow .2s}
-.kb-search:focus{border-color:var(--gold);box-shadow:var(--glow)}
+.kb-search:focus{border-color:var(--accent);box-shadow:var(--glow)}
 .kb-search::placeholder{color:var(--text-muted)}
 .kb-si{position:absolute;left:.95rem;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none;font-size:1rem}
 .kb-status{font-size:.72rem;color:var(--text-muted);margin-bottom:.75rem;min-height:1rem;transition:opacity .2s;flex-shrink:0}
 
 /* ── SLIDESHOW ── */
 #kb-slideshow{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 0 3rem}
-.ss-label{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);opacity:.5;margin-bottom:2rem}
+.ss-label{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);opacity:.5;margin-bottom:2rem}
 .ss-stage{position:relative;width:100%;max-width:680px;height:140px;margin:0 auto}
 .ss-card{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease;pointer-events:none}
 .ss-card.active{opacity:1;transform:translateY(0);pointer-events:auto}
 .ss-card.out{opacity:0;transform:translateY(-12px)}
 .ss-term{font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:500;color:var(--text);text-align:center;cursor:pointer}
-.ss-term:hover{color:var(--gold-light)}
-.ss-term mark{background:transparent;color:var(--gold);font-style:normal}
+.ss-term:hover{color:var(--accent-light)}
+.ss-term mark{background:transparent;color:var(--accent);font-style:normal}
 .ss-source{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--text-muted)}
-.ss-source-badge{background:rgba(201,162,39,.1);color:var(--gold);border:1px solid var(--border);border-radius:20px;padding:.18rem .65rem;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.ss-source-badge{background:rgba(201,162,39,.1);color:var(--accent);border:1px solid var(--border);border-radius:20px;padding:.18rem .65rem;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
 .ss-dots{display:flex;gap:.4rem;margin-top:1.75rem}
 .ss-dot{width:5px;height:5px;border-radius:50%;background:var(--border-hi);transition:all .3s;cursor:pointer}
-.ss-dot.active{background:var(--gold);transform:scale(1.3)}
+.ss-dot.active{background:var(--accent);transform:scale(1.3)}
 .ss-hint{font-size:.75rem;color:var(--text-muted);margin-top:1.5rem;opacity:.6;text-align:center}
-.ss-hint kbd{background:rgba(201,162,39,.1);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold)}
+.ss-hint kbd{background:rgba(201,162,39,.1);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent)}
 
 /* ── LIVE SEARCH RESULTS ── */
 #kb-results{display:none;flex:1;overflow-y:auto}
@@ -79,19 +79,19 @@ nav{flex-shrink:0;height:60px;background:rgba(7,9,26,.96);backdrop-filter:blur(2
 @keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .kb-card:hover{border-color:var(--border-hi);background:var(--bg-hover);box-shadow:var(--glow);transform:translateY(-1px)}
 .kb-card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem}
-.kb-card-title{font-size:.92rem;font-weight:600;color:var(--gold-light);flex:1;padding-right:.5rem}
+.kb-card-title{font-size:.92rem;font-weight:600;color:var(--accent-light);flex:1;padding-right:.5rem}
 .kb-card-title mark{background:rgba(201,162,39,.2);color:var(--gold-pale);border-radius:3px;padding:0 .15rem}
 .badge{font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .55rem;border-radius:20px;flex-shrink:0;white-space:nowrap}
 .b-glossary{background:rgba(59,158,255,.12);color:#74b9ff;border:1px solid rgba(59,158,255,.3)}
 .b-original{background:rgba(243,156,18,.12);color:#f0a050;border:1px solid rgba(243,156,18,.3)}
 .b-edit{background:rgba(46,204,113,.12);color:#2ecc71;border:1px solid rgba(46,204,113,.3)}
-.b-ref{background:rgba(201,162,39,.1);color:var(--gold);border:1px solid var(--border)}
+.b-ref{background:rgba(201,162,39,.1);color:var(--accent);border:1px solid var(--border)}
 .b-amp{background:rgba(155,89,182,.12);color:#bf8ee8;border:1px solid rgba(155,89,182,.3)}
 .b-wwdr{background:rgba(59,158,255,.12);color:#74b9ff;border:1px solid rgba(59,158,255,.3)}
 .b-idms{background:rgba(230,126,34,.12);color:#f0a050;border:1px solid rgba(230,126,34,.3)}
 .b-pending{background:rgba(243,156,18,.1);color:var(--amber);border:1px solid rgba(243,156,18,.3)}
 .kb-card-body{color:var(--text-sub);font-size:.82rem;line-height:1.65}
-.kb-card-body mark{background:rgba(201,162,39,.15);color:var(--gold-light);border-radius:3px;padding:0 .15rem}
+.kb-card-body mark{background:rgba(201,162,39,.15);color:var(--accent-light);border-radius:3px;padding:0 .15rem}
 .kb-card-full{display:none;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--border);color:var(--text-sub);font-size:.81rem;line-height:1.9;white-space:pre-wrap;font-family:'Inter',sans-serif}
 .kb-card.open .kb-card-full{display:block}
 .kb-card.open .kb-card-body{display:none}
@@ -102,9 +102,9 @@ nav{flex-shrink:0;height:60px;background:rgba(7,9,26,.96);backdrop-filter:blur(2
 .kb-empty .big{font-size:2.5rem;margin-bottom:.75rem}
 
 /* Searching pulse */
-.searching-indicator{display:none;align-items:center;gap:.5rem;font-size:.75rem;color:var(--gold);margin-bottom:.5rem}
+.searching-indicator{display:none;align-items:center;gap:.5rem;font-size:.75rem;color:var(--accent);margin-bottom:.5rem}
 .searching-indicator.show{display:flex}
-.pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 1s ease infinite}
+.pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1s ease infinite}
 .pulse-dot:nth-child(2){animation-delay:.15s}
 .pulse-dot:nth-child(3){animation-delay:.3s}
 @keyframes pulse{0%,80%,100%{opacity:.2;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
@@ -114,25 +114,25 @@ nav{flex-shrink:0;height:60px;background:rgba(7,9,26,.96);backdrop-filter:blur(2
 ══════════════════════════════════ */
 #page-matrix{flex-direction:column;overflow-y:auto}
 .page-hero{flex-shrink:0;text-align:center;padding:2.5rem 1.5rem 1.5rem;background:linear-gradient(180deg,rgba(201,162,39,.08) 0%,transparent 100%);border-bottom:1px solid var(--border)}
-.page-hero h1{font-family:'Cinzel',serif;font-size:2rem;color:var(--gold);letter-spacing:.06em;margin-bottom:.35rem}
+.page-hero h1{font-family:'Cinzel',serif;font-size:2rem;color:var(--accent);letter-spacing:.06em;margin-bottom:.35rem}
 .page-hero p{color:var(--text-sub);font-size:.9rem}
 .matrix-body{max-width:760px;margin:0 auto;padding:2rem 1.5rem;width:100%}
 .matrix-types{display:grid;grid-template-columns:repeat(4,1fr);gap:.875rem;margin-bottom:2rem}
 .mtype{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.1rem .875rem;text-align:center;cursor:pointer;color:var(--text-sub);transition:all .2s;font-family:'Inter',sans-serif}
 .mtype:hover{border-color:var(--border-hi);color:var(--text);background:var(--bg-hover)}
-.mtype.active{border-color:var(--gold);background:rgba(201,162,39,.1);color:var(--gold-light)}
+.mtype.active{border-color:var(--accent);background:rgba(201,162,39,.1);color:var(--accent-light)}
 .mtype-icon{font-size:1.6rem;display:block;margin-bottom:.45rem}
 .mtype-label{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
 .m-progress{display:flex;gap:.35rem;margin-bottom:1.75rem;height:4px}
 .m-dot{flex:1;background:var(--bg-mid);border-radius:2px;transition:background .3s}
-.m-dot.done{background:var(--gold)}
+.m-dot.done{background:var(--accent)}
 .m-dot.cur{background:rgba(201,162,39,.4)}
 .q-card{background:var(--bg-card);border:1px solid var(--border);border-radius:13px;padding:1.75rem}
-.q-step{font-size:.7rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.7;margin-bottom:.4rem}
+.q-step{font-size:.7rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.7;margin-bottom:.4rem}
 .q-text{font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:1.4rem;line-height:1.45}
 .q-opts{display:flex;flex-direction:column;gap:.65rem}
 .q-opt{background:var(--bg-mid);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.1rem;cursor:pointer;color:var(--text-sub);font-size:.9rem;text-align:left;font-family:'Inter',sans-serif;transition:all .15s;display:flex;align-items:center;gap:.7rem}
-.q-opt:hover{border-color:var(--gold);color:var(--text);background:rgba(201,162,39,.06)}
+.q-opt:hover{border-color:var(--accent);color:var(--text);background:rgba(201,162,39,.06)}
 .q-opt .qo-dot{width:8px;height:8px;border-radius:50%;background:var(--border-hi);flex-shrink:0}
 .result-card{border-radius:13px;padding:2rem;text-align:center;display:none}
 .result-card.show{display:block;animation:slideIn .3s ease}
@@ -148,8 +148,8 @@ nav{flex-shrink:0;height:60px;background:rgba(7,9,26,.96);backdrop-filter:blur(2
 .r-path{background:var(--bg-mid);border-radius:8px;padding:.875rem 1rem;margin-bottom:1.25rem;text-align:left}
 .r-path-title{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.5rem;font-weight:600}
 .path-step{font-size:.8rem;color:var(--text-sub);padding:.18rem 0;display:flex;align-items:flex-start;gap:.45rem}
-.path-arrow{color:var(--gold);opacity:.55;flex-shrink:0}
-.btn-restart{background:rgba(201,162,39,.12);border:1px solid var(--gold);color:var(--gold);font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.1em;padding:.65rem 1.75rem;border-radius:6px;cursor:pointer;transition:all .2s}
+.path-arrow{color:var(--accent);opacity:.55;flex-shrink:0}
+.btn-restart{background:rgba(201,162,39,.12);border:1px solid var(--accent);color:var(--accent);font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.1em;padding:.65rem 1.75rem;border-radius:6px;cursor:pointer;transition:all .2s}
 .btn-restart:hover{background:rgba(201,162,39,.22);box-shadow:var(--glow)}
 
 /* ══════════════════════════════════
@@ -160,26 +160,26 @@ nav{flex-shrink:0;height:60px;background:rgba(7,9,26,.96);backdrop-filter:blur(2
 .start-screen{text-align:center;padding:1rem 0 2rem}
 .start-icon{font-size:4.5rem;display:block;margin-bottom:1.25rem;animation:float 3s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.start-title{font-family:'Cinzel',serif;font-size:1.9rem;color:var(--gold);margin-bottom:.4rem}
+.start-title{font-family:'Cinzel',serif;font-size:1.9rem;color:var(--accent);margin-bottom:.4rem}
 .start-sub{color:var(--text-sub);font-size:.9rem;line-height:1.75;max-width:480px;margin:0 auto 1.75rem}
 .diff-row{display:flex;gap:.875rem;justify-content:center;margin-bottom:2rem;flex-wrap:wrap}
 .diff-btn{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:.875rem 1.25rem;cursor:pointer;font-family:'Inter',sans-serif;color:var(--text-sub);transition:all .2s;min-width:130px;text-align:center}
 .diff-btn:hover{border-color:var(--border-hi);color:var(--text)}
-.diff-btn.sel{border-color:var(--gold);color:var(--gold-light);background:rgba(201,162,39,.1)}
+.diff-btn.sel{border-color:var(--accent);color:var(--accent-light);background:rgba(201,162,39,.1)}
 .diff-icon{font-size:1.4rem;display:block;margin-bottom:.35rem}
 .diff-name{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .diff-desc{font-size:.68rem;color:var(--text-muted);margin-top:.2rem}
-.btn-primary{background:linear-gradient(135deg,#c9a227,#9d7a10);border:none;color:#07091a;font-family:'Cinzel',serif;font-size:.95rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.9rem 2.75rem;border-radius:8px;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(201,162,39,.28)}
+.btn-primary{background:linear-gradient(135deg,#00b4d8,#9d7a10);border:none;color:#07091a;font-family:'Cinzel',serif;font-size:.95rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.9rem 2.75rem;border-radius:8px;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(201,162,39,.28)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 32px rgba(201,162,39,.45)}
 .game-hud{display:flex;align-items:center;gap:1.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:11px;padding:.65rem 1.25rem;margin-bottom:1.25rem;flex-wrap:wrap}
 .hud-item{display:flex;flex-direction:column;gap:.1rem}
 .hud-lbl{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
-.hud-val{font-size:.9rem;font-weight:700;color:var(--gold-light)}
+.hud-val{font-size:.9rem;font-weight:700;color:var(--accent-light)}
 .hud-div{width:1px;height:26px;background:var(--border)}
-.hud-rank{font-family:'Cinzel',serif;color:var(--gold)}
+.hud-rank{font-family:'Cinzel',serif;color:var(--accent)}
 .case-card{background:var(--bg-card);border:1px solid var(--border);border-radius:13px;overflow:hidden;margin-bottom:1.1rem}
 .case-head{background:linear-gradient(135deg,rgba(201,162,39,.12),rgba(29,37,100,.35));border-bottom:1px solid var(--border);padding:1.1rem 1.3rem;display:flex;justify-content:space-between;align-items:flex-start}
-.case-num{font-family:'Cinzel',serif;font-size:.72rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;font-weight:600}
+.case-num{font-family:'Cinzel',serif;font-size:.72rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;font-weight:600}
 .case-name{font-size:.92rem;font-weight:600;color:var(--text);margin-top:.25rem}
 .case-diff{font-size:.62rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:.18rem .55rem;border-radius:20px}
 .cd-easy{background:rgba(46,204,113,.13);color:var(--green);border:1px solid rgba(46,204,113,.3)}
@@ -208,16 +208,16 @@ nav{flex-shrink:0;height:60px;background:rgba(7,9,26,.96);backdrop-filter:blur(2
 .fb-title.correct{color:var(--green)}
 .fb-title.wrong{color:var(--red)}
 .fb-text{font-size:.82rem;color:var(--text-sub);line-height:1.65}
-.btn-next{background:rgba(201,162,39,.12);border:1px solid var(--gold);color:var(--gold);font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.1em;padding:.55rem 1.5rem;border-radius:6px;cursor:pointer;margin-top:.875rem;display:none;transition:all .2s}
+.btn-next{background:rgba(201,162,39,.12);border:1px solid var(--accent);color:var(--accent);font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.1em;padding:.55rem 1.5rem;border-radius:6px;cursor:pointer;margin-top:.875rem;display:none;transition:all .2s}
 .btn-next.show{display:inline-block}
 .btn-next:hover{background:rgba(201,162,39,.22)}
 .gameover{text-align:center;padding:2rem 0 3rem;display:none}
 .gameover.show{display:block}
 .go-icon{font-size:4rem;margin-bottom:.875rem;display:block}
-.go-title{font-family:'Cinzel',serif;font-size:1.9rem;color:var(--gold);margin-bottom:.25rem}
+.go-title{font-family:'Cinzel',serif;font-size:1.9rem;color:var(--accent);margin-bottom:.25rem}
 .go-scorelbl{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);margin-top:1rem}
-.go-score{font-size:3.2rem;font-weight:700;color:var(--gold-light);line-height:1.1}
-.go-rank{display:inline-block;font-family:'Cinzel',serif;font-size:.9rem;font-weight:600;padding:.45rem 1.4rem;border-radius:20px;border:1px solid var(--gold);background:rgba(201,162,39,.1);color:var(--gold);margin:.65rem 0 1.4rem;letter-spacing:.1em}
+.go-score{font-size:3.2rem;font-weight:700;color:var(--accent-light);line-height:1.1}
+.go-rank{display:inline-block;font-family:'Cinzel',serif;font-size:.9rem;font-weight:600;padding:.45rem 1.4rem;border-radius:20px;border:1px solid var(--accent);background:rgba(201,162,39,.1);color:var(--accent);margin:.65rem 0 1.4rem;letter-spacing:.1em}
 .go-stats{display:flex;justify-content:center;gap:2.25rem;margin-bottom:2rem}
 .go-stat{text-align:center}
 .go-stat-n{font-size:1.75rem;font-weight:700;color:var(--text)}
@@ -226,14 +226,14 @@ nav{flex-shrink:0;height:60px;background:rgba(7,9,26,.96);backdrop-filter:blur(2
 /* TOAST */
 .toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:9px;padding:.65rem 1.1rem;font-size:.82rem;color:var(--text);z-index:999;opacity:0;transform:translateY(8px);transition:all .3s;pointer-events:none}
 .toast.show{opacity:1;transform:translateY(0)}
-.toast.gold{border-color:var(--gold);color:var(--gold-light)}
+.toast.gold{border-color:var(--accent);color:var(--accent-light)}
 
-.kb-link{color:var(--gold-light);text-decoration:none;border-bottom:1px dotted rgba(232,201,106,.5);transition:border-color .15s}
-.kb-link:hover{border-bottom-color:var(--gold);color:var(--gold-pale)}
-.kb-source-btn{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.25);border-radius:4px;padding:.15rem .5rem;text-decoration:none;transition:all .15s;white-space:nowrap;cursor:pointer;font-family:'Inter',sans-serif}
-.kb-source-btn:hover{background:rgba(201,162,39,.18);border-color:var(--gold)}
-.kb-source-link-btn{display:inline-block;margin-top:.75rem;font-size:.8rem;color:var(--gold-light);background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;padding:0;text-decoration:underline dotted rgba(232,201,106,.4)}
-.kb-source-link-btn:hover{color:var(--gold)}
+.kb-link{color:var(--accent-light);text-decoration:none;border-bottom:1px dotted rgba(232,201,106,.5);transition:border-color .15s}
+.kb-link:hover{border-bottom-color:var(--accent);color:var(--gold-pale)}
+.kb-source-btn{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.25);border-radius:4px;padding:.15rem .5rem;text-decoration:none;transition:all .15s;white-space:nowrap;cursor:pointer;font-family:'Inter',sans-serif}
+.kb-source-btn:hover{background:rgba(201,162,39,.18);border-color:var(--accent)}
+.kb-source-link-btn{display:inline-block;margin-top:.75rem;font-size:.8rem;color:var(--accent-light);background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;padding:0;text-decoration:underline dotted rgba(232,201,106,.4)}
+.kb-source-link-btn:hover{color:var(--accent)}
 .kb-note{display:inline-block;background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);color:#f0a050;font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:.12rem .5rem;border-radius:4px;margin-bottom:.5rem}
 
 /* ── LOCATION SELECTOR ── */
@@ -246,19 +246,19 @@ nav{flex-shrink:0;height:60px;background:rgba(7,9,26,.96);backdrop-filter:blur(2
 ═══════════════════════════════════════ */
 html[data-location="austin"]{
   --bg:#180700;--bg-mid:#281205;--bg-card:#3A1C0A;--bg-hover:#4C2610;
-  --gold:#D4820A;--gold-light:#F0A830;--gold-pale:#F8CC78;
+  --accent:#D4820A;--accent-light:#F0A830;--gold-pale:#F8CC78;
   --text:#F5E4C0;--text-sub:#C8A060;--text-muted:#886030;
   --border:rgba(212,130,10,.28);--border-hi:rgba(212,130,10,.65);
   --green:#2D6A2D;--red:#C02020;--amber:#D4820A;
-  --glow:0 0 28px rgba(212,130,10,.22);--glow-hi:0 0 48px rgba(212,130,10,.42);
+  --accent-glow:0 0 28px rgba(212,130,10,.22);--glow-hi:0 0 48px rgba(212,130,10,.42);
 }
 html[data-location="austin"] body{background:radial-gradient(ellipse at 50% 0%,#2A1205 0%,#180700 65%)}
 html[data-location="austin"] nav{background:rgba(24,7,0,.97);border-bottom:1px solid rgba(212,130,10,.35);box-shadow:0 2px 20px rgba(212,130,10,.1)}
-html[data-location="austin"] .logo{font-family:'Playfair Display',serif;letter-spacing:.2em;color:var(--gold-light);text-shadow:0 0 20px rgba(212,130,10,.4)}
+html[data-location="austin"] .logo{font-family:'Playfair Display',serif;letter-spacing:.2em;color:var(--accent-light);text-shadow:0 0 20px rgba(212,130,10,.4)}
 html[data-location="austin"] .page-hero h1,.austin-h1{font-family:'Playfair Display',serif!important;letter-spacing:.1em}
 html[data-location="austin"] .kb-card{border-radius:3px;border-left:2px solid transparent}
-html[data-location="austin"] .kb-card:hover{border-left-color:var(--gold);box-shadow:0 4px 24px rgba(212,130,10,.2),inset 0 0 0 1px rgba(212,130,10,.15)}
-html[data-location="austin"] .teletype{border-left:3px solid var(--gold);background:rgba(212,130,10,.06)}
+html[data-location="austin"] .kb-card:hover{border-left-color:var(--accent);box-shadow:0 4px 24px rgba(212,130,10,.2),inset 0 0 0 1px rgba(212,130,10,.15)}
+html[data-location="austin"] .teletype{border-left:3px solid var(--accent);background:rgba(212,130,10,.06)}
 html[data-location="austin"] .kb-sidebar{background:rgba(40,18,5,.9)}
 html[data-location="austin"] .page-hero{background:linear-gradient(180deg,rgba(212,130,10,.12) 0%,transparent 100%)}
 html[data-location="austin"] .btn-primary{background:linear-gradient(135deg,#D4820A,#A05808)}
@@ -274,15 +274,15 @@ html[data-location="austin"] ::-webkit-scrollbar-thumb{background:rgba(212,130,1
 ═══════════════════════════════════════ */
 html[data-location="elkgrove"]{
   --bg:#021018;--bg-mid:#04192C;--bg-card:#072040;--bg-hover:#0A2850;
-  --gold:#FF9F1C;--gold-light:#FFBF69;--gold-pale:#FFD9A8;
+  --accent:#FF9F1C;--accent-light:#FFBF69;--gold-pale:#FFD9A8;
   --text:#E0F4FF;--text-sub:#7AAAC8;--text-muted:#3A6888;
   --border:rgba(255,159,28,.22);--border-hi:rgba(255,159,28,.58);
   --green:#00C49A;--red:#FF5252;--amber:#FF9F1C;--blue:#00D0FF;
-  --glow:0 0 26px rgba(255,159,28,.2);--glow-hi:0 0 48px rgba(255,159,28,.38);
+  --accent-glow:0 0 26px rgba(255,159,28,.2);--glow-hi:0 0 48px rgba(255,159,28,.38);
 }
 html[data-location="elkgrove"] body{background:linear-gradient(160deg,#061C30 0%,#021018 55%,#040A1C 100%)}
 html[data-location="elkgrove"] nav{background:rgba(2,16,24,.97);border-bottom-color:rgba(255,159,28,.25);box-shadow:0 2px 20px rgba(0,208,255,.08)}
-html[data-location="elkgrove"] .logo{color:var(--gold-light)}
+html[data-location="elkgrove"] .logo{color:var(--accent-light)}
 html[data-location="elkgrove"] .kb-card{border-radius:14px}
 html[data-location="elkgrove"] .kb-card:hover{box-shadow:0 8px 32px rgba(0,196,154,.15),0 0 0 1px rgba(255,159,28,.3);transform:translateY(-2px)}
 html[data-location="elkgrove"] .page-hero{background:linear-gradient(180deg,rgba(255,159,28,.12) 0%,rgba(0,196,154,.06) 50%,transparent 100%)}
@@ -291,7 +291,7 @@ html[data-location="elkgrove"] .teletype{border-color:rgba(0,196,154,.35);backgr
 html[data-location="elkgrove"] .teletype .label{color:#FF9F1C}
 html[data-location="elkgrove"] .btn-primary{background:linear-gradient(135deg,#FF9F1C,#CC7A10)}
 html[data-location="elkgrove"] .kb-sidebar{background:rgba(4,25,44,.9)}
-html[data-location="elkgrove"] .nav-btn.active{border-color:var(--gold);color:var(--gold-light);box-shadow:0 0 12px rgba(255,159,28,.2)}
+html[data-location="elkgrove"] .nav-btn.active{border-color:var(--accent);color:var(--accent-light);box-shadow:0 0 12px rgba(255,159,28,.2)}
 html[data-location="elkgrove"] ::-webkit-scrollbar-thumb{background:rgba(255,159,28,.28)}
 /* Subtle sun ripple */
 html[data-location="elkgrove"] .pages::after{content:'';position:fixed;bottom:-20%;right:-10%;width:50vw;height:50vw;background:radial-gradient(circle,rgba(255,159,28,.06) 0%,transparent 65%);pointer-events:none;z-index:0;border-radius:50%}
@@ -302,15 +302,15 @@ html[data-location="elkgrove"] .pages::after{content:'';position:fixed;bottom:-2
 ═══════════════════════════════════════ */
 html[data-location="raleigh"]{
   --bg:#081408;--bg-mid:#0F1E0E;--bg-card:#162816;--bg-hover:#1D331C;
-  --gold:#E8B86D;--gold-light:#F2CC90;--gold-pale:#FAE4C4;
+  --accent:#E8B86D;--accent-light:#F2CC90;--gold-pale:#FAE4C4;
   --text:#F0EDE6;--text-sub:#B8A888;--text-muted:#786848;
   --border:rgba(232,184,109,.22);--border-hi:rgba(232,184,109,.58);
   --green:#4A9E5C;--red:#CC3333;--amber:#D48A10;
-  --glow:0 0 24px rgba(232,184,109,.16);--glow-hi:0 0 42px rgba(232,184,109,.32);
+  --accent-glow:0 0 24px rgba(232,184,109,.16);--glow-hi:0 0 42px rgba(232,184,109,.32);
 }
 html[data-location="raleigh"] body{background:radial-gradient(ellipse at 25% 15%,#162A14 0%,#081408 70%)}
 html[data-location="raleigh"] nav{background:rgba(8,20,8,.97);border-bottom:1px solid rgba(232,184,109,.28);box-shadow:0 2px 16px rgba(74,158,92,.08)}
-html[data-location="raleigh"] .logo{font-family:'Playfair Display',serif;letter-spacing:.14em;color:var(--gold-light)}
+html[data-location="raleigh"] .logo{font-family:'Playfair Display',serif;letter-spacing:.14em;color:var(--accent-light)}
 html[data-location="raleigh"] .page-hero h1{font-family:'Playfair Display',serif!important;letter-spacing:.08em}
 html[data-location="raleigh"] .kb-card{border-left:3px solid transparent;border-radius:2px}
 html[data-location="raleigh"] .kb-card:hover{border-left-color:var(--green);box-shadow:0 4px 24px rgba(74,158,92,.18)}
@@ -319,7 +319,7 @@ html[data-location="raleigh"] .kb-sidebar{background:rgba(15,30,14,.92)}
 html[data-location="raleigh"] .page-hero{background:linear-gradient(180deg,rgba(74,158,92,.1) 0%,transparent 100%)}
 html[data-location="raleigh"] .btn-primary{background:linear-gradient(135deg,#4A9E5C,#2D6A3A)}
 html[data-location="raleigh"] .start-title{font-family:'Playfair Display',serif}
-html[data-location="raleigh"] .nav-btn.active{border-color:var(--gold);color:var(--gold-light)}
+html[data-location="raleigh"] .nav-btn.active{border-color:var(--accent);color:var(--accent-light)}
 html[data-location="raleigh"] ::-webkit-scrollbar-thumb{background:rgba(74,158,92,.3)}
 /* Canopy texture */
 html[data-location="raleigh"] .pages::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 90%,rgba(74,158,92,.06) 0%,transparent 55%);pointer-events:none;z-index:0}
@@ -330,19 +330,19 @@ html[data-location="raleigh"] .pages::before{content:'';position:fixed;top:0;lef
 ═══════════════════════════════════════ */
 html[data-location="singapore"]{
   --bg:#010510;--bg-mid:#040D26;--bg-card:#07103A;--bg-hover:#0B164A;
-  --gold:#FF006E;--gold-light:#FF4DA6;--gold-pale:#FF9BD4;
+  --accent:#FF006E;--accent-light:#FF4DA6;--gold-pale:#FF9BD4;
   --text:#D8EEFF;--text-sub:#6090C8;--text-muted:#284870;
   --border:rgba(255,0,110,.2);--border-hi:rgba(255,0,110,.6);
   --green:#00F5D4;--red:#FF3860;--amber:#FFE600;--blue:#00D4FF;
-  --glow:0 0 32px rgba(255,0,110,.3);--glow-hi:0 0 56px rgba(255,0,110,.55);
+  --accent-glow:0 0 32px rgba(255,0,110,.3);--glow-hi:0 0 56px rgba(255,0,110,.55);
 }
 html[data-location="singapore"] body{background:linear-gradient(160deg,#04102C 0%,#010510 55%,#030820 100%)}
 html[data-location="singapore"] nav{background:rgba(1,5,16,.97);border-bottom:1px solid rgba(255,0,110,.4);box-shadow:0 2px 32px rgba(255,0,110,.18)}
-html[data-location="singapore"] .logo{color:var(--gold-light);text-shadow:0 0 20px rgba(255,0,110,.6),0 0 40px rgba(255,0,110,.3);letter-spacing:.2em}
-html[data-location="singapore"] .nav-btn.active{color:var(--gold-light);border-color:var(--gold);box-shadow:0 0 14px rgba(255,0,110,.35);text-shadow:0 0 8px rgba(255,0,110,.5)}
+html[data-location="singapore"] .logo{color:var(--accent-light);text-shadow:0 0 20px rgba(255,0,110,.6),0 0 40px rgba(255,0,110,.3);letter-spacing:.2em}
+html[data-location="singapore"] .nav-btn.active{color:var(--accent-light);border-color:var(--accent);box-shadow:0 0 14px rgba(255,0,110,.35);text-shadow:0 0 8px rgba(255,0,110,.5)}
 html[data-location="singapore"] .kb-card{background:rgba(7,16,58,.75);backdrop-filter:blur(8px);border-color:rgba(255,0,110,.15);border-radius:2px}
 html[data-location="singapore"] .kb-card:hover{box-shadow:0 0 30px rgba(255,0,110,.28),0 0 60px rgba(0,245,212,.1);border-color:rgba(255,0,110,.55)}
-html[data-location="singapore"] .kb-card-title{color:var(--gold-light)}
+html[data-location="singapore"] .kb-card-title{color:var(--accent-light)}
 html[data-location="singapore"] .page-hero h1{background:linear-gradient(135deg,#FF006E,#00F5D4,#FF4DA6)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important;filter:drop-shadow(0 0 12px rgba(255,0,110,.4))}
 html[data-location="singapore"] .teletype{border-color:rgba(0,245,212,.35);background:rgba(0,245,212,.05);color:#00F5D4;box-shadow:0 0 20px rgba(0,245,212,.08)}
 html[data-location="singapore"] .teletype .label{color:#FF006E;text-shadow:0 0 8px rgba(255,0,110,.5)}
@@ -351,7 +351,7 @@ html[data-location="singapore"] .btn-primary:hover{box-shadow:0 6px 32px rgba(25
 html[data-location="singapore"] .q-card,.singapore html[data-location="singapore"] .case-card,.game-hud{backdrop-filter:blur(8px)}
 html[data-location="singapore"] .mode-card{background:rgba(7,16,58,.75);backdrop-filter:blur(6px)}
 html[data-location="singapore"] .kb-sidebar{background:rgba(4,13,38,.92);border-right-color:rgba(255,0,110,.2)}
-html[data-location="singapore"] .sb-item.active{background:rgba(255,0,110,.12);border-color:rgba(255,0,110,.4);color:var(--gold-light)}
+html[data-location="singapore"] .sb-item.active{background:rgba(255,0,110,.12);border-color:rgba(255,0,110,.4);color:var(--accent-light)}
 html[data-location="singapore"] .kb-search:focus{box-shadow:0 0 0 2px rgba(255,0,110,.3),0 0 20px rgba(255,0,110,.15)}
 html[data-location="singapore"] .badge.b-glossary,.badge.b-amp,.badge.b-wwdr,.badge.b-idms,.badge.b-pending{border-color:rgba(255,0,110,.3)}
 html[data-location="singapore"] ::-webkit-scrollbar-thumb{background:rgba(255,0,110,.28)}
@@ -370,22 +370,22 @@ body,nav,.kb-card,.kb-sidebar,.logo,.page-hero,.teletype,.btn-primary,.nav-btn{t
 ═══════════════════════════════════════ */
 html[data-location="sandiego"]{
   --bg:#011520;--bg-mid:#022035;--bg-card:#033050;--bg-hover:#044060;
-  --gold:#FF7B54;--gold-light:#FF9D7A;--gold-pale:#FFBFA0;
+  --accent:#FF7B54;--accent-light:#FF9D7A;--gold-pale:#FFBFA0;
   --text:#E0F8F8;--text-sub:#70B8C8;--text-muted:#305868;
   --border:rgba(255,123,84,.22);--border-hi:rgba(255,123,84,.55);
   --green:#00C8B4;--red:#FF5252;--amber:#FF9F1C;
-  --glow:0 0 26px rgba(255,123,84,.2);--glow-hi:0 0 48px rgba(255,123,84,.38);
+  --accent-glow:0 0 26px rgba(255,123,84,.2);--glow-hi:0 0 48px rgba(255,123,84,.38);
 }
 html[data-location="sandiego"] body{background:linear-gradient(180deg,#022A42 0%,#011520 60%,#010C14 100%)}
 html[data-location="sandiego"] nav{background:rgba(1,21,32,.97);border-bottom-color:rgba(255,123,84,.3);box-shadow:0 2px 20px rgba(0,200,180,.08)}
-html[data-location="sandiego"] .logo{color:var(--gold-light)}
+html[data-location="sandiego"] .logo{color:var(--accent-light)}
 html[data-location="sandiego"] .kb-card{border-radius:16px}
 html[data-location="sandiego"] .kb-card:hover{box-shadow:0 8px 32px rgba(0,200,180,.18),0 0 0 1px rgba(255,123,84,.3);transform:translateY(-2px)}
 html[data-location="sandiego"] .page-hero h1{background:linear-gradient(135deg,#FF7B54,#FF9D7A,#00C8B4)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important}
 html[data-location="sandiego"] .teletype{border-color:rgba(0,200,180,.35);background:rgba(0,200,180,.06);color:var(--green)}
 html[data-location="sandiego"] .btn-primary{background:linear-gradient(135deg,#FF7B54,#CC5830)}
 html[data-location="sandiego"] .kb-sidebar{background:rgba(2,32,53,.9)}
-html[data-location="sandiego"] .nav-btn.active{border-color:var(--gold);box-shadow:0 0 10px rgba(255,123,84,.2)}
+html[data-location="sandiego"] .nav-btn.active{border-color:var(--accent);box-shadow:0 0 10px rgba(255,123,84,.2)}
 html[data-location="sandiego"] ::-webkit-scrollbar-thumb{background:rgba(255,123,84,.28)}
 /* Ocean horizon */
 html[data-location="sandiego"] .pages::after{content:'';position:fixed;bottom:0;left:0;right:0;height:35vh;background:linear-gradient(transparent,rgba(0,200,180,.05));pointer-events:none;z-index:0}
@@ -396,23 +396,23 @@ html[data-location="sandiego"] .pages::after{content:'';position:fixed;bottom:0;
 ═══════════════════════════════════════ */
 html[data-location="arizona"]{
   --bg:#120806;--bg-mid:#1E0C08;--bg-card:#2C1008;--bg-hover:#3A1610;
-  --gold:#D4652A;--gold-light:#E88050;--gold-pale:#F8A878;
+  --accent:#D4652A;--accent-light:#E88050;--gold-pale:#F8A878;
   --text:#F5EDE0;--text-sub:#C8A080;--text-muted:#886040;
   --border:rgba(212,101,42,.28);--border-hi:rgba(212,101,42,.62);
   --green:#8B9E4A;--red:#C03020;--amber:#D4652A;
-  --glow:0 0 28px rgba(212,101,42,.22);--glow-hi:0 0 48px rgba(212,101,42,.42);
+  --accent-glow:0 0 28px rgba(212,101,42,.22);--glow-hi:0 0 48px rgba(212,101,42,.42);
 }
 html[data-location="arizona"] body{background:radial-gradient(ellipse at 50% 0%,#2E1006 0%,#120806 65%)}
 html[data-location="arizona"] nav{background:rgba(18,8,6,.97);border-bottom:1px solid rgba(212,101,42,.38);box-shadow:0 2px 20px rgba(212,101,42,.12)}
-html[data-location="arizona"] .logo{font-family:'Playfair Display',serif;letter-spacing:.18em;color:var(--gold-light);text-shadow:0 0 18px rgba(212,101,42,.4)}
+html[data-location="arizona"] .logo{font-family:'Playfair Display',serif;letter-spacing:.18em;color:var(--accent-light);text-shadow:0 0 18px rgba(212,101,42,.4)}
 html[data-location="arizona"] .page-hero h1{font-family:'Playfair Display',serif!important;letter-spacing:.1em}
 html[data-location="arizona"] .kb-card{border-radius:3px;border-top:1px solid transparent}
-html[data-location="arizona"] .kb-card:hover{border-top-color:var(--gold);box-shadow:0 4px 24px rgba(212,101,42,.22)}
-html[data-location="arizona"] .teletype{border-left:3px solid var(--gold);background:rgba(212,101,42,.06)}
+html[data-location="arizona"] .kb-card:hover{border-top-color:var(--accent);box-shadow:0 4px 24px rgba(212,101,42,.22)}
+html[data-location="arizona"] .teletype{border-left:3px solid var(--accent);background:rgba(212,101,42,.06)}
 html[data-location="arizona"] .kb-sidebar{background:rgba(30,12,8,.9)}
 html[data-location="arizona"] .page-hero{background:linear-gradient(180deg,rgba(212,101,42,.14) 0%,rgba(139,158,74,.06) 80%,transparent 100%)}
 html[data-location="arizona"] .btn-primary{background:linear-gradient(135deg,#D4652A,#A04818)}
-html[data-location="arizona"] .nav-btn.active{border-color:var(--gold);color:var(--gold-light)}
+html[data-location="arizona"] .nav-btn.active{border-color:var(--accent);color:var(--accent-light)}
 html[data-location="arizona"] ::-webkit-scrollbar-thumb{background:rgba(212,101,42,.3)}
 /* Sunset sky */
 html[data-location="arizona"] body::after{content:'';position:fixed;top:0;left:0;right:0;height:50vh;background:linear-gradient(180deg,rgba(180,60,20,.08) 0%,rgba(100,30,10,.04) 40%,transparent 100%);pointer-events:none;z-index:0}
@@ -424,24 +424,24 @@ html[data-location="arizona"] .pages{position:relative;z-index:1}
 ═══════════════════════════════════════ */
 html[data-location="boston"]{
   --bg:#06080F;--bg-mid:#0A0C1A;--bg-card:#101225;--bg-hover:#161830;
-  --gold:#C84020;--gold-light:#E06040;--gold-pale:#F89080;
+  --accent:#C84020;--accent-light:#E06040;--gold-pale:#F89080;
   --text:#F0ECEC;--text-sub:#B8A8A0;--text-muted:#786860;
   --border:rgba(200,64,32,.25);--border-hi:rgba(200,64,32,.6);
   --green:#3A8860;--red:#C84020;--amber:#C8780A;
-  --glow:0 0 24px rgba(200,64,32,.2);--glow-hi:0 0 42px rgba(200,64,32,.38);
+  --accent-glow:0 0 24px rgba(200,64,32,.2);--glow-hi:0 0 42px rgba(200,64,32,.38);
 }
 html[data-location="boston"] body{background:radial-gradient(ellipse at 40% 0%,#120A12 0%,#06080F 70%)}
 html[data-location="boston"] nav{background:rgba(6,8,15,.97);border-bottom:1px solid rgba(200,64,32,.32);box-shadow:0 2px 16px rgba(200,64,32,.1)}
-html[data-location="boston"] .logo{font-family:'Playfair Display',serif;letter-spacing:.12em;color:var(--gold-light)}
+html[data-location="boston"] .logo{font-family:'Playfair Display',serif;letter-spacing:.12em;color:var(--accent-light)}
 html[data-location="boston"] .page-hero h1{font-family:'Playfair Display',serif!important}
 html[data-location="boston"] .kb-card{border-radius:4px;border-bottom:2px solid transparent}
-html[data-location="boston"] .kb-card:hover{border-bottom-color:var(--gold);box-shadow:0 6px 24px rgba(200,64,32,.18)}
-html[data-location="boston"] .teletype{border-left:3px solid var(--gold);background:rgba(200,64,32,.06)}
+html[data-location="boston"] .kb-card:hover{border-bottom-color:var(--accent);box-shadow:0 6px 24px rgba(200,64,32,.18)}
+html[data-location="boston"] .teletype{border-left:3px solid var(--accent);background:rgba(200,64,32,.06)}
 html[data-location="boston"] .kb-sidebar{background:rgba(10,12,26,.92)}
 html[data-location="boston"] .page-hero{background:linear-gradient(180deg,rgba(200,64,32,.1) 0%,transparent 100%)}
 html[data-location="boston"] .btn-primary{background:linear-gradient(135deg,#C84020,#902C14)}
 html[data-location="boston"] .start-title{font-family:'Playfair Display',serif}
-html[data-location="boston"] .nav-btn.active{border-color:var(--gold);color:var(--gold-light)}
+html[data-location="boston"] .nav-btn.active{border-color:var(--accent);color:var(--accent-light)}
 html[data-location="boston"] ::-webkit-scrollbar-thumb{background:rgba(200,64,32,.3)}
 /* Brick pattern suggestion */
 html[data-location="boston"] .pages::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(200,64,32,.025) 19px,rgba(200,64,32,.025) 20px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(200,64,32,.02) 39px,rgba(200,64,32,.02) 40px);pointer-events:none;z-index:0}
@@ -453,26 +453,26 @@ html[data-location="boston"] .pages{position:relative;z-index:1}
 ═══════════════════════════════════════ */
 html[data-location="newyork"]{
   --bg:#050505;--bg-mid:#090909;--bg-card:#111111;--bg-hover:#1A1A1A;
-  --gold:#FFD700;--gold-light:#FFE44D;--gold-pale:#FFF0A0;
+  --accent:#FFD700;--accent-light:#FFE44D;--gold-pale:#FFF0A0;
   --text:#F8F8F8;--text-sub:#A8A8A8;--text-muted:#585858;
   --border:rgba(255,215,0,.2);--border-hi:rgba(255,215,0,.55);
   --green:#00E87A;--red:#FF3333;--amber:#FFD700;
-  --glow:0 0 28px rgba(255,215,0,.22);--glow-hi:0 0 50px rgba(255,215,0,.42);
+  --accent-glow:0 0 28px rgba(255,215,0,.22);--glow-hi:0 0 50px rgba(255,215,0,.42);
 }
 html[data-location="newyork"] body{background:#050505}
 html[data-location="newyork"] nav{background:rgba(5,5,5,.98);border-bottom:1px solid rgba(255,215,0,.3);box-shadow:0 2px 24px rgba(255,215,0,.1)}
-html[data-location="newyork"] .logo{color:var(--gold-light);text-shadow:0 0 16px rgba(255,215,0,.4);letter-spacing:.2em;font-family:'Cinzel',serif}
-html[data-location="newyork"] .nav-btn.active{color:var(--gold);border-color:var(--gold);box-shadow:0 0 14px rgba(255,215,0,.3)}
+html[data-location="newyork"] .logo{color:var(--accent-light);text-shadow:0 0 16px rgba(255,215,0,.4);letter-spacing:.2em;font-family:'Cinzel',serif}
+html[data-location="newyork"] .nav-btn.active{color:var(--accent);border-color:var(--accent);box-shadow:0 0 14px rgba(255,215,0,.3)}
 html[data-location="newyork"] .kb-card{background:#111;border-color:rgba(255,215,0,.12);border-radius:0;border-left:2px solid transparent}
-html[data-location="newyork"] .kb-card:hover{border-left-color:var(--gold);box-shadow:0 0 24px rgba(255,215,0,.18);border-color:rgba(255,215,0,.35)}
-html[data-location="newyork"] .kb-card-title{color:var(--gold-light)}
+html[data-location="newyork"] .kb-card:hover{border-left-color:var(--accent);box-shadow:0 0 24px rgba(255,215,0,.18);border-color:rgba(255,215,0,.35)}
+html[data-location="newyork"] .kb-card-title{color:var(--accent-light)}
 html[data-location="newyork"] .page-hero h1{background:linear-gradient(135deg,#FFD700,#FFE44D,#FFF0A0)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important;filter:drop-shadow(0 0 10px rgba(255,215,0,.35))}
-html[data-location="newyork"] .teletype{border-color:rgba(255,215,0,.35);background:rgba(255,215,0,.05);color:var(--gold-light)}
+html[data-location="newyork"] .teletype{border-color:rgba(255,215,0,.35);background:rgba(255,215,0,.05);color:var(--accent-light)}
 html[data-location="newyork"] .teletype .label{color:#FFD700;text-shadow:0 0 8px rgba(255,215,0,.5)}
 html[data-location="newyork"] .btn-primary{background:linear-gradient(135deg,#FFD700,#CC9D00);color:#050505}
 html[data-location="newyork"] .btn-primary:hover{box-shadow:0 6px 30px rgba(255,215,0,.5)}
 html[data-location="newyork"] .kb-sidebar{background:rgba(9,9,9,.95);border-right-color:rgba(255,215,0,.15)}
-html[data-location="newyork"] .sb-item.active{background:rgba(255,215,0,.1);border-color:rgba(255,215,0,.35);color:var(--gold-light)}
+html[data-location="newyork"] .sb-item.active{background:rgba(255,215,0,.1);border-color:rgba(255,215,0,.35);color:var(--accent-light)}
 html[data-location="newyork"] .kb-search:focus{box-shadow:0 0 0 2px rgba(255,215,0,.3)}
 html[data-location="newyork"] ::-webkit-scrollbar-thumb{background:rgba(255,215,0,.25)}
 /* NYC skyline glow at bottom */
@@ -497,39 +497,39 @@ html[data-location="newyork"] .pages{position:relative;z-index:1}
 .guide-snav::-webkit-scrollbar{display:none}
 .guide-snav a{white-space:nowrap;font-size:.73rem;font-weight:500;letter-spacing:.05em;color:var(--text-muted);text-decoration:none;padding:.3rem .65rem;border-radius:4px;border-bottom:2px solid transparent;transition:all .15s;flex-shrink:0;cursor:pointer}
 .guide-snav a:hover{color:var(--text-sub);background:rgba(201,162,39,.05)}
-.guide-snav a.active{color:var(--gold);border-bottom-color:var(--gold)}
+.guide-snav a.active{color:var(--accent);border-bottom-color:var(--accent)}
 .guide-jump{flex-shrink:0;background:linear-gradient(135deg,rgba(201,162,39,.1),rgba(201,162,39,.05));border-bottom:1px solid var(--border);padding:.55rem 2rem;text-align:center;font-size:.79rem;color:var(--text-sub)}
-.guide-jump a{color:var(--gold-light);text-decoration:none;border-bottom:1px dotted rgba(232,201,106,.4);font-weight:600;cursor:pointer}
+.guide-jump a{color:var(--accent-light);text-decoration:none;border-bottom:1px dotted rgba(232,201,106,.4);font-weight:600;cursor:pointer}
 .guide-scroll{flex:1;overflow-y:auto}
 .guide-inner{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}
 .g-hero{text-align:center;padding:2rem 0 2.5rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
-.g-hero-badge{display:inline-block;background:rgba(201,162,39,.1);border:1px solid var(--border-hi);color:var(--gold);font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;padding:.28rem .9rem;border-radius:20px;margin-bottom:1rem}
-.g-hero h1{font-family:'Cinzel',serif;font-size:2rem;font-weight:700;color:var(--gold);letter-spacing:.06em;margin-bottom:.65rem}
+.g-hero-badge{display:inline-block;background:rgba(201,162,39,.1);border:1px solid var(--border-hi);color:var(--accent);font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;padding:.28rem .9rem;border-radius:20px;margin-bottom:1rem}
+.g-hero h1{font-family:'Cinzel',serif;font-size:2rem;font-weight:700;color:var(--accent);letter-spacing:.06em;margin-bottom:.65rem}
 .g-hero p{color:var(--text-sub);font-size:.9rem;max-width:560px;margin:0 auto;line-height:1.8}
 .g-section{margin-bottom:3rem;scroll-margin-top:20px}
 .g-section-header{display:flex;align-items:center;gap:.875rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
 .g-section-icon{font-size:1.6rem;flex-shrink:0}
-.g-section-title{font-family:'Cinzel',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light)}
+.g-section-title{font-family:'Cinzel',serif;font-size:1.2rem;font-weight:700;color:var(--accent-light)}
 .g-section-sub{font-size:.78rem;color:var(--text-muted);margin-top:.18rem}
 .g-steps{display:flex;flex-direction:column;gap:.75rem}
 .g-step{display:flex;gap:.875rem;align-items:flex-start}
-.g-step-num{width:24px;height:24px;border-radius:50%;background:rgba(201,162,39,.15);border:1px solid var(--border-hi);color:var(--gold);font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.g-step-num{width:24px;height:24px;border-radius:50%;background:rgba(201,162,39,.15);border:1px solid var(--border-hi);color:var(--accent);font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
 .g-step-title{font-weight:600;color:var(--text);font-size:.87rem;margin-bottom:.18rem}
 .g-step-text{color:var(--text-sub);font-size:.82rem;line-height:1.7}
-.g-step-text code,.g-a code{background:rgba(201,162,39,.1);color:var(--gold-light);border-radius:4px;padding:.1rem .38rem;font-size:.76rem;font-family:'JetBrains Mono',monospace}
+.g-step-text code,.g-a code{background:rgba(201,162,39,.1);color:var(--accent-light);border-radius:4px;padding:.1rem .38rem;font-size:.76rem;font-family:'JetBrains Mono',monospace}
 .g-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
 .g-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem}
-.g-card h4{font-size:.83rem;font-weight:700;color:var(--gold-light);margin-bottom:.35rem;display:flex;align-items:center;gap:.35rem}
+.g-card h4{font-size:.83rem;font-weight:700;color:var(--accent-light);margin-bottom:.35rem;display:flex;align-items:center;gap:.35rem}
 .g-card p{font-size:.78rem;color:var(--text-sub);line-height:1.6}
 .g-table{width:100%;border-collapse:collapse;font-size:.82rem}
 .g-table th{text-align:left;padding:.55rem .875rem;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border)}
 .g-table td{padding:.6rem .875rem;border-bottom:1px solid rgba(201,162,39,.06);color:var(--text-sub);vertical-align:top}
 .g-table td:first-child{color:var(--text);font-weight:500}
-.g-table td code{background:rgba(201,162,39,.08);color:var(--gold);border-radius:4px;padding:.08rem .4rem;font-size:.73rem;font-family:'JetBrains Mono',monospace;white-space:nowrap}
+.g-table td code{background:rgba(201,162,39,.08);color:var(--accent);border-radius:4px;padding:.08rem .4rem;font-size:.73rem;font-family:'JetBrains Mono',monospace;white-space:nowrap}
 .g-note{background:rgba(243,156,18,.08);border:1px solid rgba(243,156,18,.28);border-radius:8px;padding:.75rem 1rem;font-size:.81rem;color:var(--text-sub);line-height:1.7;margin:.75rem 0}
 .g-note strong{color:var(--amber)}
 .g-note.info{background:rgba(201,162,39,.07);border-color:rgba(201,162,39,.22)}
-.g-note.info strong{color:var(--gold-light)}
+.g-note.info strong{color:var(--accent-light)}
 .g-themes{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem}
 .g-swatch{border-radius:8px;padding:.75rem .65rem;text-align:center;font-size:.73rem;font-weight:600;border:1px solid transparent}
 .g-swatch .gs-e{font-size:1.2rem;display:block;margin-bottom:.28rem}
@@ -545,18 +545,18 @@ html[data-location="newyork"] .pages{position:relative;z-index:1}
 .g-faq{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:.6rem}
 .g-faq-q{background:var(--bg-card);padding:.875rem 1.1rem;cursor:pointer;font-weight:600;font-size:.87rem;color:var(--text);display:flex;justify-content:space-between;align-items:center;transition:background .15s;gap:.875rem;user-select:none}
 .g-faq-q:hover{background:var(--bg-hover)}
-.g-faq-icon{color:var(--gold);font-size:.88rem;flex-shrink:0;transition:transform .2s}
+.g-faq-icon{color:var(--accent);font-size:.88rem;flex-shrink:0;transition:transform .2s}
 .g-faq.open .g-faq-icon{transform:rotate(45deg)}
 .g-faq-a{display:none;padding:.875rem 1.1rem;background:var(--bg-mid);font-size:.82rem;color:var(--text-sub);line-height:1.8;border-top:1px solid var(--border)}
 .g-faq.open .g-faq-a{display:block}
 @media(max-width:640px){.g-cards{grid-template-columns:1fr}.g-themes{grid-template-columns:repeat(3,1fr)}}
 html[data-theme="light"] {
   --bg:#f4f2ee; --bg-mid:#ebe8e0; --bg-card:#ffffff; --bg-hover:#f0ede5;
-  --gold:#8a6a08; --gold-light:#6a5208; --gold-pale:#4a3a06;
+  --accent:#8a6a08; --accent-light:#6a5208; --gold-pale:#4a3a06;
   --text:#18142e; --text-sub:#3d3460; --text-muted:#7a7298;
   --border:rgba(26,20,46,.15); --border-hi:rgba(138,106,8,.5);
   --green:#1a7a40; --red:#a01818; --amber:#9a6208; --blue:#1a5ebb;
-  --glow:0 0 24px rgba(138,106,8,.1); --glow-hi:0 0 40px rgba(138,106,8,.18);
+  --accent-glow:0 0 24px rgba(138,106,8,.1); --glow-hi:0 0 40px rgba(138,106,8,.18);
 }
 html[data-theme="light"] body{background:var(--bg)}
 html[data-theme="light"] nav{background:rgba(244,242,238,.97);border-bottom-color:rgba(26,20,46,.12)}
@@ -565,10 +565,10 @@ html[data-theme="light"] .kb-search{background:#fff;color:var(--text)}
 html[data-theme="light"] .kb-card{box-shadow:0 1px 4px rgba(0,0,0,.06)}
 html[data-theme="light"] .kb-card:hover{box-shadow:0 4px 16px rgba(138,106,8,.12)}
 html[data-theme="light"] .q-card,html[data-theme="light"] .case-card,html[data-theme="light"] .game-hud{box-shadow:0 1px 4px rgba(0,0,0,.06)}
-html[data-theme="light"] .logo{color:var(--gold)}
+html[data-theme="light"] .logo{color:var(--accent)}
 html[data-theme="light"] .page-hero h1{background:linear-gradient(135deg,#8a6a08,#6a5208);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 html[data-theme="light"] .ss-term{color:var(--text)}
-html[data-theme="light"] .ss-label{color:var(--gold)}
+html[data-theme="light"] .ss-label{color:var(--accent)}
 html[data-theme="light"] .teletype{background:rgba(138,106,8,.06);border-color:rgba(138,106,8,.2)}
 html[data-theme="light"] .mode-card,html[data-theme="light"] .diff-btn,html[data-theme="light"] .mtype{background:#fff}
 html[data-theme="light"] #kb-slideshow{background:transparent}
@@ -612,7 +612,7 @@ html[data-theme="light"] #kb-slideshow{background:transparent}
   <aside class="kb-sidebar">
     <div style="background:rgba(243,156,18,.1);border:1px solid rgba(243,156,18,.35);border-radius:8px;padding:.65rem .875rem;margin-bottom:.875rem">
       <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#f39c12;margin-bottom:.25rem">⚙️ In Progress</div>
-      <div style="font-size:.72rem;color:#9d95b8;line-height:1.5">The Knowledge Base's database is still being built.<br><button onclick="copySourceUrl('https://compliance.vilecorp.com/knowledge-hub')" style="background:none;border:none;cursor:pointer;color:#c9a227;text-decoration:underline dotted rgba(201,162,39,.5);font-size:.7rem;padding:0;font-family:inherit">📋 Copy source site URL →</button></div>
+      <div style="font-size:.72rem;color:#9d95b8;line-height:1.5">The Knowledge Base's database is still being built.<br><button onclick="copySourceUrl('https://risktraininghub.io/reference/knowledge-hub')" style="background:none;border:none;cursor:pointer;color:#00b4d8;text-decoration:underline dotted rgba(201,162,39,.5);font-size:.7rem;padding:0;font-family:inherit">📋 Copy reference link →</button></div>
     </div>
     <div class="sb-label">📘 Browse</div>
     <div class="sb-item active" onclick="filterKB('all',this)">🔍 All Documents</div>
@@ -623,9 +623,9 @@ html[data-theme="light"] #kb-slideshow{background:transparent}
     <div class="sb-item" onclick="filterKB('edit',this)">✏️ Tech Edits</div>
     <div class="sb-divider"></div>
     <div class="sb-label">👤 By Client</div>
-    <div class="sb-item" onclick="filterKB('amp',this)">🎵 Program Alpha</div>
-    <div class="sb-item" onclick="filterKB('wwdr',this)">🧑‍💻 Program Beta</div>
-    <div class="sb-item" onclick="filterKB('idms',this)">🆔 Program Gamma</div>
+    <div class="sb-item" onclick="filterKB('amp',this)">🎵 Media Platform</div>
+    <div class="sb-item" onclick="filterKB('wwdr',this)">🧑‍💻 Developer Program</div>
+    <div class="sb-item" onclick="filterKB('idms',this)">🆔 Digital ID Program</div>
     <div class="sb-item" onclick="filterKB('pending',this)">🕐 Pending Cases</div>
     <div class="sb-divider"></div>
     <div class="sb-label">🗂️ References</div>
@@ -677,7 +677,7 @@ html[data-theme="light"] #kb-slideshow{background:transparent}
   <div class="matrix-body">
     <div class="matrix-types">
       <div class="mtype active" id="mt-pii"     onclick="setMatrix('pii',this)"><span class="mtype-icon">🪪</span><span class="mtype-label">With PII</span></div>
-      <div class="mtype"        id="mt-idms"    onclick="setMatrix('idms',this)"><span class="mtype-icon">🆔</span><span class="mtype-label">Program Gamma — No PII</span></div>
+      <div class="mtype"        id="mt-idms"    onclick="setMatrix('idms',this)"><span class="mtype-icon">🆔</span><span class="mtype-label">Digital ID Program — No PII</span></div>
       <div class="mtype"        id="mt-company" onclick="setMatrix('company',this)"><span class="mtype-icon">🏢</span><span class="mtype-label">Companies</span></div>
       <div class="mtype"        id="mt-bfd"     onclick="setMatrix('bfd',this)"><span class="mtype-icon">👨‍💻</span><span class="mtype-label">Batch Free Dev</span></div>
     </div>
@@ -698,20 +698,20 @@ html[data-theme="light"] #kb-slideshow{background:transparent}
 <div class="page" id="page-training">
   <div class="page-hero">
     <h1>Training Simulator</h1>
-    <p>Work real compliance scenarios. Build confidence before you hit the queue.</p>
+    <p>Work real-world compliance alerts. Build decision confidence before you go live.</p>
   </div>
   <div style="overflow-y:auto;flex:1">
   <div class="training-body">
     <div class="start-screen" id="start-screen">
       <span class="start-icon">🎓</span>
       <div class="start-title">Ready to Train?</div>
-      <div class="start-sub">Each scenario is drawn from real procedure docs — the same situations you'll face in the queue. Make your decision, get instant feedback, and learn the why.</div>
+      <div class="start-sub">Each alert is drawn from real sanctions screening patterns — the same judgment calls you'll face in production. Make your decision, get instant feedback, and learn the why.</div>
       <div class="diff-row">
         <div class="diff-btn sel" id="d-easy"   onclick="setDiff('easy',this)"><span class="diff-icon">🌿</span><div class="diff-name">Initiate</div><div class="diff-desc">Clear variances</div></div>
         <div class="diff-btn"     id="d-medium" onclick="setDiff('medium',this)"><span class="diff-icon">⚡</span><div class="diff-name">Investigator</div><div class="diff-desc">Mixed scenarios</div></div>
         <div class="diff-btn"     id="d-hard"   onclick="setDiff('hard',this)"><span class="diff-icon">🔱</span><div class="diff-name">Olympian</div><div class="diff-desc">Edge cases</div></div>
       </div>
-      <button class="btn-primary" onclick="startGame()">Start Training</button>
+      <button class="btn-primary" onclick="startGame()">Launch AlertDesk Simulator</button>
       <div style="margin-top:1.1rem"><button onclick="showPage('kb')" style="background:none;border:none;color:var(--text-muted);font-size:.8rem;cursor:pointer;font-family:'Inter',sans-serif">← Back to Knowledge Base</button></div>
     </div>
 
@@ -772,14 +772,14 @@ html[data-theme="light"] #kb-slideshow{background:transparent}
     <div class="guide-inner">
 
       <div class="g-hero">
-        <div class="g-hero-badge">🎓 Risk Training Academy</div>
+        <div class="g-hero-badge">🎓 Risk Training Hub</div>
         <h1>User Guide & FAQs</h1>
         <p>Everything you need to know to get the most out of RTH — from searching the Knowledge Base to running training scenarios and understanding your location theme.</p>
       </div>
 
       <div class="g-section" id="g-overview">
         <div class="g-section-header"><span class="g-section-icon">⚖️</span><div><div class="g-section-title">What is RTH?</div><div class="g-section-sub">Overview of the platform</div></div></div>
-        <p style="color:var(--text-sub);font-size:.87rem;line-height:1.85;margin-bottom:1.1rem">The <strong style="color:var(--text)">Risk Training Academy (RTH)</strong> is an internal learning and reference tool for Risk & Compliance Operations investigators. It consolidates procedure documentation, interactive decision tools, and training simulations — accessible on company VPN from any device.</p>
+        <p style="color:var(--text-sub);font-size:.87rem;line-height:1.85;margin-bottom:1.1rem">The <strong style="color:var(--text)">Risk Training Hub (RTH)</strong> is an internal learning and reference tool for Risk & Compliance Operations investigators. It consolidates procedure documentation, interactive decision tools, and training simulations — accessible on company VPN from any device.</p>
         <div class="g-cards">
           <div class="g-card"><h4>📚 Knowledge Base</h4><p>Searchable procedure docs, full glossary/dictionary, and reference materials. In progress — full database coming soon.</p></div>
           <div class="g-card"><h4>⚖️ Decision Matrix</h4><p>Interactive decision trees for every case type. Answer questions, get the correct action and reason code instantly.</p></div>
@@ -792,7 +792,7 @@ html[data-theme="light"] #kb-slideshow{background:transparent}
         <div class="g-section-header"><span class="g-section-icon">📚</span><div><div class="g-section-title">Knowledge Base</div><div class="g-section-sub">How to search, browse, and use the KB</div></div></div>
         <div class="g-steps">
           <div class="g-step"><div class="g-step-num">1</div><div><div class="g-step-title">Search for anything</div><div class="g-step-text">Type any term, procedure name, reason code, or keyword into the search bar. Results update live. Try: <code>batch_type_a_registrant</code>, <code>sanctioned countries</code>, <code>2/3 name match</code>, <code>Cleared by DOB</code>.</div></div></div>
-          <div class="g-step"><div class="g-step-num">2</div><div><div class="g-step-title">Use the sidebar to filter</div><div class="g-step-text"><strong style="color:var(--text)">Dictionary</strong> — term definitions only. <strong style="color:var(--text)">Originals</strong> — condensed source doc summaries. <strong style="color:var(--text)">Tech Edits</strong> — clean rewrites of the same docs. Client tabs filter by Program Alpha, Program Beta, Program Gamma, or Pending.</div></div></div>
+          <div class="g-step"><div class="g-step-num">2</div><div><div class="g-step-title">Use the sidebar to filter</div><div class="g-step-text"><strong style="color:var(--text)">Dictionary</strong> — term definitions only. <strong style="color:var(--text)">Originals</strong> — condensed source doc summaries. <strong style="color:var(--text)">Tech Edits</strong> — clean rewrites of the same docs. Client tabs filter by Media Platform, Developer Program, Digital ID Program, or Pending.</div></div></div>
           <div class="g-step"><div class="g-step-num">3</div><div><div class="g-step-title">Click a card to expand it</div><div class="g-step-text">The preview text disappears and the full content appears. Click again to collapse.</div></div></div>
           <div class="g-step"><div class="g-step-num">4</div><div><div class="g-step-title">Copy source doc URLs</div><div class="g-step-text">Every relevant card has a <code>📋 Copy source URL</code> button. Click it, then paste in a fresh browser tab. Direct navigation is blocked by the compliance site's security headers — this is the workaround.</div></div></div>
         </div>
@@ -802,7 +802,7 @@ html[data-theme="light"] #kb-slideshow{background:transparent}
       <div class="g-section" id="g-matrix">
         <div class="g-section-header"><span class="g-section-icon">⚖️</span><div><div class="g-section-title">Decision Matrix</div><div class="g-section-sub">Getting the right action and reason code instantly</div></div></div>
         <div class="g-steps">
-          <div class="g-step"><div class="g-step-num">1</div><div><div class="g-step-title">Select your matrix type</div><div class="g-step-text"><code>With PII</code> · <code>Program Gamma — No PII</code> · <code>Companies</code> · <code>Batch Free Dev</code></div></div></div>
+          <div class="g-step"><div class="g-step-num">1</div><div><div class="g-step-title">Select your matrix type</div><div class="g-step-text"><code>With PII</code> · <code>Digital ID Program — No PII</code> · <code>Companies</code> · <code>Batch Free Dev</code></div></div></div>
           <div class="g-step"><div class="g-step-num">2</div><div><div class="g-step-title">Answer each question</div><div class="g-step-text">Entity type → name match → DOB → location. The progress bar shows where you are.</div></div></div>
           <div class="g-step"><div class="g-step-num">3</div><div><div class="g-step-title">Read the result</div><div class="g-step-text">Shows action (<strong style="color:var(--green)">CLEAR</strong>, <strong style="color:var(--red)">ESCALATE</strong>, or <strong style="color:var(--amber)">SUSPEND</strong>), the exact reason code, an explanation, and your full decision path.</div></div></div>
         </div>
@@ -866,7 +866,7 @@ html[data-theme="light"] #kb-slideshow{background:transparent}
 
         <div class="g-faq" onclick="this.classList.toggle('open')"><div class="g-faq-q">Why do the source doc links say "Copy URL" instead of just opening? <span class="g-faq-icon">+</span></div><div class="g-faq-a">The compliance investigations site sets a <strong>Cross-Origin-Opener-Policy</strong> security header that blocks pages being opened via direct links from external domains. The workaround: click <code>📋 Copy source URL</code>, open a fresh browser tab, and paste. This bypasses the restriction entirely.</div></div>
 
-        <div class="g-faq" onclick="this.classList.toggle('open')"><div class="g-faq-q">Are the Knowledge Base articles the official procedure documents? <span class="g-faq-icon">+</span></div><div class="g-faq-a"><strong>No — always use the official source docs for audit and escalation decisions.</strong> The KB has Originals (condensed summaries) and Tech Edits (restructured rewrites). Neither is verbatim. Official docs: <code>compliance.vilecorp.com</code>. Full content database is in progress.</div></div>
+        <div class="g-faq" onclick="this.classList.toggle('open')"><div class="g-faq-q">Are the Knowledge Base articles the official procedure documents? <span class="g-faq-icon">+</span></div><div class="g-faq-a"><strong>No — always use the official source docs for audit and escalation decisions.</strong> The KB has Originals (condensed summaries) and Tech Edits (restructured rewrites). Neither is verbatim. Official docs: <code>risktraininghub.io/reference</code>. Full content database is in progress.</div></div>
 
         <div class="g-faq" onclick="this.classList.toggle('open')"><div class="g-faq-q">Do I need VPN to use RTH? <span class="g-faq-icon">+</span></div><div class="g-faq-a">Yes. RTH is hosted on GitHub Pages (<code>pages.github.com</code>), only accessible on Apple's internal network. If you see a connection error, check your VPN first.</div></div>
 
@@ -882,16 +882,16 @@ html[data-theme="light"] #kb-slideshow{background:transparent}
 
         <div class="g-faq" onclick="this.classList.toggle('open')"><div class="g-faq-q">Can I use RTH on mobile? <span class="g-faq-icon">+</span></div><div class="g-faq-a">Yes — RTH is responsive and works on iPhone and iPad with VPN. Best experience is on desktop due to content density, but all tools are fully functional on mobile.</div></div>
 
-        <div class="g-faq" onclick="this.classList.toggle('open')"><div class="g-faq-q">What does RTH stand for, and what's the 🎓 symbol? <span class="g-faq-icon">+</span></div><div class="g-faq-a"><strong>RTH = Risk Training Academy.</strong> The 🎓 caduceus is a nod to CMS (the Greek messenger god who carries the caduceus) — since CMS (the tool investigators use daily) stands for Case Management System. RTH was renamed to avoid confusion with CMS itself.</div></div>
+        <div class="g-faq" onclick="this.classList.toggle('open')"><div class="g-faq-q">What does RTH stand for, and what's the 🎓 symbol? <span class="g-faq-icon">+</span></div><div class="g-faq-a"><strong>RTH = Risk Training Hub.</strong> The 🎓 caduceus is a nod to CMS (the Greek messenger god who carries the caduceus) — since CMS (the tool investigators use daily) stands for Case Management System. RTH was renamed to avoid confusion with CMS itself.</div></div>
 
-        <div class="g-faq" onclick="this.classList.toggle('open')"><div class="g-faq-q">How current is the procedure content? <span class="g-faq-icon">+</span></div><div class="g-faq-a">Built from source documents as of <strong>May 2026</strong>. Always check <code>compliance.vilecorp.com</code> for the latest — especially after policy changes (e.g., Syria's removal from the sanctions list in November 2025).</div></div>
+        <div class="g-faq" onclick="this.classList.toggle('open')"><div class="g-faq-q">How current is the procedure content? <span class="g-faq-icon">+</span></div><div class="g-faq-a">Built from source documents as of <strong>May 2026</strong>. Always check <code>risktraininghub.io/reference</code> for the latest — especially after policy changes (e.g., Syria's removal from the sanctions list in November 2025).</div></div>
 
-        <div class="g-faq" onclick="this.classList.toggle('open')"><div class="g-faq-q">I found an error or want to suggest new content — who do I contact? <span class="g-faq-icon">+</span></div><div class="g-faq-a">Reach out to <strong>Krystine Hall</strong> via Slack or the compliance investigations team channel. New scenarios, dictionary terms, and bug reports are always welcome.</div></div>
+        <div class="g-faq" onclick="this.classList.toggle('open')"><div class="g-faq-q">I found an error or want to suggest new content — who do I contact? <span class="g-faq-icon">+</span></div><div class="g-faq-a">Reach out to <strong>the RTH team</strong> via Slack or the #rth-feedback channel. New scenarios, dictionary terms, and bug reports are always welcome.</div></div>
 
       </div>
 
       <div style="text-align:center;padding:1.5rem 0;border-top:1px solid var(--border);color:var(--text-muted);font-size:.76rem;margin-top:1rem">
-        🎓 <strong style="color:var(--text-sub)">RTH — Risk Training Academy</strong> · Risk & Compliance Operations
+        🎓 <strong style="color:var(--text-sub)">RTH — Risk Training Hub · risktraininghub.io
       </div>
 
     </div><!-- /guide-inner -->
@@ -906,10 +906,10 @@ html[data-theme="light"] #kb-slideshow{background:transparent}
 const KB = [
 // ── GLOSSARY ──────────────────────────────────────────────────────
 {id:"d-aml",cat:"glossary",title:"AML — Anti-Money Laundering",body:"In this tool, AML = Anti-Money Laundering: legal controls requiring institutions and entities to prevent, detect, and report money laundering activities.\n\n⚠️ Apple internal note: In other Apple contexts, AML may refer to Automated Machine Learning (a different team/technology entirely). When you see AML in this tool or in compliance procedures, it always means Anti-Money Laundering.",tags:["aml","anti-money laundering","financial crime","legal","automated machine learning","disambiguation"]},
-{id:"d-amp",cat:"glossary",title:"Program Alpha — Apple Media Products",body:"Manages iTunes, the Apple App Store, and Apple Services. Compliance screens anyone with access to iTunes Connect, which allows a person or company to distribute media. Vendors, Banks, and Bank Account Holders receive funding from those sales.",tags:["amp","client","itunes","app store"]},
+{id:"d-amp",cat:"glossary",title:"Media Platform — Apple Media Products",body:"Manages iTunes, the Apple App Store, and Apple Services. Compliance screens anyone with access to iTunes Connect, which allows a person or company to distribute media. Vendors, Banks, and Bank Account Holders receive funding from those sales.",tags:["amp","client","itunes","app store"]},
 {id:"d-api",cat:"glossary",title:"API — Apple Payments Inc.",body:"A subsidiary of Apple Inc. that supports the disbursement platform covering daily cash rebates to customers from Apple Card and allows for Direct Bill Payment by customers from Apple Cash to Apple Card.",tags:["api","payments","apple card","client"]},
 {id:"d-cip",cat:"glossary",title:"CIP — Customer Identification Program",body:"A United States requirement for financial institutions to verify a customer's identity.",tags:["cip","kyc","identity","us"]},
-{id:"d-client",cat:"glossary",title:"Client",body:"The application or program from which the screened case data originated. Current clients: Program Alpha, Program Beta, API, Program Gamma.",tags:["client","amp","wwdr","api","idms"]},
+{id:"d-client",cat:"glossary",title:"Client",body:"The application or program from which the screened case data originated. Current clients: Media Platform, Developer Program, API, Digital ID Program.",tags:["client","amp","wwdr","api","idms"]},
 {id:"d-common",cat:"glossary",title:"Common Name",body:"A popular name many individuals have, or a generic name used by many companies. Common names often cause false positives in sanctions screening.",tags:["common name","false positive"]},
 {id:"d-core",cat:"glossary",title:"Core Case",body:"The first Transaction ID in a sequence of cases. Contains the original screened name (including any DBA names) and Matched Data hits. To find it: search the TID prefix — everything before the underscore — in the CMS search bar.",tags:["core case","tid","transaction id","underscore"]},
 {id:"d-dba",cat:"glossary",title:"DBA — Doing Business As",body:"A trade name, assumed name, or fictitious business name — a registered name under which a business operates that is different from its official legal name. In CMS, DBA names appear as: [Name] ; [DBA Name]. Only the portion triggering the sanctions review is being screened.",tags:["dba","trade name","fictitious","semicolon"]},
@@ -919,9 +919,9 @@ const KB = [
 {id:"d-event",cat:"glossary",title:"Event",body:"The interaction, transaction, enrollment, or account update that triggered CMS to open a case. Must be noted in every Case Overview. Examples: rt_user_invitation, batch_type_a_registrant, enrollment_pre_check.",tags:["event","enrollment","trigger","event type"]},
 {id:"d-fp",cat:"glossary",title:"False Positive / False Hit",body:"A system-identified potential match that is NOT a true sanctions match — caused by a common name, missing information, a weak alias, or partial name similarity.",tags:["false positive","false hit","common name","partial match"]},
 {id:"d-full",cat:"glossary",title:"Full Match",body:"The entire name of the Screened Entity matches the name from the sanctions list (Primary Name or AKA). A full name match generally requires escalation unless a clear DOB or location variance can be established.",tags:["full match","name match","entire name","sanctions"]},
-{id:"d-idms",cat:"glossary",title:"Program Gamma — Identity Management Services",body:"Provides authentication and authorization services and is the repository for all Apple identities. The Program Gamma compliance client screens Apple IDs when customers in high-risk countries add a payment method to their Apple Wallet. Phase 1: 35 high-risk countries. If confirmed as a true sanctions match, the account is deactivated.",tags:["idms","identity management","apple id","wallet","payment","high risk"]},
+{id:"d-idms",cat:"glossary",title:"Digital ID Program — Identity Management Services",body:"Provides authentication and authorization services and is the repository for all Apple identities. The Digital ID Program compliance client screens Apple IDs when customers in high-risk countries add a payment method to their Apple Wallet. Phase 1: 35 high-risk countries. If confirmed as a true sanctions match, the account is deactivated.",tags:["idms","identity management","apple id","wallet","payment","high risk"]},
 {id:"d-inclusion",cat:"glossary",title:"Inclusion Term",body:"A trigger created when a Screened Entity name contains a word on Apple's corporate compliance inclusion list. Always a direct escalation for every client. For batch_type_a_registrant: the ONLY direct escalation reason.",tags:["inclusion term","direct escalation","apple compliance"]},
-{id:"d-ip",cat:"glossary",title:"IP Address",body:"A numerical code that identifies the geographical location of a computer accessing the internet. Captured via Ekata for Program Beta cases and included in the Case Overview notation.",tags:["ip","ip address","ekata","location","wwdr"]},
+{id:"d-ip",cat:"glossary",title:"IP Address",body:"A numerical code that identifies the geographical location of a computer accessing the internet. Captured via Ekata for Developer Program cases and included in the Case Overview notation.",tags:["ip","ip address","ekata","location","wwdr"]},
 {id:"d-kyc",cat:"glossary",title:"KYC — Know Your Customer",body:"A business process of verifying customer identity. Part of the broader AML compliance framework.",tags:["kyc","know your customer","identity","verification"]},
 {id:"d-lexid",cat:"glossary",title:"LexID",body:"A unique identifier assigned to individuals by LexisNexis. Document in your research notation when found.",tags:["lexid","lexisnexis","identifier"]},
 {id:"d-mdhit",cat:"glossary",title:"Matched Data Hit",body:"A specific entry on a sanctions list that the system has identified as a potential match to the Screened Entity. A single case may have multiple Matched Data Hits — each must be individually evaluated.",tags:["matched data","matched data hit","potential match","sanctions list"]},
@@ -929,55 +929,55 @@ const KB = [
 {id:"d-ofaclist",cat:"glossary",title:"OFAC List / SDN List",body:"The Specially Designated Nationals and Blocked Persons List. Maintained by OFAC. Lists terrorists, narcotics traffickers, and other entities that U.S. persons are generally prohibited from dealing with.",tags:["sdn","specially designated nationals","ofac list","blocked persons"]},
 {id:"d-ownership",cat:"glossary",title:"Ownership",body:"The structure of who ultimately controls and benefits from a company, whether directly or indirectly. If owner percentage is less than 100% to the Screened Entity, the case must be escalated so the other owner(s) may be screened.",tags:["ownership","co-owner","percentage","escalate"]},
 {id:"d-partial",cat:"glossary",title:"Partial Match",body:"One of the Screened Entity names matches any of the Matched Data names (Primary or AKA), but not the complete name.",tags:["partial match","name match","aka"]},
-{id:"d-pcd",cat:"glossary",title:"PCD — Pending Cancel Date",body:"The date on which a suspended case automatically cancels if no action is taken. Program Gamma: 14 days. Program Alpha batch_type_a_registrant: 30 days. After cancellation, a new case auto-generates with the same TID plus a suffix (_1, _2, etc.).",tags:["pcd","pending cancel date","suspend","cancel","14 days","30 days"]},
+{id:"d-pcd",cat:"glossary",title:"PCD — Pending Cancel Date",body:"The date on which a suspended case automatically cancels if no action is taken. Digital ID Program: 14 days. Media Platform batch_type_a_registrant: 30 days. After cancellation, a new case auto-generates with the same TID plus a suffix (_1, _2, etc.).",tags:["pcd","pending cancel date","suspend","cancel","14 days","30 days"]},
 {id:"d-pii",cat:"glossary",title:"PII — Personally Identifiable Information",body:"Information that identifies a specific individual — passport, national ID, date of birth, ID number. Customer-submitted PII must meet Acceptable PII Criteria before it can be used to clear a case.",tags:["pii","personally identifiable","passport","national id","identification"]},
 {id:"d-sar",cat:"glossary",title:"SAR — Suspicious Activity Report",body:"A document filed with the Financial Crimes Enforcement Network (FinCEN) after a suspected incident of financial crime or money laundering.",tags:["sar","suspicious activity","fincen","financial crime"]},
-{id:"d-se",cat:"glossary",title:"Screened Entity",body:"The individual or entity whose name triggered a potential match on a sanctions list. In CMS, may be labeled as: Customer, Individual, Company, Bank, Vendor, or Developer.",tags:["screened entity","customer","individual","company","potential match"]},
-{id:"d-sla",cat:"glossary",title:"SLA — Service Level Agreement",body:"The target timeframe within which a case must be reviewed and resolved. All current clients (Program Alpha, Program Beta, Program Gamma, API) have a 48-hour SLA.",tags:["sla","48 hours","service level","deadline"]},
+{id:"d-se",cat:"glossary",title:"Subject Under Review",body:"The individual or entity whose name triggered a potential match on a sanctions list. In CMS, may be labeled as: Customer, Individual, Company, Bank, Vendor, or Developer.",tags:["screened entity","customer","individual","company","potential match"]},
+{id:"d-sla",cat:"glossary",title:"SLA — Service Level Agreement",body:"The target timeframe within which a case must be reviewed and resolved. All current clients (Media Platform, Developer Program, Digital ID Program, API) have a 48-hour SLA.",tags:["sla","48 hours","service level","deadline"]},
 {id:"d-tid",cat:"glossary",title:"TID — Transaction ID",body:"The unique ID number CMS assigns to each case. When a case expires and is auto-regenerated, the new TID shares the same prefix plus a suffix (_1, _2, _3...).",tags:["tid","transaction id","case id","regenerated"]},
 {id:"d-truematch",cat:"glossary",title:"True Match",body:"When research confirms the Screened Entity is the same individual or company as the sanctioned party on the Matched Data list. Requires escalation.",tags:["true match","confirmed","sanctions","escalate"]},
 {id:"d-weak",cat:"glossary",title:"Weak Alias / Low Quality AKA",body:"A generic or common nickname that alone is insufficient to establish a true sanctions match. OFAC guidance: https://ofac.treasury.gov/faqs/topic/1646",tags:["weak alias","low quality","aka","nickname","insufficient"]},
-{id:"d-wwdr",cat:"glossary",title:"Program Beta — Worldwide Developer Relations",body:"The Apple team supporting developers globally. The Program Beta compliance client screens developer enrollments into the Apple Developer Program. Events: enrollment_pre_check (individual level, first screening) and rt_enrollment_final (entity level, completion).",tags:["wwdr","worldwide developer relations","developer","enrollment","precheck","final"]},
-{id:"d-23match",cat:"glossary",title:"2/3 Name Match (Program Gamma Only)",body:"Program Gamma cases only, without PII: the Screened Entity's full name matches 2 of 3 name components in the Matched Data name. Classified as a partial match.\n\nExamples (2/3 match):\n- John Smith vs John Jacob Smith\n- Aleksandr Muskov vs Aleksandr Muskov Sergeevich\n\nNOT a 2/3 match (regular partial match, can clear):\n- John Allen Smith vs John Jacob Smith (different middle)\n- Aleksandr Vladimirovich Muskov vs Aleksandr Muskov Sergeevich",tags:["2/3 name match","two thirds","idms","partial match","name criteria"]},
+{id:"d-wwdr",cat:"glossary",title:"Developer Program — Worldwide Developer Relations",body:"The Apple team supporting developers globally. The Developer Program compliance client screens developer enrollments into the Apple Developer Program. Events: enrollment_pre_check (individual level, first screening) and rt_enrollment_final (entity level, completion).",tags:["wwdr","worldwide developer relations","developer","enrollment","precheck","final"]},
+{id:"d-23match",cat:"glossary",title:"2/3 Name Match (Digital ID Program Only)",body:"Digital ID Program cases only, without PII: the Screened Entity's full name matches 2 of 3 name components in the Matched Data name. Classified as a partial match.\n\nExamples (2/3 match):\n- John Smith vs John Jacob Smith\n- Aleksandr Muskov vs Aleksandr Muskov Sergeevich\n\nNOT a 2/3 match (regular partial match, can clear):\n- John Allen Smith vs John Jacob Smith (different middle)\n- Aleksandr Vladimirovich Muskov vs Aleksandr Muskov Sergeevich",tags:["2/3 name match","two thirds","idms","partial match","name criteria"]},
 {id:"d-close",cat:"glossary",title:"Close Name Match (Companies)",body:"When a company's brand name is the same as the Matched Data but the legal identifier differs (e.g., LLC vs. GmbH). Classified as a partial match.\n\nExamples:\n- Biotech vs. Biotech LLC\n- Cheer Flyer Company Unlimited vs. Cheer Flyer Company\n\nEquivalent legal identifiers: LLC (US) = GmbH (Germany) = OOO (Russia)",tags:["close name match","brand name","legal identifier","llc","gmbh","ooo","company"]},
 {id:"d-sanctioned",cat:"glossary",title:"Sanctioned Countries & Regions",body:"Any connection to these is a direct escalation for ALL clients.\n\nCountries: Cuba (CUB), Iran (IRN), North Korea (PRK)\n\nRegions in Ukraine: Crimea, Donetsk People's Republic, Luhansk People's Republic, Kherson region, Zaporizhzhia region\n\nA 'connection' includes: doing business with, PII issued by, or address in any of the above.",tags:["sanctioned countries","cuba","iran","north korea","ukraine","crimea","donetsk","luhansk","kherson","zaporizhzhia","direct escalation"]},
 
 // ── ADDITIONAL DICTIONARY TERMS ─────────────────────────────────
 {id:"d-t1",cat:"glossary",title:"Tier 1 (T1) — Investigators",body:"First-line compliance investigators who review cases in CMS, perform due diligence research, and take actions: Clear, Suspend (where applicable), or Escalate to Tier 2. Most cases are resolved at Tier 1.",tags:["tier 1","t1","investigator","first line","t2","escalate"]},
-{id:"d-t2",cat:"glossary",title:"Tier 2 (T2) — Escalation Tier",body:"Second-level investigators who receive cases escalated from Tier 1. T2 has access to additional research tools (LexisNexis Due Diligence reports, D&B WorldBase) and can Reject cases (Program Gamma only). Complex matches, insufficient data, ownership issues, and direct escalation scenarios go to T2.",tags:["tier 2","t2","escalation","reject","due diligence","d&b worldbase"]},
+{id:"d-t2",cat:"glossary",title:"Tier 2 (T2) — Escalation Tier",body:"Second-level investigators who receive cases escalated from Tier 1. T2 has access to additional research tools (LexisNexis Due Diligence reports, D&B WorldBase) and can Reject cases (Digital ID Program only). Complex matches, insufficient data, ownership issues, and direct escalation scenarios go to T2.",tags:["tier 2","t2","escalation","reject","due diligence","d&b worldbase"]},
 {id:"d-t3",cat:"glossary",title:"Tier 3 (T3) — Highest Escalation",body:"The highest level of case escalation. T3 handles confirmed potential true matches, cases where a customer has been rejected more than twice by T2, and cases requiring Apple Legal involvement. All reject reason codes not listed for T2 are T3-only.",tags:["tier 3","t3","highest escalation","legal","true match","2 rejections"]},
 {id:"d-direct-esc",cat:"glossary",title:"Direct Escalation",body:"A scenario where a case must be escalated immediately without conducting full research or writing a full summary. Triggered by specific criteria (e.g., sanctioned country, inclusion term, invalid PII, partial ID).\n\nProcedure:\n1. Complete Case Overview (except batch_type_b_registrant — skip overview)\n2. Create note: 'T2 Escalation Required: [reason]'\n3. Resolve → Escalate → Unable to Waive Compliance Concerns\n\nDirect escalation bypasses the normal Research → Summary → Action flow.",tags:["direct escalation","immediate escalation","t2 escalation required","bypass research","batch_type_b_registrant","inclusion term","invalid pii"]},
 {id:"d-entity-type",cat:"glossary",title:"Entity Type",body:"The classification of who or what is being screened. Types include: Individual, Company, Bank, Vendor, Developer, Vessel/Ship/Aircraft.\n\nAn entity type MISMATCH between the Screened Entity and a Matched Data Hit always results in a CLEAR — a company cannot be the same sanctioned party as an individual.\n\nFound in the 'Entity Label' field in the Screened Entity details in CMS.",tags:["entity type","individual","company","vessel","ship","aircraft","mismatch","entity label","hcm"]},
-{id:"d-aka",cat:"glossary",title:"AKA / Also Known As",body:"Alternative names listed alongside the primary name on a sanctions entry. When comparing names, ALL AKAs must be reviewed — a match to any AKA counts as a name match.\n\nExample: A Matched Data entry may list 'Mohammad Al-Hassan' as primary with AKAs 'Mohammed Hassan' and 'M. Al Hassan.' If the Screened Entity name matches any of these → name match.\n\nAlso applies to 2/3 Name Match criteria for Program Gamma: the SE name matching 2 of 3 components of any AKA qualifies.",tags:["aka","also known as","alias","alternative name","primary name","name comparison","matched data"]},
+{id:"d-aka",cat:"glossary",title:"AKA / Also Known As",body:"Alternative names listed alongside the primary name on a sanctions entry. When comparing names, ALL AKAs must be reviewed — a match to any AKA counts as a name match.\n\nExample: A Matched Data entry may list 'Mohammad Al-Hassan' as primary with AKAs 'Mohammed Hassan' and 'M. Al Hassan.' If the Screened Entity name matches any of these → name match.\n\nAlso applies to 2/3 Name Match criteria for Digital ID Program: the SE name matching 2 of 3 components of any AKA qualifies.",tags:["aka","also known as","alias","alternative name","primary name","name comparison","matched data"]},
 {id:"d-primary-name",cat:"glossary",title:"Primary Name",body:"The main legal name of the sanctioned party as it appears on the sanctions list. When evaluating a case, compare the Screened Entity name against both the Primary Name AND all AKA names. A match to either qualifies as a name match.",tags:["primary name","sanctions list","ofac","matched data","name comparison","aka"]},
 {id:"d-dsid",cat:"glossary",title:"DSID — Directory Services ID",body:"Apple's internal unique identifier for customer accounts. Used to search in research tools — MZ Support, ASO ACM, and iCloud Support Tool all accept DSID as a search parameter. The DSID links an Apple ID to an individual's account activity across Apple systems.",tags:["dsid","directory services id","apple id","customer identifier","mz support","icloud","research tool"]},
 {id:"d-dor",cat:"glossary",title:"DOR — Date of Registration",body:"The date a company was officially registered with a government authority. For companies, DOR functions similarly to DOB for individuals — it is a comparison data point in your Summary notation.\n\nIf available on submitted PII, note it in CMS. If unavailable, the PII may still be used. In your notation, DOR appears in place of 'Is the Date of Birth a match?' for company cases.",tags:["dor","date of registration","company","registration date","hcm fields","summary notation","companies"]},
 {id:"d-pob",cat:"glossary",title:"POB — Place of Birth",body:"The city and/or country where an individual was born. Used as a location comparison data point for individual Screened Entities. In CMS, City of Birth and Country of Birth fields capture this from submitted PII. If the City of Birth from System Notes uses non-romanized characters, it must be translated before entry.",tags:["pob","place of birth","city of birth","country of birth","location","hcm fields","translate","non-romanized"]},
-{id:"d-yob",cat:"glossary",title:"YOB — Year of Birth (Program Gamma shortcut)",body:"The year of birth visible in the Screened Entity panel in CMS for Program Gamma cases. This is a research shortcut unique to Program Gamma: if the YOB shown in the CMS panel differs from the Matched Data Hit's year of birth, you can CLEAR the case immediately — no external research tools needed.\n\nThis shortcut does not require customer-submitted PII and is specific to Program Gamma. For other clients, use DOB from customer PII.",tags:["yob","year of birth","idms","shortcut","hcm panel","screened entity panel","clear","no research"]},
+{id:"d-yob",cat:"glossary",title:"YOB — Year of Birth (Digital ID Program shortcut)",body:"The year of birth visible in the Screened Entity panel in CMS for Digital ID Program cases. This is a research shortcut unique to Digital ID Program: if the YOB shown in the CMS panel differs from the Matched Data Hit's year of birth, you can CLEAR the case immediately — no external research tools needed.\n\nThis shortcut does not require customer-submitted PII and is specific to Digital ID Program. For other clients, use DOB from customer PII.",tags:["yob","year of birth","idms","shortcut","hcm panel","screened entity panel","clear","no research"]},
 {id:"d-escalated-hold",cat:"glossary",title:"Escalated Hold",body:"A pending case review outcome — used when a case should be escalated but cannot be actioned (pending cases cannot be resolved, only reviewed). The investigator adds the escalation reason and writes 'ESCALATED HOLD' in the notes.\n\nWhen the case transitions to Open (after PII is submitted), the escalation note is already there and the case goes directly to T2.\n\nDistinct from Direct Escalation, which is an immediate action on an Open case.",tags:["escalated hold","pending","pending case review","flag","deferred escalation","open","not actionable"]},
 {id:"d-linked-cases",cat:"glossary",title:"Linked Cases",body:"When a case arrives with multiple Transaction IDs listed in the case header, indicating related cases for the same Screened Entity. Statuses:\n- In Progress = your assigned case\n- Open = also assigned to you, work individually\n- Pending = DO NOT action\n\nKey rule: Each linked case must be worked independently — full notes (Case Overview, Research, Summary) on each case. When actioning, confirm you are selecting the correct case(s).",tags:["linked cases","multiple tids","in progress","open","pending","related cases","transaction id"]},
 {id:"d-romanized",cat:"glossary",title:"Romanized Name",body:"A name converted from non-Latin characters into Latin (Roman) alphabet characters. Example: the Chinese name '张伟' romanized to 'Zhang Wei.' Both the romanized version AND the native script version must be reviewed when comparing names — a match in either form counts.",tags:["romanized","roman alphabet","latin characters","transliteration","name comparison","non-english","native script"]},
 {id:"d-native-script",cat:"glossary",title:"Native Script",body:"The original non-Latin character system used for a name — e.g., Arabic (العربية), Chinese (中文), Russian Cyrillic (Кириллица), Korean Hangul (한글). When comparing Screened Entity names to Matched Data, both the native script version and the romanized version must be reviewed. A match in either form qualifies.",tags:["native script","arabic","chinese","cyrillic","korean","non-latin","transliteration","name comparison"]},
-{id:"d-ekata",cat:"glossary",title:"Ekata",body:"A compliance research tool (https://app.ekata.com/search) containing public records, IP address data, and digital identity information. Accessed in CMS by clicking the SILPH icon next to the Screened Entity name — data auto-fills from the case.\n\nProgram Beta requirement: Always capture the IP Location from Ekata and include it in your Case Overview notation. The IP address shows the geographic location of the device used during enrollment.",tags:["ekata","tool","ip address","digital identity","public records","silph","wwdr","ip location","research"]},
+{id:"d-ekata",cat:"glossary",title:"Ekata",body:"A compliance research tool (https://app.ekata.com/search) containing public records, IP address data, and digital identity information. Accessed in CMS by clicking the SILPH icon next to the Screened Entity name — data auto-fills from the case.\n\nDeveloper Program requirement: Always capture the IP Location from Ekata and include it in your Case Overview notation. The IP address shows the geographic location of the device used during enrollment.",tags:["ekata","tool","ip address","digital identity","public records","silph","wwdr","ip location","research"]},
 {id:"d-silph",cat:"glossary",title:"SILPH Icon",body:"The clickable icon in CMS located next to the Screened Entity name. Clicking it automatically opens Ekata with the case data pre-filled. The fastest way to launch Ekata research from within a case — no manual entry needed.",tags:["silph","ekata","icon","hcm","auto-fill","launch","tool"]},
-{id:"d-gesc",cat:"glossary",title:"GESC — Global Economic Sanctions Compliance",body:"Referenced in Program Gamma guidance as 'Escalate per GESC guidance' — the notation used when no evidence of a company's existence can be found. GESC is Apple's internal Global Economic Sanctions Compliance program. The notation 'DECISION: Escalate per GESC guidance | RECOMMENDATION: Further review needed' is the approved format for this specific scenario.",tags:["gesc","global economic sanctions compliance","escalate per gesc","idms","apple internal","no evidence","company"]},
+{id:"d-gesc",cat:"glossary",title:"GESC — Global Economic Sanctions Compliance",body:"Referenced in Digital ID Program guidance as 'Escalate per GESC guidance' — the notation used when no evidence of a company's existence can be found. GESC is Apple's internal Global Economic Sanctions Compliance program. The notation 'DECISION: Escalate per GESC guidance | RECOMMENDATION: Further review needed' is the approved format for this specific scenario.",tags:["gesc","global economic sanctions compliance","escalate per gesc","idms","apple internal","no evidence","company"]},
 {id:"d-batch-vs-rt",cat:"glossary",title:"Batch Screening vs. Real-Time (RT) Screening",body:"Two types of screening events:\n\nReal-Time (RT): Triggered immediately when a customer takes an action. Examples: rt_user_invitation, enrollment_pre_check, rt_agreement. Cases created instantly at point of action.\n\nBatch: Triggered on a schedule (nightly or periodic) for groups of entities. Examples: batch_user, batch_vendor_master, batch_type_a_registrant, batch_type_b_registrant. These run automatically and generate cases in bulk.\n\nBatch events that auto-generate from prior cases append a suffix: _1, _2, _3 to the TID.",tags:["batch screening","real-time screening","rt","batch","nightly","scheduled","event type","batch_type_a_registrant"]},
 {id:"d-typinator",cat:"glossary",title:"Typinator",body:"A macOS productivity tool that expands keyboard shortcuts into full notation templates. All approved case note templates — Case Overview, Screened Entity Research, Summary & Decision, Direct Escalation, Pending Case Review — are available as Typinator snippets.\n\nURL: https://istweb.vilecorp.com/scv/en/typinator\n\nAll templates are also available via the built-in CMS User Note feature.",tags:["typinator","templates","keyboard shortcuts","snippets","notation","productivity","macos","hcm user note"]},
 {id:"d-iso",cat:"glossary",title:"ISO Country Code",body:"The standardized 3-character country abbreviation used when entering Country of Birth in CMS fields. Always use the 3-digit format — not country names or 2-digit codes.\n\nCommon examples:\nUSA · GBR · DEU · FRA · CHN · JPN · BRA · IND\nSanctioned: IRN (Iran) · CUB (Cuba) · PRK (North Korea)\nUkrainian: UKR (Ukraine)\n\nThe ISO code is typically visible in the Screened Entity Location field and System Notes.",tags:["iso","country code","3-digit","3-character","hcm fields","country of birth","format","irn","cub","prk"]},
 {id:"d-binocs",cat:"glossary",title:"Binocs — Related Case Icons",body:"Informal name for the related case icons that appear in CMS next to data fields matching information from previous cases. The number in the icon = how many previous cases share that data point. The color indicates previous actions (cleared, rejected, etc.).\n\nClick a binoc to open a drilldown of related case history — review previous actions before working the current case. Useful for spotting patterns, prior escalations, or previously submitted PII.",tags:["binocs","related cases","case icons","drilldown","previous cases","hcm","case history","icon"]},
 {id:"d-2025-ci",cat:"glossary",title:"2025 CI Onboarding Pending Case Review (Required Note)",body:"The mandatory first notation on every pending case. Must appear before any other content. Automatically populated by a Typinator snippet.\n\nFull text: '2025 CI ONBOARDING PENDING CASE REVIEW'\n\nThis note identifies the case as reviewed during the 2025 Compliance Investigations onboarding pending case initiative and must never be omitted, even for direct escalation / escalated hold scenarios.",tags:["2025 CI onboarding","pending case review","typinator","mandatory note","first note","required"]},
 {id:"d-t2-note-format",cat:"glossary",title:"T2 Escalation Required (Note Format)",body:"The standard notation used when directly escalating a case. Must include the specific reason.\n\nFormat: 'T2 Escalation Required: [reason]'\n\nFor Invalid or Expired PII — always add specific context:\n'T2 Escalation Required: Invalid PII - ID is too blurry to read'\n'T2 Escalation Required: Expired PII - Passport expired 2024'\n\nAvailable reasons are in the CMS User Note dropdown and via Typinator text expansion tool.",tags:["t2 escalation required","notation format","direct escalation","invalid pii","expired pii","note","typinator","hcm user note"]},
-{id:"d-pii-portal",cat:"glossary",title:"PII Upload Portal (Program Gamma)",body:"The secure link sent to Program Gamma customers when their case is suspended, allowing them to upload identity verification documents (passport or national ID).\n\nKey facts:\n- Active for 14 days (matching the PCD)\n- Deactivates after the image is saved (customer cannot re-upload)\n- Only reactivated when a case is REJECTED — not when suspended\n\nThis is why double-suspending is harmful: the notification fires but the customer's link no longer works, creating a poor experience.",tags:["pii upload portal","idms","upload link","14 days","pcd","suspend","reject","reactivated","double suspend","customer experience"]},
+{id:"d-pii-portal",cat:"glossary",title:"PII Upload Portal (Digital ID Program)",body:"The secure link sent to Digital ID Program customers when their case is suspended, allowing them to upload identity verification documents (passport or national ID).\n\nKey facts:\n- Active for 14 days (matching the PCD)\n- Deactivates after the image is saved (customer cannot re-upload)\n- Only reactivated when a case is REJECTED — not when suspended\n\nThis is why double-suspending is harmful: the notification fires but the customer's link no longer works, creating a poor experience.",tags:["pii upload portal","idms","upload link","14 days","pcd","suspend","reject","reactivated","double suspend","customer experience"]},
 {id:"d-ofac-violation",cat:"glossary",title:"OFAC Violation",body:"The legal and financial consequence of doing business with a sanctioned entity. OFAC violations result in fines and publication (i.e., Apple's name appears on public enforcement actions).\n\nThis is the underlying reason Apple conducts sanctions screening — every case review is part of Apple's legal obligation to avoid OFAC violations under U.S. and international sanctions law.",tags:["ofac violation","fines","publication","legal consequence","sanctions screening","compliance obligation","why we screen"]},
 {id:"d-25-hits",cat:"glossary",title:"25+ Matched Data Hits",body:"When a case has more than 25 Matched Data Hits, CMS stops displaying information for any hits beyond 25. This is a system limitation.\n\nProcedure for live cases:\n1. Complete Case Overview normally\n2. Write Summary notes for hits 1–25 only\n3. Add note: 'Escalation Required: 25+ Matched Data Hits'\n4. Escalate → Unable to Waive Compliance Concerns\n\nFor pending cases: skip entirely — no notes required.",tags:["25+ matched data hits","hcm limit","system limitation","escalation required","unable to waive","pending cases"]},
 
 // ── ORIGINALS (source docs) ──────────────────────────────────────
-{id:"orig-cp002",cat:"amp",docType:"original",title:"CP002 — Program Alpha Review Guidelines (Original)",
+{id:"orig-cp002",cat:"amp",docType:"original",title:"SC-02 — Media Platform Review Guidelines (Original)",
 tags:["amp","batch_type_a_registrant","batch_type_b_registrant","rt_agreement","rt_user_invitation","batch_user","pii","escalate","suspend","direct escalation","dba","ownership","linked cases","25+ hits","previously suspended","duns","inclusion term","sanctioned countries","loging in","case overview"],
-body:`SDS Compliance Procedure - CP002 | Updated 5/7/2026 | Source: compliance.vilecorp.com
+body:`Compliance Operations Procedure - SC-02 | Updated 5/7/2026 | Source: risktraininghub.io/reference
 
 CLIENTS & EVENTS
-amp-itc-users: rt_user_invitation (new individual team members), batch_user (same + Program Beta developers)
+amp-itc-users: rt_user_invitation (new individual team members), batch_user (same + Developer Program developers)
 amp-itc-atb: rt_agreement, rt_bank_account_holder, batch_bank_account_holder, batch_vendor_master, batch_type_b_registrant [ALWAYS DIRECT ESCALATE], batch_vendor_extra_info, batch_type_a_registrant
 
 DEFINING CMS NON-REGULATED: Cases screen developer enrollment and digital content. Doing business with a sanctioned entity = OFAC violation (fines + publication).
@@ -1027,9 +1027,9 @@ CASE CREATED BY BUSINESS: Find core case (TID prefix). Use its Matched Data. Act
 DBA SCENARIOS: "[Name] ; [DBA]" — screened portion only. PII matches non-screened name → direct escalate Invalid PII.
 OWNERSHIP PERCENTAGES: < 100% = escalate. NOT direct — full review first.`},
 
-{id:"orig-cp001",cat:"wwdr",docType:"original",title:"CP001 — Program Beta Review Guidelines (Original)",
+{id:"orig-cp001",cat:"wwdr",docType:"original",title:"SC-01 — Developer Program Review Guidelines (Original)",
 tags:["wwdr","enrollment_pre_check","rt_enrollment_final","ip location","ekata","pii","direct escalation","dba","ownership","25+ hits","linked cases"],
-body:`SDS Compliance Procedure - CP001 | Updated 5/7/2026 | Source: compliance.vilecorp.com
+body:`Compliance Operations Procedure - SC-01 | Updated 5/7/2026 | Source: risktraininghub.io/reference
 
 EVENTS: enrollment_pre_check (individual level, first screening) | rt_enrollment_final (entity level, completes enrollment)
 
@@ -1040,7 +1040,7 @@ CASE OVERVIEW: Capture IP Location from Ekata (SILPH icon). Template: Screening 
 REVIEW PII — Individuals: City of Birth, Country of Birth (3-digit ISO), DOB (YYYY-MM-DD), National ID Number, Passport Number. All encrypt on save, tab to confirm.
 REVIEW PII — Companies: Manual note (date of registration + company ID). No CMS fields.
 
-SUMMARY & DECISION: Compare entity types, names, DOBs, dates of registration, locations. Clear OR Escalate (NO suspend for Program Beta). Decision note required. If escalating: add recommendation.
+SUMMARY & DECISION: Compare entity types, names, DOBs, dates of registration, locations. Clear OR Escalate (NO suspend for Developer Program). Decision note required. If escalating: add recommendation.
 
 ACTIONING: Resolve → Clear (Cleared by DOB / Not a sanction match) | Escalate (Potential sanction match / Invalid Customer Submitted Info / Unable to waive compliance concerns). Multiple hits: any escalation = entire case escalates.
 
@@ -1052,9 +1052,9 @@ CASE CREATED BY BUSINESS: Find core case (TID prefix). Use its Matched Data.
 DBA SCENARIOS: Screened portion only. Non-screened PII match → direct escalate.
 OWNERSHIP PERCENTAGES: < 100% → escalate. Full review first.`},
 
-{id:"orig-cp000",cat:"idms",docType:"original",title:"CP000 — Program Gamma Review Guidelines (Original)",
+{id:"orig-cp000",cat:"idms",docType:"original",title:"SC-00 — Digital ID Program Review Guidelines (Original)",
 tags:["idms","lifecycle","suspend","pcd","14 days","year of birth","yob","2/3 name match","mz account age","vessel","ship","aircraft","inclusion term","double suspend","direct escalation","gesc","previously submitted pii"],
-body:`SDS Compliance Procedure - CP000 | Updated 5/7/2026 | Source: compliance.vilecorp.com
+body:`Compliance Operations Procedure - SC-00 | Updated 5/7/2026 | Source: risktraininghub.io/reference
 
 OVERVIEW: Screens Apple IDs when customers in 35 high-risk countries add payment to Apple Wallet. True match = account deactivated.
 
@@ -1074,7 +1074,7 @@ RESEARCH — Invalid name: MZ lookup for full valid name. Valid found: entity ty
 RESEARCH — Companies: Verify existence (LexisNexis/DNB/Google). Can clear → CLEAR. Full name match → ESCALATE. No evidence → ESCALATE per GESC guidance.
 RESEARCH — Without PII: US address → LexisNexis first. Non-US → MZ + iCloud Support. SILPH icon → Ekata. Template: SCREENED ENTITY RESEARCH | DATE OF BIRTH | LEXID | NAMES | LOCATIONS | EMAILS | PHONE NUMBERS. iCloud screenshots NOT permitted.
 RESEARCH — Matched Data US address + no DOB: Search Matched Data in LexisNexis. If DOB found → reliable datapoint.
-RESEARCH — With PII: Validate against Acceptable PII Criteria. Prior PII only usable if prior case was also Program Gamma.
+RESEARCH — With PII: Validate against Acceptable PII Criteria. Prior PII only usable if prior case was also Digital ID Program.
 
 SUMMARY & DECISION: Compare entity types, names, DOBs, locations. If only datapoint left is deceased/sanctioning date → ESCALATE. Clear / Suspend (PCD 14 days, no PII) / Escalate (PII attached + can't clear).
 
@@ -1084,11 +1084,11 @@ DIRECT ESCALATION: Partial ID | Names Do Not Match | Invalid PII | Unable to tra
 
 CASE CREATED BY BUSINESS: Find core case (TID prefix). If completely different SE name → compare current SE to original Matched Data → clear by name/DOB variance if applicable.`},
 
-{id:"orig-cp003",cat:"pending",docType:"original",title:"CP003 — Pending Case Review Guidelines (Original)",
+{id:"orig-cp003",cat:"pending",docType:"original",title:"SC-03 — Pending Case Review Guidelines (Original)",
 tags:["pending","pending case tracker","quip","escalated hold","gibberish","scripted account","full name match","2/3 name match","load tids","query builder","typinator","2025 CI onboarding","anthony fern","dba","previous pii"],
-body:`SDS Compliance Procedure - CP003 | Updated 12/22/25 | Source: compliance.vilecorp.com
+body:`Compliance Operations Procedure - SC-03 | Updated 12/22/25 | Source: risktraininghub.io/reference
 
-OVERVIEW: Program Alpha + Program Beta non-regulated cases start Pending (no PII). Reviewed when Open queue is done or when instructed.
+OVERVIEW: Media Platform + Developer Program non-regulated cases start Pending (no PII). Reviewed when Open queue is done or when instructed.
 
 TRACKER: Quip Backlog Tracker spreadsheet (previous 7 days). Find your name. Mark X when done. DO NOT DOWNLOAD — edit in-browser only.
 
@@ -1104,7 +1104,7 @@ Example: SE: Anthony Fern vs MD: Anthony Fernandez → CLEAR by name variance.
 Can't clear by name variance → full research: Tools Path of Progression, linked case notes, prior PII ("PII found on TID: ___"), advanced research.
 DOB clear without customer PII → "Not a Sanction Match" (NOT "Cleared by DOB").
 
-DBA CASES: Per Program Beta Review Guidelines. Prior PII doesn't match screened name → "PII Name Does Not Match."
+DBA CASES: Per Developer Program Review Guidelines. Prior PII doesn't match screened name → "PII Name Does Not Match."
 
 ADVANCED RESEARCH:
 Individuals US: ID Verification Tool, Due Diligence Person Report
@@ -1127,16 +1127,16 @@ REASONS TO ESCALATED HOLD (non-direct): Insufficient info | Ownership reject | L
 
 TYPINATOR: Case Overview snippet | Direct Escalation snippet (expands to: 2025 CI ONBOARDING PENDING CASE REVIEW + reason + ESCALATED HOLD)`},
 
-{id:"orig-cr005",cat:"ref",docType:"original",title:"CR005 — Compliance Terms and Notations (Original)",
+{id:"orig-cr005",cat:"ref",docType:"original",title:"RC-05 — Compliance Terms and Notations (Original)",
 tags:["terms","notation","templates","case overview template","research template","summary template","glossary","typinator","screenshot naming","translate","direct escalation note"],
-body:`SDS Compliance Reference - CR005 | Updated 5/7/2026 | Source: compliance.vilecorp.com
+body:`Compliance Operations Reference - RC-05 | Updated 5/7/2026 | Source: risktraininghub.io/reference
 
 NOTATION PRINCIPLE: Document to support a decision that can withstand audit. Use approved templates (Typinator or CMS User Note). Always attach screenshots. Translate all non-English content.
 
 Screenshot naming: tool name (LexisNexis.png, MZ.png, Ekata.png, ACM.png)
 
 CASE OVERVIEW TEMPLATE:
-Screening Date: | Client & Event: | Entity Type: | Screened Entity Name: [Original/English if non-English] | Screened Entity Location: | **IP Location: [Program Beta only] | **Screenshot: EKATA.PNG [Program Beta only] | PII attached:
+Screening Date: | Client & Event: | Entity Type: | Screened Entity Name: [Original/English if non-English] | Screened Entity Location: | **IP Location: [Developer Program only] | **Screenshot: EKATA.PNG [Developer Program only] | PII attached:
 
 SCREENED ENTITY RESEARCH TEMPLATE:
 SCREENED ENTITY RESEARCH | Date of Birth: | LexID: | NAMES: | LOCATION: | EMAILS: | PHONE NUMBERS: | Screenshots:
@@ -1151,19 +1151,19 @@ DIRECT ESCALATION NOTE: "T2 Escalation Required: [reason]" [+ specific context f
 
 TIPS: Open-ended notes must match guiding question answers. Notes self-contained — reviewer shouldn't need attachments to understand decision. For Invalid/Expired PII reason: always add specifics.
 
-INDIVIDUAL EXProgram AlphaLE (4 hits): Hit 1 → partial name + DOB mismatch + location mismatch → Clear (name, DOB, location variance). Hit 4 → full name match + DOB unknown + location unknown → Escalate (no variance). RECOMMENDATION: locate Matched Data DOB.
-BUSINESS EXProgram AlphaLE: American Broadcasting Company ; ABC vs Arab Banking Corporation ; ABC → partial name match + Bahrain vs USA → Clear (name and location variance).`},
+INDIVIDUAL EXMedia PlatformLE (4 hits): Hit 1 → partial name + DOB mismatch + location mismatch → Clear (name, DOB, location variance). Hit 4 → full name match + DOB unknown + location unknown → Escalate (no variance). RECOMMENDATION: locate Matched Data DOB.
+BUSINESS EXMedia PlatformLE: American Broadcasting Company ; ABC vs Arab Banking Corporation ; ABC → partial name match + Bahrain vs USA → Clear (name and location variance).`},
 
-{id:"orig-cr003",cat:"ref",docType:"original",title:"CR003 — Compliance Review Model (Original)",
+{id:"orig-cr003",cat:"ref",docType:"original",title:"RC-03 — Compliance Review Model (Original)",
 tags:["review model","4 steps","case overview","research","summary","action","clear","escalate","suspend","reject","pcd","direct escalation","pii","entity type","tools path of progression","lexisnexis"],
-body:`SDS Compliance Reference - CR003 | Updated 4/22/26 | Source: compliance.vilecorp.com
+body:`Compliance Operations Reference - RC-03 | Updated 4/22/26 | Source: risktraininghub.io/reference
 
 THE 4 STEPS: 1. Complete Case Overview → 2. Research and Document → 3. Summary and Decision → 4. Action
 
 STEP 1 — CASE OVERVIEW: What type? Why under review?
 
 STEP 2 — RESEARCH WITHOUT PII:
-Shortcuts (check first): Entity type mismatch → clear. DOB found in LexisNexis differs from MD DOB → clear, stop. Program Gamma: YOB in CMS panel differs from MD YOB → clear, no external research.
+Shortcuts (check first): Entity type mismatch → clear. DOB found in LexisNexis differs from MD DOB → clear, stop. Digital ID Program: YOB in CMS panel differs from MD YOB → clear, no external research.
 Full research: Tools Path of Progression (LexisNexis → MZ → ASO ACM → Ekata → Secondary).
 
 STEP 2 — RESEARCH WITH PII: Validate PII. Individuals: fill City of Birth, Country of Birth, DOB, ID/Passport. Companies: manual note only.
@@ -1177,19 +1177,19 @@ STEP 3 — SUMMARY & DECISION: One block per hit. Open-ended notes must match gu
 STEP 4 — ACTION:
 CLEAR: "Cleared by DOB" (DOB used in decision) | "Not a Sanction Match" (all other).
 ESCALATE when: direct escalation criterion | insufficient data | needs T2/3 tools | potential true match. Reason codes: "Potential sanction match" | "Invalid Customer Submitted Info" | "Unable to waive compliance concerns."
-SUSPEND — Program Gamma (PCD 14 days): no PII + can't clear. NOT if PII already attached → escalate.
-SUSPEND — Program Alpha batch_type_a_registrant (PCD 30 days): DUNS returns different name | individual name | full match + country variance.
-REJECT (T2 only, Program Gamma only): "Invalid Customer Submitted Info" | "Sanctioned Country/Region." All other codes: T3 only.
+SUSPEND — Digital ID Program (PCD 14 days): no PII + can't clear. NOT if PII already attached → escalate.
+SUSPEND — Media Platform batch_type_a_registrant (PCD 30 days): DUNS returns different name | individual name | full match + country variance.
+REJECT (T2 only, Digital ID Program only): "Invalid Customer Submitted Info" | "Sanctioned Country/Region." All other codes: T3 only.
 If actioned in error: notify manager immediately (TID, date, what happened, intended action).`},
 
-{id:"orig-cp007",cat:"ref",docType:"original",title:"CP007 — Match Determination & Acceptable PII Criteria (Original)",
+{id:"orig-cp007",cat:"ref",docType:"original",title:"SC-07 — Match Determination & Acceptable PII Criteria (Original)",
 tags:["match determination","entity type","full match","partial match","false positive","date of birth","location","2/3 name match","close name match","china","acceptable pii","expired pii","individuals","companies","bank statement","ein"],
-body:`SDS Compliance Reference - CP007 | Updated 04/21/26 | Source: compliance.vilecorp.com
+body:`Compliance Operations Reference - SC-07 | Updated 04/21/26 | Source: risktraininghub.io/reference
 
 MATCH TYPES:
 Entity Type: Match (both same type) | Mismatch (different types e.g. individual vs company/vessel) → always clear.
 Name: Full Match (entire name) | Partial Match (part matches or AKA) | False Positive (nothing matches). Check Primary Name AND all AKAs. Review Romanized AND native script.
-2/3 Name Match (Program Gamma no PII only): FULL name matches 2 of 3 components. Examples: "John Smith" vs "John Jacob Smith" = 2/3. "John Allen Smith" vs "John Jacob Smith" = regular partial (can clear).
+2/3 Name Match (Digital ID Program no PII only): FULL name matches 2 of 3 components. Examples: "John Smith" vs "John Jacob Smith" = 2/3. "John Allen Smith" vs "John Jacob Smith" = regular partial (can clear).
 Close Name Match (companies): Brand name same, legal suffix differs. LLC=GmbH=OOO. Examples: Biotech vs Biotech LLC. Classified as partial match.
 DOB: Match | Mismatch (any variance) | Unknown.
 Location: Match (full address) | Mismatch (any variance in country/state/city/province) | Unknown.
@@ -1216,9 +1216,9 @@ ACCEPTABLE PII — COMPANIES: Official doc with issuing authority. Name matches 
 
 ACCEPTABLE PII — INDIVIDUALS: Name on ID matches SE (at least 1 first + 1 last; single line = any 2+ combo; comma = line break; no surname OK if SE also has none). Expired >1 year → ESCALATE. No DOB → ESCALATE. ID number: enter if visible; omit if unreadable if name+DOB clear. Modified/illegible → ESCALATE.`},
 
-{id:"orig-cr004",cat:"ref",docType:"original",title:"CR004 — Compliance Tools (Original)",
+{id:"orig-cr004",cat:"ref",docType:"original",title:"RC-04 — Compliance Tools (Original)",
 tags:["lexisnexis","mz support","aso acm","ekata","typinator","icloud support","dun bradstreet","dnb","path of progression","tools","research","no pii","silph","find a person"],
-body:`SDS Compliance Reference - CR004 | Updated 03/31/26 | Source: compliance.vilecorp.com
+body:`Compliance Operations Reference - RC-04 | Updated 03/31/26 | Source: risktraininghub.io/reference
 
 PATH OF PROGRESSION (no PII only): 1. LexisNexis → 2. MZ Support → 3. ASO ACM → 4. Ekata → 5. Secondary Tools
 
@@ -1229,14 +1229,14 @@ Tip: Matched Data hit has US address + no DOB → search the Matched Data in Lex
 
 MZ SUPPORT | https://mzsupport.vilecorp.com/WebObjects/MZSupport.woa
 Search DSID/email/phone → Display Full Address → Family Sharing → Billing Infos link → document new names, locations, emails, phones → screenshot.
-Program Gamma account age: >30 days = reliable location.
+Digital ID Program account age: >30 days = reliable location.
 
 ASO ACM | https://acm-nonregulated.g.vilecorp.com/ui-service/home/lobs/AOS
 CMS Classic status → ASO LOB → magnifying glass → Advanced Search → Query Builder: add DSID/email/phone → document → screenshot.
 
 EKATA | https://app.ekata.com/search
 Click SILPH icon in CMS (by SE name) → auto-fills → document DOB, names, locations, phones → screenshot.
-Program Beta: always capture IP Location + screenshot for Case Overview.
+Developer Program: always capture IP Location + screenshot for Case Overview.
 
 TYPINATOR | https://istweb.vilecorp.com/scv/en/typinator — keyboard shortcuts for approved templates.
 
@@ -1247,11 +1247,11 @@ Identity tab: address/phone/Apple ID. Security tab: 2FA devices + Enrollment Dev
 D&B BUSINESS DIRECTORY | https://www.dnb.com/business-directory.html
 T1 company research. DUNS numbers + company names. If DUNS returns different company → suspend (PCD 30 days).`},
 
-{id:"orig-cr002",cat:"ref",docType:"original",title:"CR002 — CMS User Guide (Original)",
+{id:"orig-cr002",cat:"ref",docType:"original",title:"RC-02 — CMS User Guide (Original)",
 tags:["hcm","hermes","dashboard","case header","case details","resolve","sla","binocs","related cases","attach file","logging notes","availability status","hcm classic","ready","not ready"],
-body:`SDS Compliance Reference - CR002 | Updated 4/24/25 | Source: compliance.vilecorp.com
+body:`Compliance Operations Reference - RC-02 | Updated 4/24/25 | Source: risktraininghub.io/reference
 
-ACCESS: Non-Regulated (Program Alpha/Program Beta/Program Gamma): https://acm-nonregulated.g.vilecorp.com | Regulated (API): https://acm-regulated.g.vilecorp.com | AppleConnect login + 2-step. Select Sanctions LOB.
+ACCESS: Non-Regulated (Media Platform/Developer Program/Digital ID Program): https://acm-nonregulated.g.vilecorp.com | Regulated (API): https://acm-regulated.g.vilecorp.com | AppleConnect login + 2-step. Select Sanctions LOB.
 
 STATUS OPTIONS: Ready (10-sec timer → auto-assign; Next Case skips) | CMS Classic (manual Next Case only) | Not Ready (default, no assignment).
 
@@ -1272,9 +1272,9 @@ RESOLVE: Click to action. Popup shows only actions available to your tier.
 
 ADVANCED SEARCH: Magnifying glass → Advanced Search or Recent/Favorite Searches. Multiple TIDs: separate with commas.`},
 
-{id:"orig-cr0007",cat:"ref",docType:"original",title:"CR0007 — Decisioning Matrix (Original)",
+{id:"orig-cr0007",cat:"ref",docType:"original",title:"RC-007 — Decisioning Matrix (Original)",
 tags:["decisioning matrix","with pii","idms no pii","companies","batch free developer","clear","escalate","suspend","2/3 name match","pcd","entity type mismatch","full address match"],
-body:`SDS Compliance Reference - CR0007 | Updated 4/13/26 | Source: compliance.vilecorp.com
+body:`Compliance Operations Reference - RC-007 | Updated 4/13/26 | Source: risktraininghub.io/reference
 Note: If unsure after reviewing this document → escalate.
 Entity type mismatch → CLEAR in all matrices.
 
@@ -1316,9 +1316,9 @@ Company + Docs Submitted + Can clear → CLEAR
 Company + Docs Submitted + Cannot clear → ESCALATE`},
 
 // ── TECH EDITS ───────────────────────────────────────────────────
-{id:"edit-cp002",cat:"amp",docType:"edit",title:"CP002 — Program Alpha Review Guidelines (Tech Edit)",
+{id:"edit-cp002",cat:"amp",docType:"edit",title:"SC-02 — Media Platform Review Guidelines (Tech Edit)",
 tags:["amp","batch_type_a_registrant","batch_type_b_registrant","rt_agreement","pii","escalate","suspend","direct escalation","dba","ownership","quick reference","reason codes","steps"],
-body:`Program Alpha Review Guidelines | Tech Edit | May 2026
+body:`Media Platform Review Guidelines | Tech Edit | May 2026
 
 QUICK REFERENCE
 CMS URL: https://acm-nonregulated.g.vilecorp.com
@@ -1330,7 +1330,7 @@ Escalate — Invalid Customer Submitted Info: invalid/unacceptable PII.
 Escalate — Unable to Waive Compliance Concerns: all other escalation reasons.
 
 CLIENTS & EVENTS
-amp-itc-users: rt_user_invitation (new team members) | batch_user (same + Program Beta developers)
+amp-itc-users: rt_user_invitation (new team members) | batch_user (same + Developer Program developers)
 amp-itc-atb: rt_agreement | rt_bank_account_holder | batch_bank_account_holder | batch_vendor_master | batch_type_b_registrant [ALWAYS DIRECT ESCALATE — no overview needed] | batch_vendor_extra_info | batch_type_a_registrant
 
 STEP 1 — LOG IN: https://acm-nonregulated.g.vilecorp.com → Ready / CMS Classic / Not Ready.
@@ -1360,7 +1360,7 @@ Previously suspended + PCD expired → Escalate only ("Previously suspended - no
 ⚠️ Use DNB.com / Public Sources before LexisNexis. If Screened Entity has Apple Inc. affiliation → escalate.
 
 Individual names (batch_type_a_registrant): Name = person → Suspend (30 days). PII uploaded + can't clear → Escalate. Previously suspended + PCD expired → Escalate only.
-Prior PII: only usable if prior case was also Program Alpha. Screenshot/attach + note "PII found on TID: ___".
+Prior PII: only usable if prior case was also Media Platform. Screenshot/attach + note "PII found on TID: ___".
 End of day: Delete all downloaded files. Empty Trash.
 
 STEP 5 — SUMMARY (one block per hit)
@@ -1390,14 +1390,14 @@ DBA: Screened portion only. Non-screened PII match → direct escalate.
 CASE CREATED BY BUSINESS: TID prefix → core case → use its Matched Data.
 OWNERSHIP: < 100% → escalate. Full review first.`},
 
-{id:"edit-cp001",cat:"wwdr",docType:"edit",title:"CP001 — Program Beta Review Guidelines (Tech Edit)",
+{id:"edit-cp001",cat:"wwdr",docType:"edit",title:"SC-01 — Developer Program Review Guidelines (Tech Edit)",
 tags:["wwdr","enrollment_pre_check","rt_enrollment_final","ip location","ekata","pii","direct escalation","dba","ownership","no suspend","quick reference"],
-body:`Program Beta Review Guidelines | Tech Edit | May 2026
+body:`Developer Program Review Guidelines | Tech Edit | May 2026
 
 QUICK REFERENCE
 CMS URL: https://acm-nonregulated.g.vilecorp.com
-Available actions: Clear or Escalate ONLY — no Suspend for Program Beta.
-IP Location + Ekata screenshot: REQUIRED for all Program Beta cases (capture in Case Overview).
+Available actions: Clear or Escalate ONLY — no Suspend for Developer Program.
+IP Location + Ekata screenshot: REQUIRED for all Developer Program cases (capture in Case Overview).
 
 EVENTS
 enrollment_pre_check — individual level, first screening.
@@ -1406,7 +1406,7 @@ rt_enrollment_final — entity level, completes enrollment if cleared.
 STEP 1 — LOG IN: https://acm-nonregulated.g.vilecorp.com → set status.
 
 STEP 2 — CASE OVERVIEW
-Screening Date: | Client & Event: [e.g., Program Beta, enrollment_pre_check] | Entity Type: | Screened Entity Name: [translate if non-English] | Screened Entity Location: | IP Location: [from Ekata] | Screenshot: EKATA.PNG | PII attached:
+Screening Date: | Client & Event: [e.g., Developer Program, enrollment_pre_check] | Entity Type: | Screened Entity Name: [translate if non-English] | Screened Entity Location: | IP Location: [from Ekata] | Screenshot: EKATA.PNG | PII attached:
 
 STEP 3 — REVIEW PII AND DOCUMENT
 Individuals: City of Birth (translate non-romanized) | Country of Birth (3-digit ISO) | DOB (YYYY-MM-DD) | National ID Number (encrypts) | Passport Number (encrypts). Tab/click to save.
@@ -1429,9 +1429,9 @@ LINKED CASES: Work individually. No pending actioning.
 DBA: PII matches non-screened name → direct escalate.
 OWNERSHIP: < 100% → escalate. Full review first.`},
 
-{id:"edit-cp000",cat:"idms",docType:"edit",title:"CP000 — Program Gamma Review Guidelines (Tech Edit)",
+{id:"edit-cp000",cat:"idms",docType:"edit",title:"SC-00 — Digital ID Program Review Guidelines (Tech Edit)",
 tags:["idms","lifecycle","suspend","pcd","14 days","year of birth","yob","2/3 name match","vessel","double suspend","direct escalation","quick reference","research shortcuts"],
-body:`Program Gamma Review Guidelines | Tech Edit | May 2026
+body:`Digital ID Program Review Guidelines | Tech Edit | May 2026
 
 QUICK REFERENCE
 CMS URL: https://acm-nonregulated.g.vilecorp.com | Suspend PCD: 14 days
@@ -1469,7 +1469,7 @@ US address → LexisNexis first (reliable DOB). Non-US → MZ + iCloud Support. 
 Template: SCREENED ENTITY RESEARCH | DATE OF BIRTH | LEXID | NAMES | LOCATIONS | EMAILS | PHONE NUMBERS | Screenshots
 ⚠️ No iCloud screenshots. Matched Data US address + no DOB → search Matched Data in LexisNexis.
 
-PII available: Validate against Acceptable PII Criteria. Prior PII: Program Gamma cases only.
+PII available: Validate against Acceptable PII Criteria. Prior PII: Digital ID Program cases only.
 
 STEP 4 — SUMMARY: One block per hit. Exact variances. If only remaining datapoint is deceased/sanctioning date → ESCALATE.
 
@@ -1482,7 +1482,7 @@ Escalate: "Potential sanction match" | "Invalid Customer Submitted Info" | "Unab
 DIRECT ESCALATION: Partial ID | Names Do Not Match | Invalid PII | Unable to translate ID | Sanctioned Country | Inclusion Term (company).
 CASE CREATED BY BUSINESS: TID prefix → core case. If completely different SE name → compare to original Matched Data.`},
 
-{id:"edit-cp003",cat:"pending",docType:"edit",title:"CP003 — Pending Case Review Guidelines (Tech Edit)",
+{id:"edit-cp003",cat:"pending",docType:"edit",title:"SC-03 — Pending Case Review Guidelines (Tech Edit)",
 tags:["pending","pending case tracker","quip","escalated hold","gibberish","full name match","2/3 name match","typinator","2025 CI onboarding","decision tree","research tools"],
 body:`Pending Case Review | Tech Edit | December 2025
 
@@ -1536,7 +1536,7 @@ TYPINATOR SNIPPETS:
 Case Overview → expands to: 2025 CI ONBOARDING PENDING CASE REVIEW + SCREENED ENTITY DATA fields
 Direct Escalation → expands to: 2025 CI ONBOARDING PENDING CASE REVIEW + selected reason + ESCALATED HOLD`},
 
-{id:"edit-cr005",cat:"ref",docType:"edit",title:"CR005 — Compliance Terms and Notations (Tech Edit)",
+{id:"edit-cr005",cat:"ref",docType:"edit",title:"RC-05 — Compliance Terms and Notations (Tech Edit)",
 tags:["terms","notation","templates","case overview","research template","summary template","screenshots","translate","direct escalation note","tips"],
 body:`Compliance Terms and Notations | Tech Edit | May 2026
 
@@ -1557,8 +1557,8 @@ Client & Event: [Case Header]
 Entity Type: [Screened Entity — Entity Label]
 Screened Entity Name: [as shown; add English translation: Original / English Translation]
 Screened Entity Location: [city, state, country; translate if non-English]
-IP Location: [Program Beta cases only — from Ekata]
-Screenshot: [EKATA.PNG — Program Beta only]
+IP Location: [Developer Program cases only — from Ekata]
+Screenshot: [EKATA.PNG — Developer Program only]
 PII attached: [PII is attached and has been reviewed / No PII attached]
 
 TEMPLATE 2 — SCREENED ENTITY RESEARCH
@@ -1592,7 +1592,7 @@ TEMPLATE 4 — DIRECT ESCALATION NOTE
 T2 Escalation Required: [reason]
 [+ specifics if reason involves PII]
 
-FULL EXProgram AlphaLES
+FULL EXMedia PlatformLES
 Individual (full name match, escalation):
 Is entity type a match? Match | Is name a match? Full Match | DOB? Unknown | Location? Unknown
 SUMMARY: SE Johnny Appleseed is a full match to MD Johnny Appleseed. No DOB available for MD. Both link to USA — not enough to establish location variance.
@@ -1605,7 +1605,7 @@ Is entity type a match? Match | Is name a match? Partial Match | Date of registr
 SUMMARY: Partial name match. SE: American Broadcasting Company ; ABC. MD: Arab Banking Corporation ; ABC. Locations differ — SE: USA, MD: Bahrain.
 DECISION: Clear based on name and location variance.`},
 
-{id:"edit-cr003",cat:"ref",docType:"edit",title:"CR003 — Compliance Review Model (Tech Edit)",
+{id:"edit-cr003",cat:"ref",docType:"edit",title:"RC-03 — Compliance Review Model (Tech Edit)",
 tags:["review model","4 steps","case overview","research","summary","action","clear","escalate","suspend","reject","shortcuts","entity type","pii","tools path"],
 body:`Compliance Review Model | Tech Edit | April 2026
 
@@ -1615,7 +1615,7 @@ THE FOUR STEPS — IN ORDER
 STEP 1 — CASE OVERVIEW
 Ask: What type of case? Why is it under review?
 Capture: Screening Date, Client & Event, Entity Type, SE Name/Location, PII status.
-Program Beta: also capture IP Location + Ekata screenshot.
+Developer Program: also capture IP Location + Ekata screenshot.
 Translate all non-English names and locations.
 
 STEP 2 — RESEARCH & DOCUMENT
@@ -1623,7 +1623,7 @@ STEP 2 — RESEARCH & DOCUMENT
 Without PII — check shortcuts first (stop when you can decide):
 ✓ Entity type mismatch → CLEAR immediately. No tools needed.
 ✓ DOB found in LexisNexis differs from Matched Data DOB → CLEAR, stop research. Document DOB + LexID only.
-✓ Program Gamma only: YOB in CMS Screened Entity panel differs from MD YOB → CLEAR. No external research at all.
+✓ Digital ID Program only: YOB in CMS Screened Entity panel differs from MD YOB → CLEAR. No external research at all.
 None apply → run Tools Path of Progression: LexisNexis → MZ Support → ASO ACM → Ekata → Secondary.
 
 With PII — validate then document:
@@ -1645,12 +1645,12 @@ STEP 4 — ACTION
 CLEAR: "Cleared by DOB" (DOB used) | "Not a Sanction Match" (all other).
 ESCALATE: "Potential sanction match" (full name + location match) | "Invalid Customer Submitted Info" | "Unable to waive compliance concerns."
 Escalate when: direct escalation criterion | insufficient data | needs T2/T3 tools (25+ hits, ownership) | potential true match.
-SUSPEND — Program Gamma (PCD 14 days): no PII + can't clear. Do NOT suspend if PII attached → escalate.
-SUSPEND — Program Alpha batch_type_a_registrant (PCD 30 days): DUNS returns different name | individual name | full match + country variance.
-REJECT — T2 only, Program Gamma only: "Invalid Customer Submitted Info" | "Sanctioned Country/Region." All other codes: T3 only.
+SUSPEND — Digital ID Program (PCD 14 days): no PII + can't clear. Do NOT suspend if PII attached → escalate.
+SUSPEND — Media Platform batch_type_a_registrant (PCD 30 days): DUNS returns different name | individual name | full match + country variance.
+REJECT — T2 only, Digital ID Program only: "Invalid Customer Submitted Info" | "Sanctioned Country/Region." All other codes: T3 only.
 ⚠️ If actioned in error → notify manager immediately (TID, date, what happened, intended action).`},
 
-{id:"edit-cp007",cat:"ref",docType:"edit",title:"CP007 — Match Determination & PII Criteria (Tech Edit)",
+{id:"edit-cp007",cat:"ref",docType:"edit",title:"SC-07 — Match Determination & PII Criteria (Tech Edit)",
 tags:["match determination","entity type","full match","partial match","close name match","china","acceptable pii","individuals","companies","decision table","2/3 name match"],
 body:`Match Determination & Acceptable PII Criteria | Tech Edit | April 2026
 
@@ -1662,7 +1662,7 @@ DOB: Match = exact date. Mismatch = any variance. Unknown = insufficient info.
 Location: Match = full address. Mismatch = any variance (country/state/city). Unknown = insufficient info.
 
 SPECIAL NAME CASES
-2/3 Name Match (Program Gamma without PII only): Full name matches 2 of 3 components. Examples: "John Smith" vs "John Jacob Smith" = 2/3. NOT 2/3: "John Allen Smith" vs "John Jacob Smith" (different middle) = regular partial → can clear.
+2/3 Name Match (Digital ID Program without PII only): Full name matches 2 of 3 components. Examples: "John Smith" vs "John Jacob Smith" = 2/3. NOT 2/3: "John Allen Smith" vs "John Jacob Smith" (different middle) = regular partial → can clear.
 Close Name Match (companies only): Brand name same, legal suffix differs. LLC = GmbH = OOO. Examples: Biotech vs Biotech LLC. Classified as partial match.
 China Exception: Same brand name in different Chinese cities → ESCALATE (different cities don't make it a different company).
 
@@ -1707,7 +1707,7 @@ ACCEPTABLE PII — COMPANIES ✅ / ❌
 ❌ Bank statements — NOT accepted
 ❌ Lists of requested documents — NOT accepted`},
 
-{id:"edit-cr004",cat:"ref",docType:"edit",title:"CR004 — Compliance Tools (Tech Edit)",
+{id:"edit-cr004",cat:"ref",docType:"edit",title:"RC-04 — Compliance Tools (Tech Edit)",
 tags:["lexisnexis","mz support","aso acm","ekata","typinator","icloud support","dun bradstreet","path of progression","silph","find a person","account age","pdfs","end of day"],
 body:`Compliance Tools | Tech Edit | March 2026
 
@@ -1716,7 +1716,7 @@ Only on cases with NO customer-submitted PII or company documentation.
 Stop early when you find a clear datapoint:
 • Entity type mismatch → CLEAR (no tools needed)
 • DOB in LexisNexis ≠ Matched Data DOB → CLEAR, stop research
-• Program Gamma: YOB in CMS panel ≠ Matched Data YOB → CLEAR, no tools at all
+• Digital ID Program: YOB in CMS panel ≠ Matched Data YOB → CLEAR, no tools at all
 
 PATH ORDER: 1. LexisNexis → 2. MZ Support → 3. ASO ACM → 4. Ekata → 5. Secondary
 
@@ -1730,9 +1730,9 @@ Privacy: screenshot ONLY info relevant to the individual.
 Tip: Matched Data has US address but no DOB? Search the Matched Data hit itself in LexisNexis.
 
 MZ Support | https://mzsupport.vilecorp.com/WebObjects/MZSupport.woa
-Has: iTunes/Program Alpha purchases, devices, storefronts, billing info.
+Has: iTunes/Media Platform purchases, devices, storefronts, billing info.
 Search DSID/email/phone → Display Full Address → Family Sharing → Billing Infos link → document + screenshot.
-Account age (Program Gamma): >30 days = reliable location data.
+Account age (Digital ID Program): >30 days = reliable location data.
 
 ASO ACM | https://acm-nonregulated.g.vilecorp.com/ui-service/home/lobs/AOS
 Has: Order history, payment, billing/shipping.
@@ -1741,7 +1741,7 @@ CMS Classic → ASO LOB → 🔍 Advanced Search → Query Builder: add DSID/ema
 Ekata | https://app.ekata.com/search
 Has: Public records, IP address, digital identity.
 Click SILPH icon (next to SE name in CMS) → auto-fills → document DOB, names, locations, phones → screenshot.
-Program Beta: capture IP Location + screenshot for Case Overview.
+Developer Program: capture IP Location + screenshot for Case Overview.
 
 Typinator | https://istweb.vilecorp.com/scv/en/typinator
 Keyboard shortcuts for all approved templates. Also available in CMS User Note feature.
@@ -1761,12 +1761,12 @@ Safari → File → Export as PDF → Attach File in CMS → Upload → Apply.
 LexisNexis: use built-in PDF button; uncheck irrelevant records before downloading.
 ⚠️ End of every day: delete all downloaded files. Empty Trash.`},
 
-{id:"edit-cr002",cat:"ref",docType:"edit",title:"CR002 — CMS User Guide (Tech Edit)",
+{id:"edit-cr002",cat:"ref",docType:"edit",title:"RC-02 — CMS User Guide (Tech Edit)",
 tags:["hcm","hermes","dashboard","case header","sla","binocs","attach file","logging notes","availability status","resolve","advanced search","risk category"],
 body:`CMS User Guide | Tech Edit | April 2025
 
 ACCESSING CMS
-Non-Regulated (Program Alpha/Program Beta/Program Gamma): https://acm-nonregulated.g.vilecorp.com
+Non-Regulated (Media Platform/Developer Program/Digital ID Program): https://acm-nonregulated.g.vilecorp.com
 Regulated (API): https://acm-regulated.g.vilecorp.com
 Login: AppleConnect + Two-Step verification. Select Sanctions from Lines of Business.
 Display tip: Safari → Command – to zoom out until all widgets are visible on one screen.
@@ -1807,7 +1807,7 @@ Advanced: 🔍 → Advanced Search → Add Rule → select field → enter value
 Basic: Sanctions dropdown → type name/address.
 Multiple TIDs: separate with commas in either method.`},
 
-{id:"edit-cr0007",cat:"ref",docType:"edit",title:"CR0007 — Decisioning Matrix (Tech Edit)",
+{id:"edit-cr0007",cat:"ref",docType:"edit",title:"RC-007 — Decisioning Matrix (Tech Edit)",
 tags:["decisioning matrix","with pii","idms no pii","companies","batch free developer","clear","escalate","suspend","pcd","full address match","china","previously suspended"],
 body:`Decisioning Matrix | Tech Edit | April 2026
 
@@ -1867,36 +1867,36 @@ KEY RULES for Matrix 4:
 // SLIDESHOW DATA — terms to cycle through
 // ══════════════════════════════════════════════
 const SLIDES = [
-  { term: "batch_type_a_registrant",       source: "CP002",    client: "Program Alpha",         cat: "amp"     },
-  { term: "2/3 Name Match",             source: "CP000",    client: "Program Gamma",        cat: "idms"    },
-  { term: "Escalated Hold",             source: "CP003",    client: "Pending",     cat: "pending" },
+  { term: "batch_type_a_registrant",       source: "SC-02",    client: "Media Platform",         cat: "amp"     },
+  { term: "2/3 Name Match",             source: "SC-00",    client: "Digital ID Program",        cat: "idms"    },
+  { term: "Escalated Hold",             source: "SC-03",    client: "Pending",     cat: "pending" },
   { term: "PCD — Pending Cancel Date",  source: "Glossary", client: "",            cat: "glossary"},
   { term: "Inclusion Term",             source: "All Clients", client: "",         cat: "all"     },
-  { term: "Close Name Match",           source: "CP007",    client: "Match/PII",   cat: "ref"     },
+  { term: "Close Name Match",           source: "SC-07",    client: "Match/PII",   cat: "ref"     },
   { term: "DUNS Number",                source: "Glossary", client: "",            cat: "glossary"},
-  { term: "Vessel / Ship / Aircraft",   source: "CP000",    client: "Program Gamma",        cat: "idms"    },
-  { term: "Previously Suspended",       source: "CP002",    client: "Program Alpha",         cat: "amp"     },
-  { term: "China Company Naming",       source: "CP007",    client: "Match/PII",   cat: "ref"     },
+  { term: "Vessel / Ship / Aircraft",   source: "SC-00",    client: "Digital ID Program",        cat: "idms"    },
+  { term: "Previously Suspended",       source: "SC-02",    client: "Media Platform",         cat: "amp"     },
+  { term: "China Company Naming",       source: "SC-07",    client: "Match/PII",   cat: "ref"     },
   { term: "Direct Escalation",          source: "All Clients", client: "",        cat: "all"     },
-  { term: "Cleared by DOB",             source: "CR0007",   client: "Matrix",      cat: "ref"     },
-  { term: "Partial ID",                 source: "CP001",    client: "Program Beta",        cat: "wwdr"    },
-  { term: "Screened Entity",            source: "Glossary", client: "",            cat: "glossary"},
-  { term: "Path of Progression",        source: "CR004",    client: "Tools",       cat: "ref"     },
-  { term: "enrollment_pre_check",     source: "CP001",    client: "Program Beta",        cat: "wwdr"    },
-  { term: "Ownership Percentages",      source: "CP002",    client: "Program Alpha/Program Beta",    cat: "amp"     },
+  { term: "Cleared by DOB",             source: "RC-007",   client: "Matrix",      cat: "ref"     },
+  { term: "Partial ID",                 source: "SC-01",    client: "Developer Program",        cat: "wwdr"    },
+  { term: "Subject Under Review",            source: "Glossary", client: "",            cat: "glossary"},
+  { term: "Path of Progression",        source: "RC-04",    client: "Tools",       cat: "ref"     },
+  { term: "enrollment_pre_check",     source: "SC-01",    client: "Developer Program",        cat: "wwdr"    },
+  { term: "Ownership Percentages",      source: "SC-02",    client: "Media Platform/Developer Program",    cat: "amp"     },
   { term: "Sanctioned Countries",       source: "All Clients", client: "",        cat: "all"     },
-  { term: "Unable to Waive",            source: "CR0007",   client: "Matrix",      cat: "ref"     },
-  { term: "Case Support Tool",            source: "CR004",    client: "Tools",       cat: "ref"     },
+  { term: "Unable to Waive",            source: "RC-007",   client: "Matrix",      cat: "ref"     },
+  { term: "Case Support Tool",            source: "RC-04",    client: "Tools",       cat: "ref"     },
   { term: "Core Case",                  source: "Glossary", client: "",            cat: "glossary"},
   { term: "DBA — Doing Business As",   source: "Glossary", client: "",            cat: "glossary"},
-  { term: "batch_type_b_registrant",          source: "CP002",    client: "Program Alpha",         cat: "amp"     },
-  { term: "ID Verification Tool",   source: "CR004",    client: "Tools",       cat: "ref"     },
-  { term: "Acceptable PII Criteria",    source: "CP007",    client: "Match/PII",   cat: "ref"     },
+  { term: "batch_type_b_registrant",          source: "SC-02",    client: "Media Platform",         cat: "amp"     },
+  { term: "ID Verification Tool",   source: "RC-04",    client: "Tools",       cat: "ref"     },
+  { term: "Acceptable PII Criteria",    source: "SC-07",    client: "Match/PII",   cat: "ref"     },
 ];
 
 const CLIENT_COLORS = {
   amp: "#bf8ee8", wwdr: "#74b9ff", idms: "#f0a050", pending: "#f39c12",
-  glossary: "#74b9ff", ref: "#c9a227", all: "#9d95b8"
+  glossary: "#74b9ff", ref: "#00b4d8", all: "#9d95b8"
 };
 
 // ══════════════════════════════════════════════
@@ -1920,7 +1920,7 @@ function buildSlideshow() {
         ${highlightTerm(s.term)}
       </div>
       <div class="ss-source">
-        <span class="ss-source-badge" style="color:${CLIENT_COLORS[s.cat] || '#c9a227'};border-color:${CLIENT_COLORS[s.cat] || '#c9a227'}22">${s.source}</span>
+        <span class="ss-source-badge" style="color:${CLIENT_COLORS[s.cat] || '#00b4d8'};border-color:${CLIENT_COLORS[s.cat] || '#00b4d8'}22">${s.source}</span>
         ${s.client ? `<span style="color:var(--text-muted)">·</span><span style="color:var(--text-muted)">${s.client}</span>` : ''}
       </div>`;
     stage.appendChild(card);
@@ -1936,7 +1936,7 @@ function buildSlideshow() {
 
 function highlightTerm(term) {
   // Highlight special substrings in gold
-  return term.replace(/(batch_\w+|rt_\w+|DOB|PCD|DBA|Program Alpha|Program Beta|Program Gamma|2\/3|MZ)/g,
+  return term.replace(/(batch_\w+|rt_\w+|DOB|PCD|DBA|Media Platform|Developer Program|Digital ID Program|2\/3|MZ)/g,
     '<mark>$1</mark>');
 }
 
@@ -2070,16 +2070,16 @@ function filterKB(cat, el) {
 
 // Source URLs for each procedure document — used to add "View Source" links on cards
 const SOURCE_URLS = {
-  amp:     'https://compliance.vilecorp.com/t1-procedure-docs-full-view/compliance-apple-media-products-review-guidelines',
-  wwdr:    'https://compliance.vilecorp.com/compliance-worldwide-developer-relations-review-guidelines-full',
-  idms:    'https://compliance.vilecorp.com/identity-management-services-idms-case-review-guidelines',
-  pending: 'https://compliance.vilecorp.com/compliance-pending-case-review-guidelines-full',
-  cr005:   'https://compliance.vilecorp.com/understand-compliance-terms-and-notations-full',
-  cr003:   'https://compliance.vilecorp.com/compliance-review-model',
-  cp007:   'https://compliance.vilecorp.com/match-determination-guidelines-acceptable-pii-criteria-full',
-  cr004:   'https://compliance.vilecorp.com/compliance-tools-full',
-  cr002:   'https://compliance.vilecorp.com/t1-procedures/hermes-case-management-user-guide-reference-full',
-  cr0007:  'https://compliance.vilecorp.com/decisioning-matrix-full',
+  amp:     'https://risktraininghub.io/reference/t1-procedure-docs-full-view/compliance-apple-media-products-review-guidelines',
+  wwdr:    'https://risktraininghub.io/reference/compliance-worldwide-developer-relations-review-guidelines-full',
+  idms:    'https://risktraininghub.io/reference/identity-management-services-idms-case-review-guidelines',
+  pending: 'https://risktraininghub.io/reference/compliance-pending-case-review-guidelines-full',
+  cr005:   'https://risktraininghub.io/reference/understand-compliance-terms-and-notations-full',
+  cr003:   'https://risktraininghub.io/reference/compliance-review-model',
+  cp007:   'https://risktraininghub.io/reference/match-determination-guidelines-acceptable-pii-criteria-full',
+  cr004:   'https://risktraininghub.io/reference/compliance-tools-full',
+  cr002:   'https://risktraininghub.io/reference/t1-procedures/hermes-case-management-user-guide-reference-full',
+  cr0007:  'https://risktraininghub.io/reference/decisioning-matrix-full',
 };
 
 function getSourceUrl(entry) {
@@ -2187,16 +2187,16 @@ function highlightMatch(text, q) {
 function getBadge(e) {
   if (e.cat === 'glossary')         return ['b-glossary', 'Glossary'];
   if (e.docType === 'original') {
-    const labels = {amp:'Program Alpha', wwdr:'Program Beta', idms:'Program Gamma', pending:'Pending', ref:'Reference'};
+    const labels = {amp:'Media Platform', wwdr:'Developer Program', idms:'Digital ID Program', pending:'Pending', ref:'Reference'};
     return ['b-original', (labels[e.cat] || 'Doc') + ' · Original'];
   }
   if (e.docType === 'edit') {
-    const labels = {amp:'Program Alpha', wwdr:'Program Beta', idms:'Program Gamma', pending:'Pending', ref:'Reference'};
+    const labels = {amp:'Media Platform', wwdr:'Developer Program', idms:'Digital ID Program', pending:'Pending', ref:'Reference'};
     return ['b-edit', (labels[e.cat] || 'Doc') + ' · Tech Edit'];
   }
-  if (e.cat === 'amp')     return ['b-amp',     'Program Alpha'];
-  if (e.cat === 'wwdr')    return ['b-wwdr',    'Program Beta'];
-  if (e.cat === 'idms')    return ['b-idms',    'Program Gamma'];
+  if (e.cat === 'amp')     return ['b-amp',     'Media Platform'];
+  if (e.cat === 'wwdr')    return ['b-wwdr',    'Developer Program'];
+  if (e.cat === 'idms')    return ['b-idms',    'Digital ID Program'];
   if (e.cat === 'pending') return ['b-pending', 'Pending'];
   return ['b-ref', 'Reference'];
 }
@@ -2306,13 +2306,13 @@ const SCENARIOS={
   medium:[
     {title:'The Developer Twins',client:'wwdr',event:'enrollment_pre_check',etype:'Individual',se:{name:'Ibrahim Yasar',loc:'Ankara, TUR',pii:'Government ID — DOB: 2003-05-15'},md:[{hit:1,name:'Yasser Hussein Ibrahim',etype:'Individual',dob:'1983-11-21',loc:'SYR'}],q:'What is the correct action?',opts:['Escalate — Potential Sanction Match','Suspend — 14 days','Clear — Not a Sanction Match','Clear — Cleared by DOB'],correct:3,fb:'Partial name match (different name structure/order). DOB mismatch (2003 vs. 1983) from customer-submitted PII. Location mismatch (TUR vs. SYR). Clear → Cleared by DOB since a DOB mismatch from PII is the strongest datapoint.'},
     {title:'The Beijing Question',client:'amp-itc-atb',event:'batch_vendor_master',etype:'Company',se:{name:'Beijing Huawei Technology Co., Ltd.',loc:'Beijing, CHN',pii:'Registration doc attached'},md:[{hit:1,name:'Shanghai Huawei Technologies',etype:'Company',dob:'N/A',loc:'Shanghai, CHN'}],q:'China company naming convention applies. Action?',opts:['Clear — different cities (location variance)','Clear — different legal suffixes','Escalate — Unable to Waive','Suspend — 30 days'],correct:2,fb:'"Huawei" is the brand name — identical in both. China exception: same brand name in different Chinese cities = likely the same company. Location variance does NOT clear this. Escalate → Unable to Waive.'},
-    {title:'The Apple Wallet',client:'idms',event:'batch_accounts',etype:'Individual',se:{name:'Ali Hassan Al-Rashid',loc:'ARE',pii:'No PII — YOB in CMS panel: 1990'},md:[{hit:1,name:'Ali Hassan Al-Rashid',etype:'Individual',dob:'1962',loc:'IRQ'}],q:'Program Gamma, no PII. YOB in CMS = 1990, Matched Data = 1962. Action?',opts:['Suspend — 14 days','Escalate — Unable to Waive','Clear — Not a Sanction Match (YOB shortcut)','Clear — Cleared by DOB'],correct:2,fb:'Program Gamma YOB shortcut: the year of birth in the CMS Screened Entity panel (1990) differs from Matched Data (1962). No external research needed. Clear → Not a Sanction Match. (Note: "Cleared by DOB" requires actual customer PII — this uses the CMS panel data.)'},
+    {title:'The Apple Wallet',client:'idms',event:'batch_accounts',etype:'Individual',se:{name:'Ali Hassan Al-Rashid',loc:'ARE',pii:'No PII — YOB in CMS panel: 1990'},md:[{hit:1,name:'Ali Hassan Al-Rashid',etype:'Individual',dob:'1962',loc:'IRQ'}],q:'Digital ID Program, no PII. YOB in CMS = 1990, Matched Data = 1962. Action?',opts:['Suspend — 14 days','Escalate — Unable to Waive','Clear — Not a Sanction Match (YOB shortcut)','Clear — Cleared by DOB'],correct:2,fb:'Digital ID Program YOB shortcut: the year of birth in the CMS Screened Entity panel (1990) differs from Matched Data (1962). No external research needed. Clear → Not a Sanction Match. (Note: "Cleared by DOB" requires actual customer PII — this uses the CMS panel data.)'},
     {title:'The Three-Name Tangle',client:'idms',event:'batch_accounts',etype:'Individual',se:{name:'John Smith',loc:'USA',pii:'No PII — MZ account created 45 days ago'},md:[{hit:1,name:'John Jacob Smith',etype:'Individual',dob:'1970-03-14',loc:'RUS'}],q:'2/3 name match (John Smith = 2 of 3 parts of John Jacob Smith). MZ aged 45 days. USA vs RUS. Action?',opts:['Suspend — 14 days (2/3 match)','Escalate — Potential Sanction Match','Clear — Not a Sanction Match (aged MZ + country)','Escalate — Unable to Waive'],correct:2,fb:'2/3 name match. MZ account is aged (45 days > 30-day threshold = reliable location data). Screened Entity: USA. Matched Data: RUS. Country mismatch + aged MZ account = can CLEAR. Not a Sanction Match.'},
     {title:'The New Account Problem',client:'idms',event:'batch_accounts',etype:'Individual',se:{name:'Aleksandr Muskov',loc:'RUS',pii:'No PII — MZ account created 12 days ago'},md:[{hit:1,name:'Aleksandr Muskov Sergeevich',etype:'Individual',dob:'1975-09-03',loc:'RUS'}],q:'2/3 name match. MZ account is ONLY 12 days old. Same country (RUS). Action?',opts:['Clear — close but different name','Clear — use MZ for location (different city)','Suspend — 14 days PCD','Escalate — full name match'],correct:2,fb:'2/3 name match + YOB match/unknown + same country + NEW MZ account (12 days < 30 day threshold). The MZ account is too new to rely on for location data. Cannot find another location variance. Suspend — PCD 14 days.'},
     {title:'The Expired ID',client:'amp-itc-users',event:'rt_user_invitation',etype:'Individual',se:{name:'Fatima Al-Mansouri',loc:'KWT',pii:'Passport submitted — expired 3 years ago. DOB: 1985-06-20 visible.'},md:[{hit:1,name:'Fatima Al-Mansouri',etype:'Individual',dob:'1985-06-20',loc:'IRN'}],q:'Full name match. Submitted passport is expired by 3 years. DOB matches. Location mismatch (KWT vs IRN). What do you do?',opts:['Clear — Cleared by DOB (DOB in PII matches but SE/MD DOB match isnt a clear)','Clear — location variance (KWT ≠ IRN) saves it','Direct Escalate — expired PII (past 1 year)','Escalate — full name + DOB match'],correct:2,fb:'Passport expired more than 1 year = direct escalation for invalid PII. You cannot use this PII to clear or compare. T2 Escalation Required: Expired PII - Passport expired [year] → Escalate → Invalid Customer Submitted Info.'},
     {title:'The Bank Account Screen',client:'amp-itc-atb',event:'batch_type_b_registrant',etype:'Company',se:{name:'First National Savings Bank',loc:'GBR',pii:'No PII'},md:[{hit:1,name:'National First Bank of Sudan',etype:'Company',dob:'N/A',loc:'SDN'}],q:'This is a batch_type_b_registrant event. What is the correct action?',opts:['Research and clear — clearly different names','Escalate — close enough name','Clear — Not a Sanction Match (different countries)','Direct Escalate — batch_type_b_registrant is always a direct escalation'],correct:3,fb:'batch_type_b_registrant is ALWAYS a direct escalation — regardless of the name comparison or any other factors. Skip the Case Overview too. T2 Escalation Required: batch_type_b_registrant event → Escalate → Unable to Waive.'},
     {title:'The Korean Tech Firm',client:'amp-itc-atb',event:'rt_agreement',etype:'Company',se:{name:'Hanguk Software Inc.',loc:'KOR',pii:'Registration attached. Korean company reg doc in Korean characters (한국소프트웨어 주식회사)'},md:[{hit:1,name:'Hanguk Software Inc.',etype:'Company',dob:'N/A',loc:'PRK'}],q:'Full name match. PII is in Korean characters — you cannot read it. SE is in South Korea (KOR). Matched Data is in North Korea (PRK). Action?',opts:['Clear — KOR ≠ PRK (different countries)','Direct Escalate — unable to translate ID','Research first then decide','Escalate — full name match regardless of location'],correct:1,fb:'Unable to translate = direct escalation, regardless of any other factors (including the apparent location variance). T2 Escalation Required: Unable to translate ID → Escalate → Unable to Waive Compliance Concerns. T2 will handle translation.'},
-    {title:'The Full Suspend',client:'idms',event:'batch_accounts',etype:'Individual',se:{name:'Fatima Al-Rashidi',loc:'KWT',pii:'No PII — full name match to Matched Data'},md:[{hit:1,name:'Fatima Al-Rashidi',etype:'Individual',dob:'1973-05-12',loc:'IRN'}],q:'Program Gamma case, no PII. Full name match. Matched Data location is Iran (IRN). SE location is Kuwait (KWT). Action?',opts:['Escalate — Potential Sanction Match (full name + Iran location)','Clear — different countries (KWT vs IRN)','Suspend — 14 days PCD','Direct Escalate — Iran is sanctioned'],correct:2,fb:'Program Gamma without PII + full name match = SUSPEND (PCD 14 days). This is the matrix rule, even when the Matched Data location is a sanctioned country. The suspend triggers PII collection. It is NOT a direct escalation because there\'s no sanctioned connection from the Screened Entity side — only the Matched Data is linked to Iran.'},
+    {title:'The Full Suspend',client:'idms',event:'batch_accounts',etype:'Individual',se:{name:'Fatima Al-Rashidi',loc:'KWT',pii:'No PII — full name match to Matched Data'},md:[{hit:1,name:'Fatima Al-Rashidi',etype:'Individual',dob:'1973-05-12',loc:'IRN'}],q:'Digital ID Program case, no PII. Full name match. Matched Data location is Iran (IRN). SE location is Kuwait (KWT). Action?',opts:['Escalate — Potential Sanction Match (full name + Iran location)','Clear — different countries (KWT vs IRN)','Suspend — 14 days PCD','Direct Escalate — Iran is sanctioned'],correct:2,fb:'Digital ID Program without PII + full name match = SUSPEND (PCD 14 days). This is the matrix rule, even when the Matched Data location is a sanctioned country. The suspend triggers PII collection. It is NOT a direct escalation because there\'s no sanctioned connection from the Screened Entity side — only the Matched Data is linked to Iran.'},
     {title:'The Close Call',client:'amp-itc-atb',event:'rt_agreement',etype:'Company',se:{name:'Pacific Rim Trading Co.',loc:'SGP',pii:'Registration doc attached'},md:[{hit:1,name:'Pacific Rim Trading LLC',etype:'Company',dob:'N/A',loc:'USA'}],q:'Close name match (same brand name, LLC vs Co.). Different countries (SGP vs USA). Action?',opts:['Escalate — close match and both are trading companies','Clear — Not a Sanction Match (close match + different countries)','Suspend — 30 days PCD','Escalate — Unable to Waive (same brand name)'],correct:1,fb:'Close name match (brand name "Pacific Rim Trading" matches, only legal suffix differs: LLC vs Co.) + different countries (SGP vs USA). The matrix: Close match + different countries = CLEAR → Not a Sanction Match.'},
     {title:'The Name Flip',client:'wwdr',event:'enrollment_pre_check',etype:'Individual',se:{name:'Nguyen Van Anh',loc:'VNM',pii:'Government ID — DOB: 1995-11-03'},md:[{hit:1,name:'Van Anh Nguyen',etype:'Individual',dob:'1995-11-03',loc:'VNM'}],q:'The Screened Entity and Matched Data have the same name components in different order, same DOB, same country. What is this?',opts:['Clear — different name order = different person','Escalate — same DOB + same country, can\'t clear','Escalate — Potential Sanction Match (full match)','Clear — Cleared by DOB (DOB is different in the system)'],correct:2,fb:'Vietnamese names can appear in different orders (family-first in Vietnam, given-first when Westernized). "Nguyen Van Anh" and "Van Anh Nguyen" contain all the same name components. Same name + same DOB + same country = ESCALATE → Potential Sanction Match. There are no variances to clear on.'},
     {title:'The AKA Trap',client:'amp-itc-users',event:'batch_user',etype:'Individual',se:{name:'Aleksandr Petrov',loc:'RUS',pii:'Government ID — DOB: 1978-02-28'},md:[{hit:1,name:'Alexander Petrov',etype:'Individual',dob:'N/A',loc:'UKR'},{hit:2,name:'Sasha Petrov',etype:'Individual',dob:'1978-02-28',loc:'RUS'}],q:'Two hits. Hit 1: "Alexander Petrov" (different spelling), Ukraine, no DOB. Hit 2: "Sasha Petrov" (nickname/AKA), Russia, EXACT DOB match. What is the correct action for the entire case?',opts:['Clear Hit 1 (different country), Clear Hit 2 (just a nickname)','Clear Hit 1 (location), but Escalate Hit 2 → entire case escalates','Clear both — DOB mismatch on Hit 1 clears everything','Escalate both — any Russian connection escalates'],correct:1,fb:'Hit 1: "Alexander" vs "Aleksandr" = partial name match. UKR vs RUS = location mismatch. → CLEAR Hit 1. Hit 2: "Sasha" is a known nickname/AKA for Aleksandr. Same DOB (1978-02-28). Same country. This is concerning — escalate Hit 2. Since Hit 2 requires escalation, the ENTIRE case escalates.'},
@@ -2325,10 +2325,10 @@ const SCENARIOS={
     {title:'The Iran Connection',client:'wwdr',event:'rt_enrollment_final',etype:'Company',se:{name:'Caspian Software Ltd.',loc:'DEU',pii:'German registration — clearly different from Matched Data. System Notes: "Company also does business in Iran (IRN)"'},md:[{hit:1,name:'Caspian Maritime Corp',etype:'Company',dob:'N/A',loc:'RUS'}],q:'Hit 1 would easily clear (different names + DEU vs RUS). But System Notes mention Iran. Action?',opts:['Clear — Not a Sanction Match (name + location mismatch clearly)','Direct Escalate — Sanctioned Country connection','Research more to confirm Iran connection','Clear Hit 1 and add a separate note about Iran'],correct:1,fb:'System Notes show the company does business in Iran (sanctioned country). This is a direct escalation regardless of the Matched Data comparison result. T2 Escalation Required: Sanctioned Country → Escalate → Unable to Waive.'},
     {title:'The Sleeper Cell',client:'amp-itc-atb',event:'batch_type_a_registrant',etype:'Company',se:{name:'TechFlow Solutions',loc:'USA',pii:'Company registration attached. System Notes show: prior case TID_3456 was REJECTED for "doing business in embargoed countries." A subsequent case TID_3457 was CLEARED.'},md:[{hit:1,name:'TechFlow Services LLC',etype:'Company',dob:'N/A',loc:'RUS'}],q:'Close name match. Prior case was rejected for embargoed country — but then cleared in the NEXT case. Current case has new docs. How do you proceed?',opts:['Escalated Hold — previous embargoed country rejection','Full review — the clear after the reject resets it','Direct Escalate — any prior rejection = direct escalate','Suspend — wait for T2'],correct:1,fb:'The exception: if there was a rejection for embargoed country FOLLOWED BY a clear, the new case can be reviewed and cleared per normal guidelines. The subsequent clear resets the concern. Proceed with full review of the docs submitted.'},
     {title:'The Linked Maze',client:'wwdr',event:'rt_enrollment_final',etype:'Individual',se:{name:'Priya Sharma',loc:'IND',pii:'Government ID attached — DOB: 1990-11-03'},md:[{hit:1,name:'Priya Sharma',etype:'Individual',dob:'1990-11-03',loc:'PAK'}],q:'Full name match. DOB MATCHES (1990-11-03). Location mismatch (IND vs PAK). What is the correct action?',opts:['Clear — Cleared by DOB (DOB mismatch? No — they match)','Clear — Not a Sanction Match (location mismatch)','Escalate — Potential Sanction Match','Escalate — Unable to Waive Compliance Concerns'],correct:1,fb:'Full name match + DOB MATCH + location mismatch. Looking at the matrix: Full name + DOB Match/Unknown + Location Mismatch = CLEAR (Not a Sanction Match). The location variance is sufficient when DOB matches but location differs. However — before clearing, verify the full street address is not also a complete match.'},
-    {title:'The Gibberish Flag',client:'amp-itc-users',event:'rt_user_invitation',etype:'Individual',se:{name:'mingzi xing',loc:'TUR',pii:'No PII — new iCloud account 3 days old. Wallet links "mingzi xing." System Notes show: IP in China, email: xj8291kqp@hotmail.com'},md:[{hit:1,name:'Ming Zi Xing',etype:'Individual',dob:'1970-01-15',loc:'CHN'}],q:'This is a PENDING case review. The pattern matches the Gibberish/Scripted Account criteria. Action?',opts:['Full research — this is a 2/3 name match','Suspend — 14 days PCD for Program Gamma','Escalated Hold — Gibberish/Scripted Account','Clear — name variance (mingzi xing ≠ Ming Zi Xing)'],correct:2,fb:'This matches the Gibberish/Scripted Account pattern: new iCloud + wallet links "mingzi xing" + Turkey ties + China IP + hotmail domain + gibberish handle. In a pending case review, this is a direct escalation scenario → ESCALATED HOLD. No research needed.'},
+    {title:'The Gibberish Flag',client:'amp-itc-users',event:'rt_user_invitation',etype:'Individual',se:{name:'mingzi xing',loc:'TUR',pii:'No PII — new iCloud account 3 days old. Wallet links "mingzi xing." System Notes show: IP in China, email: xj8291kqp@hotmail.com'},md:[{hit:1,name:'Ming Zi Xing',etype:'Individual',dob:'1970-01-15',loc:'CHN'}],q:'This is a PENDING case review. The pattern matches the Gibberish/Scripted Account criteria. Action?',opts:['Full research — this is a 2/3 name match','Suspend — 14 days PCD for Digital ID Program','Escalated Hold — Gibberish/Scripted Account','Clear — name variance (mingzi xing ≠ Ming Zi Xing)'],correct:2,fb:'This matches the Gibberish/Scripted Account pattern: new iCloud + wallet links "mingzi xing" + Turkey ties + China IP + hotmail domain + gibberish handle. In a pending case review, this is a direct escalation scenario → ESCALATED HOLD. No research needed.'},
     {title:'The Time Bomb',client:'idms',event:'batch_accounts',etype:'Individual',se:{name:'Karim Hassan',loc:'IRN',pii:'National ID submitted — issued by Iran (IRN)'},md:[{hit:1,name:'Karim Hassan',etype:'Individual',dob:'1988-04-12',loc:'IRN'}],q:'Full name match. Same country (IRN). Customer submitted Iranian national ID. What is the FIRST thing you should do?',opts:['Compare DOB from PII to Matched Data DOB','Check if location is a full street address match','Direct Escalate — PII issued by sanctioned country (IRN)','Clear — Cleared by DOB if DOB on PII differs'],correct:2,fb:'The PII is issued by Iran — a sanctioned country. This is a direct escalation regardless of any comparison you could make. T2 Escalation Required: Sanctioned Country → Escalate → Unable to Waive. Do not proceed to PII review or DOB comparison.'},
     {title:'The True Match Test',client:'amp-itc-atb',event:'batch_type_a_registrant',etype:'Company',se:{name:'Musudan Trading Corp',loc:'CHN',pii:'No docs uploaded'},md:[{hit:1,name:'Musudan Trading Corp',etype:'Company',dob:'N/A',loc:'PRK'}],q:'EXACT full name match. Matched Data is in North Korea (PRK). No docs uploaded. What is the correct action — and specifically, should you request PII?',opts:['Suspend 30 days — wait for docs, then clear if location variance confirmed','Escalate — Potential Sanction Match. Do NOT request PII.','Clear — the Screened Entity is in China, not North Korea','Suspend 30 days — need docs to confirm North Korea connection'],correct:1,fb:'In cases where the Screened Entity is a true sanctions match, PII should NOT be requested. Complete research and summary notations then escalate with reason "Potential Sanction Match." Do not suspend. The guidance is explicit: don\'t ask for docs when you have a true match.'},
-    {title:'The Deceased Date',client:'idms',event:'batch_accounts',etype:'Individual',se:{name:'Ali Hassan',loc:'SAU',pii:'No PII — full research done, no location variance found'},md:[{hit:1,name:'Ali Hassan',etype:'Individual',dob:'N/A',loc:'SAU',note:'Sanctioned 2003, Deceased 2019'}],q:'Full name match. Same country. Research complete. The ONLY remaining Matched Data datapoints are a sanctioning date (2003) and a deceased date (2019). Can you clear?',opts:['Clear — the person is deceased, no longer a risk','Clear — Cleared by DOB (deceased = DOB variance)','Escalate — only remaining datapoints are deceased/sanctioning dates','Suspend — request PII to confirm identity'],correct:2,fb:'If the ONLY remaining Matched Data datapoints are a deceased date and/or sanctioning date, you must ESCALATE. This is explicitly stated in the Program Gamma guidance. A deceased date alone is not sufficient to clear. T2 will handle this with additional tools.'},
+    {title:'The Deceased Date',client:'idms',event:'batch_accounts',etype:'Individual',se:{name:'Ali Hassan',loc:'SAU',pii:'No PII — full research done, no location variance found'},md:[{hit:1,name:'Ali Hassan',etype:'Individual',dob:'N/A',loc:'SAU',note:'Sanctioned 2003, Deceased 2019'}],q:'Full name match. Same country. Research complete. The ONLY remaining Matched Data datapoints are a sanctioning date (2003) and a deceased date (2019). Can you clear?',opts:['Clear — the person is deceased, no longer a risk','Clear — Cleared by DOB (deceased = DOB variance)','Escalate — only remaining datapoints are deceased/sanctioning dates','Suspend — request PII to confirm identity'],correct:2,fb:'If the ONLY remaining Matched Data datapoints are a deceased date and/or sanctioning date, you must ESCALATE. This is explicitly stated in the Digital ID Program guidance. A deceased date alone is not sufficient to clear. T2 will handle this with additional tools.'},
     {title:'The Partial PII',client:'wwdr',event:'rt_enrollment_final',etype:'Individual',se:{name:'Amina Diallo',loc:'SEN',pii:'Only the BACK of the ID was submitted — no name or DOB visible on back'},md:[{hit:1,name:'Amina Diallo',etype:'Individual',dob:'1991-03-22',loc:'GNB'}],q:'The customer submitted only the back of their ID — no name or DOB is visible. Names are a full match. What do you do?',opts:['Research LexisNexis to find DOB and clear by DOB','Clear — location variance (SEN vs GNB) is enough','Direct Escalate — Partial ID (back of ID submitted, name/DOB obscured)','Suspend — request better PII'],correct:2,fb:'Partial ID (back of ID submitted, name/DOB not visible) is a direct escalation trigger regardless of any other factors — including apparent name or location variances. T2 Escalation Required: Partial ID → Escalate → Invalid Customer Submitted Info.'},
     {title:'The 100% Owner',client:'amp-itc-atb',event:'rt_agreement',etype:'Company',se:{name:'Stellar Apps Inc.',loc:'AUS',pii:'Registration attached. System Notes: Owner = Stellar Apps Inc. 100%'},md:[{hit:1,name:'Stellar Capital LLC',etype:'Company',dob:'N/A',loc:'USA'}],q:'Partial name match (different second word), different countries, 100% ownership. Action?',opts:['Clear — Not a Sanction Match (partial name + different countries)','Escalate — ownership percentages require escalation regardless','Escalate — same country needed to clear','Suspend — 30 days PCD'],correct:0,fb:'100% ownership means the Screened Entity fully owns itself — all owners are already screened. No co-owner issues. The case itself: partial name match + different countries (AUS vs USA) = CLEAR → Not a Sanction Match. Ownership only triggers escalation when the percentage is LESS THAN 100%.'},
     {title:'The Full Address Match',client:'wwdr',event:'rt_enrollment_final',etype:'Individual',se:{name:'Elena Kozlov',loc:'123 Nevsky Prospect, St. Petersburg, RUS',pii:'Government ID — DOB: 1987-09-14'},md:[{hit:1,name:'Elena Kozlov',etype:'Individual',dob:'N/A',loc:'123 Nevsky Prospect, Saint Petersburg, Russia'}],q:'Full name match. DOB not available on Matched Data. But the FULL STREET ADDRESS matches perfectly. Action?',opts:['Clear — Cleared by DOB (use PII DOB to clear)','Clear — Not a Sanction Match (Russia not sanctioned)','Escalate — Potential Sanction Match (full address match overrides everything)','Research more — we need more than just an address match'],correct:2,fb:'⚠️ IMPORTANT EXCEPTION: Before choosing Clear on a location variance, always review the address. If the full street address matches (street number, street name, city, state/country), you must ESCALATE — even if DOB from PII differs. The guidance is explicit: full address match = "Potential Sanction Match." This overrides the DOB clear.'},
