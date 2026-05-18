@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RTH — User Guide & FAQs</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07091a;--bg-mid:#0d1130;--bg-card:#121836;--bg-hover:#182040;
+  --gold:#c9a227;--gold-light:#e8c96a;--gold-pale:#f5e8b0;
+  --text:#f0ead6;--text-sub:#9d95b8;--text-muted:#5c5680;
+  --border:rgba(201,162,39,.18);--border-hi:rgba(201,162,39,.55);
+  --green:#2ecc71;--red:#e74c3c;--amber:#f39c12;
+  --glow:0 0 24px rgba(201,162,39,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
+
+/* NAV */
+nav{background:rgba(7,9,26,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Cinzel',serif;font-size:1.2rem;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:.5rem;text-decoration:none}
+.back-btn{background:rgba(201,162,39,.08);border:1px solid var(--border);color:var(--gold);font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.08em;padding:.45rem 1rem;border-radius:5px;cursor:pointer;text-decoration:none;transition:all .2s}
+.back-btn:hover{background:rgba(201,162,39,.18);border-color:var(--border-hi)}
+
+/* IN-PAGE SECTION NAV */
+.section-nav{background:rgba(7,9,26,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;height:44px;display:flex;align-items:center;gap:.25rem;position:sticky;top:60px;z-index:99;overflow-x:auto;scrollbar-width:none}
+.section-nav::-webkit-scrollbar{display:none}
+.section-nav a{white-space:nowrap;font-size:.75rem;font-weight:500;letter-spacing:.06em;color:var(--text-muted);text-decoration:none;padding:.35rem .75rem;border-radius:4px;border-bottom:2px solid transparent;transition:all .15s;flex-shrink:0}
+.section-nav a:hover{color:var(--text-sub);background:rgba(201,162,39,.05)}
+.section-nav a.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* JUMP BANNER */
+.jump-banner{background:linear-gradient(135deg,rgba(201,162,39,.12),rgba(201,162,39,.06));border-bottom:1px solid var(--border);padding:.6rem 2rem;text-align:center;font-size:.8rem;color:var(--text-sub)}
+.jump-banner a{color:var(--gold-light);text-decoration:none;border-bottom:1px dotted rgba(232,201,106,.5);transition:all .15s;font-weight:600}
+.jump-banner a:hover{color:var(--gold-pale);border-bottom-color:var(--gold)}
+
+/* SECTION anchor offset for sticky navs */
+.section[id]{scroll-margin-top:112px}
+#faqs{scroll-margin-top:112px}
+
+/* MAIN */
+main{max-width:900px;margin:0 auto;padding:3rem 2rem 5rem}
+
+/* HERO */
+.hero{text-align:center;padding:2.5rem 0 3rem;border-bottom:1px solid var(--border);margin-bottom:3rem}
+.hero-badge{display:inline-block;background:rgba(201,162,39,.1);border:1px solid var(--border-hi);color:var(--gold);font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.3rem 1rem;border-radius:20px;margin-bottom:1.25rem}
+.hero h1{font-family:'Cinzel',serif;font-size:2.2rem;font-weight:700;color:var(--gold);letter-spacing:.06em;margin-bottom:.75rem}
+.hero p{color:var(--text-sub);font-size:.95rem;max-width:580px;margin:0 auto;line-height:1.8}
+
+/* SECTION */
+.section{margin-bottom:3.5rem}
+.section-header{display:flex;align-items:center;gap:.875rem;margin-bottom:1.75rem;padding-bottom:.875rem;border-bottom:1px solid var(--border)}
+.section-icon{font-size:1.8rem;flex-shrink:0}
+.section-title{font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;color:var(--gold-light)}
+.section-sub{font-size:.8rem;color:var(--text-muted);margin-top:.2rem}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:.875rem}
+.step{display:flex;gap:1rem;align-items:flex-start}
+.step-num{width:26px;height:26px;border-radius:50%;background:rgba(201,162,39,.15);border:1px solid var(--border-hi);color:var(--gold);font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.step-body{flex:1}
+.step-title{font-weight:600;color:var(--text);font-size:.9rem;margin-bottom:.2rem}
+.step-text{color:var(--text-sub);font-size:.84rem;line-height:1.7}
+.step-text code{background:rgba(201,162,39,.1);color:var(--gold-light);border-radius:4px;padding:.1rem .4rem;font-size:.78rem;font-family:'JetBrains Mono',monospace}
+
+/* CARDS GRID */
+.cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.875rem}
+.info-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem}
+.info-card h4{font-size:.85rem;font-weight:700;color:var(--gold-light);margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem}
+.info-card p{font-size:.8rem;color:var(--text-sub);line-height:1.65}
+
+/* LINK TABLE */
+.link-table{width:100%;border-collapse:collapse;font-size:.84rem}
+.link-table th{text-align:left;padding:.6rem .875rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border)}
+.link-table td{padding:.65rem .875rem;border-bottom:1px solid rgba(201,162,39,.06);color:var(--text-sub);vertical-align:top}
+.link-table td:first-child{color:var(--text);font-weight:500}
+.link-table td code{background:rgba(201,162,39,.08);color:var(--gold);border-radius:4px;padding:.1rem .45rem;font-size:.75rem;font-family:'JetBrains Mono',monospace;white-space:nowrap}
+
+/* NOTE BOX */
+.note{background:rgba(243,156,18,.08);border:1px solid rgba(243,156,18,.3);border-radius:8px;padding:.875rem 1.1rem;font-size:.83rem;color:var(--text-sub);line-height:1.7;margin:.875rem 0}
+.note strong{color:var(--amber)}
+.note.info{background:rgba(201,162,39,.07);border-color:rgba(201,162,39,.25)}
+.note.info strong{color:var(--gold-light)}
+
+/* THEMES GRID */
+.themes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
+.theme-swatch{border-radius:8px;padding:.875rem .75rem;text-align:center;font-size:.78rem;font-weight:600;cursor:default;border:1px solid transparent}
+.t-default{background:#0d1130;color:#e8c96a;border-color:rgba(201,162,39,.3)}
+.t-austin{background:#2A1205;color:#F0A830;border-color:rgba(212,130,10,.4)}
+.t-elkgrove{background:#04192C;color:#FFBF69;border-color:rgba(255,159,28,.4)}
+.t-raleigh{background:#0F1E0E;color:#F2CC90;border-color:rgba(232,184,109,.35)}
+.t-singapore{background:#040D26;color:#FF4DA6;border-color:rgba(255,0,110,.4)}
+.t-sandiego{background:#022035;color:#FF9D7A;border-color:rgba(255,123,84,.4)}
+.t-arizona{background:#1E0C08;color:#E88050;border-color:rgba(212,101,42,.4)}
+.t-boston{background:#0A0C1A;color:#E06040;border-color:rgba(200,64,32,.4)}
+.t-newyork{background:#0A0A0A;color:#FFE44D;border-color:rgba(255,215,0,.4)}
+.theme-swatch .t-emoji{font-size:1.4rem;display:block;margin-bottom:.35rem}
+
+/* FAQs */
+#faqs{scroll-margin-top:80px}
+.faq-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:.65rem}
+.faq-q{background:var(--bg-card);padding:1rem 1.25rem;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--text);display:flex;justify-content:space-between;align-items:center;transition:background .15s;gap:.875rem}
+.faq-q:hover{background:var(--bg-hover)}
+.faq-q .faq-icon{color:var(--gold);font-size:.9rem;flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q .faq-icon{transform:rotate(45deg)}
+.faq-a{display:none;padding:1rem 1.25rem;background:var(--bg-mid);font-size:.84rem;color:var(--text-sub);line-height:1.8;border-top:1px solid var(--border)}
+.faq-a code{background:rgba(201,162,39,.1);color:var(--gold-light);border-radius:4px;padding:.1rem .4rem;font-size:.78rem;font-family:'JetBrains Mono',monospace}
+.faq-item.open .faq-a{display:block}
+
+/* FOOTER */
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:.78rem;margin-top:2rem}
+footer a{color:var(--gold);text-decoration:none}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:rgba(201,162,39,.2);border-radius:3px}
+
+/* LIGHT MODE */
+html[data-theme="light"]{--bg:#f4f2ee;--bg-mid:#ebe8e0;--bg-card:#fff;--bg-hover:#f0ede5;--gold:#8a6a08;--gold-light:#6a5208;--text:#18142e;--text-sub:#3d3460;--text-muted:#7a7298;--border:rgba(26,20,46,.15)}
+html[data-theme="light"] body{background:var(--bg)}
+html[data-theme="light"] nav{background:rgba(244,242,238,.97)}
+html[data-theme="light"] .faq-q{background:var(--bg-card)}
+html[data-theme="light"] .faq-a{background:var(--bg-mid)}
+
+@media(max-width:680px){
+  .cards-grid{grid-template-columns:1fr}
+  .themes-grid{grid-template-columns:repeat(3,1fr)}
+  .hero h1{font-size:1.7rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><span>🎓</span> RTH</a>
+  <a href="index.html" class="back-btn">← Back to RTH</a>
+</nav>
+
+<!-- STICKY IN-PAGE NAV -->
+<nav class="section-nav" id="section-nav">
+  <a href="#what-is-cth">⚖️ Overview</a>
+  <a href="#knowledge-base">📚 Knowledge Base</a>
+  <a href="#decision-matrix">⚖️ Decision Matrix</a>
+  <a href="#training-simulator">🎯 Training Simulator</a>
+  <a href="#where-in-the-world">🌍 Geography Game</a>
+  <a href="#direct-links">🔗 Direct Links</a>
+  <a href="#themes">🎨 Themes</a>
+  <a href="#faqs">❓ FAQs</a>
+</nav>
+
+<div class="jump-banner">
+  Have a quick question? <a href="#faqs">Jump straight to FAQs →</a>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">🎓 Risk Training Academy</div>
+    <h1>User Guide & FAQs</h1>
+    <p>Everything you need to know to get the most out of RTH — from searching the Knowledge Base to running training scenarios and understanding your location theme.</p>
+  </div>
+
+  <!-- WHAT IS RTH -->
+  <div class="section" id="what-is-cth">
+    <div class="section-header">
+      <span class="section-icon">⚖️</span>
+      <div>
+        <div class="section-title">What is RTH?</div>
+        <div class="section-sub">Overview of the platform</div>
+      </div>
+    </div>
+    <p style="color:var(--text-sub);font-size:.9rem;line-height:1.85;margin-bottom:1.25rem">
+      The <strong style="color:var(--text)">Risk Training Academy (RTH)</strong> is an internal learning and reference tool built for Risk & Compliance Operations investigators. It consolidates procedure documentation, interactive decision tools, and training simulations into a single place — accessible on company VPN from any device.
+    </p>
+    <div class="cards-grid">
+      <div class="info-card"><h4>📚 Knowledge Base</h4><p>Searchable procedure docs, full glossary/dictionary, and reference materials. In progress — full database coming soon.</p></div>
+      <div class="info-card"><h4>⚖️ Decision Matrix</h4><p>Interactive decision trees for every case type. Answer questions, get the correct action and reason code instantly.</p></div>
+      <div class="info-card"><h4>🎯 Training Simulator</h4><p>Work real compliance scenarios across 3 difficulty levels. 40 scenarios covering all clients, events, and edge cases.</p></div>
+      <div class="info-card"><h4>🌍 Where in the World?</h4><p>Geography and language identification training — scripts, country names, name origins, and sanctioned territories. 135 questions across 4 modes.</p></div>
+    </div>
+  </div>
+
+  <!-- KNOWLEDGE BASE -->
+  <div class="section" id="knowledge-base">
+    <div class="section-header">
+      <span class="section-icon">📚</span>
+      <div>
+        <div class="section-title">Knowledge Base</div>
+        <div class="section-sub">How to search, browse, and use the KB</div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Search for anything</div><div class="step-text">Type any term, procedure name, reason code, client name, or keyword into the search bar. Results update live as you type. Try: <code>batch_type_a_registrant</code>, <code>sanctioned countries</code>, <code>2/3 name match</code>, <code>Cleared by DOB</code>.</div></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Use the sidebar to filter by category</div><div class="step-text"><strong style="color:var(--text)">Dictionary</strong> — individual term definitions only. <strong style="color:var(--text)">Originals</strong> — condensed summaries of source procedure docs. <strong style="color:var(--text)">Tech Edits</strong> — clean, restructured rewrites of the same docs. Use the client tabs (Program Alpha, Program Beta, Program Gamma, Pending) to filter to a specific client.</div></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Click a card to expand it</div><div class="step-text">The preview text disappears and the full content appears. Click again to collapse. The card header stays visible so you always know what you're reading.</div></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Copy source doc URLs</div><div class="step-text">Every relevant card has a <code>📋 Copy source URL</code> button. Click it, then paste the copied URL into a fresh browser tab to view the official full document on the compliance investigations site. Direct navigation is blocked by the site's security headers — this is the workaround.</div></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Understand the badges</div><div class="step-text"><strong style="color:var(--text)">Glossary</strong> — dictionary definition. <strong style="color:var(--text)">[Client] · Original</strong> — condensed summary of the source document. <strong style="color:var(--text)">[Client] · Tech Edit</strong> — restructured rewrite. Original and Tech Edit cover the same content, different format. Use whichever works for you.</div></div></div>
+    </div>
+    <div class="note">
+      <strong>⚙️ In Progress:</strong> The Knowledge Base database is still being built. Originals and Tech Edits are condensed — always reference the official source docs for audit and escalation decisions. The Dictionary, Decision Matrix, Training Simulator, and Geography Training are complete.
+    </div>
+  </div>
+
+  <!-- DECISION MATRIX -->
+  <div class="section" id="decision-matrix">
+    <div class="section-header">
+      <span class="section-icon">⚖️</span>
+      <div>
+        <div class="section-title">Decision Matrix</div>
+        <div class="section-sub">Getting the right action and reason code in seconds</div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Select your matrix type</div><div class="step-text">Four options: <code>With PII</code> (individuals with PII submitted), <code>Program Gamma — No PII</code> (Program Gamma cases before PII), <code>Companies</code> (Program Alpha/Program Beta company cases), <code>Batch Free Dev</code> (Program Alpha batch_type_a_registrant event).</div></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Answer each question about your case</div><div class="step-text">The matrix walks you through: entity type → name match → DOB → location. Answer honestly about your actual case data. The progress bar at the top shows where you are in the decision tree.</div></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Read the result</div><div class="step-text">The result card shows your action (<strong style="color:var(--green)">CLEAR</strong>, <strong style="color:var(--red)">ESCALATE</strong>, or <strong style="color:var(--amber)">SUSPEND</strong>), the exact reason code to use, and an explanation. Your full decision path is shown below.</div></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Click "↩ New Case" to start over</div><div class="step-text">Resets the current matrix type. Change the matrix type using the tabs at the top.</div></div></div>
+    </div>
+    <div class="note info"><strong>Tip:</strong> When in doubt after reviewing the matrix — escalate. The Decision Matrix is a decision support tool, not a replacement for your judgment on individual case details.</div>
+  </div>
+
+  <!-- TRAINING SIMULATOR -->
+  <div class="section" id="training-simulator">
+    <div class="section-header">
+      <span class="section-icon">🎯</span>
+      <div>
+        <div class="section-title">Training Simulator</div>
+        <div class="section-sub">40 scenarios, 3 difficulty levels</div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Choose your difficulty</div><div class="step-text"><strong style="color:var(--text)">🌿 Initiate</strong> — 13 scenarios covering clear-cut decisions: false positives, entity type mismatches, obvious variances. <strong style="color:var(--text)">⚡ Investigator</strong> — 13 mixed scenarios: China naming convention, YOB shortcuts, 2/3 name match, expired PII, edge cases. <strong style="color:var(--text)">🔱 Olympian</strong> — 14 hard scenarios: full address match exceptions, ownership traps, previously suspended cases, sanctioned country connections in System Notes.</div></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Work each case</div><div class="step-text">Review the Screened Entity and Matched Data just like in CMS. Choose the correct action from 4 options. You have 3 lives (🌿🌿🌿). Lose all three and the session ends early.</div></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Read the feedback</div><div class="step-text">Every question — right or wrong — shows a full explanation of the correct reasoning. Wrong answers are often the most educational. Streak of 3+ correct answers earns a bonus.</div></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Check your score and rank</div><div class="step-text">Scores determine your rank: Trainee → Investigator I → Investigator II → Senior Investigator → Lead Investigator. Scenarios are shuffled randomly each session so repeat plays feel fresh.</div></div></div>
+    </div>
+  </div>
+
+  <!-- WHERE IN THE WORLD -->
+  <div class="section" id="where-in-the-world">
+    <div class="section-header">
+      <span class="section-icon">🌍</span>
+      <div>
+        <div class="section-title">Where in the World?</div>
+        <div class="section-sub">Geography and language training — 135 questions, 4 modes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+      <div class="info-card"><h4>🔤 Script Intel</h4><p>Identify writing systems from text samples. Arabic, Cyrillic, Hangul, Devanagari, Georgian, Bengali and more — including compliance-critical examples like 조선 (North Korea) and ایران (Iran).</p></div>
+      <div class="info-card"><h4>🗺️ Country Decoder</h4><p>Identify countries from their native-language names. Deutschland, 中国, 조선민주주의인민공화국 (North Korea 🚨), جمهوری اسلامی ایران (Iran 🚨), and 35 more.</p></div>
+      <div class="info-card"><h4>👤 Name Origins</h4><p>Identify the likely geographic origin of names. Zhang Wei 张伟, Wang Fang 王芳, José, Giuseppe, Nguyễn, Kim, Fatima, Reza (Iranian 🚨), and more.</p></div>
+      <div class="info-card"><h4>🚨 Sanctioned or Safe?</h4><p>The most compliance-critical mode — 39 questions covering all 3 sanctioned countries, all 5 Ukrainian sanctioned regions, and real scenario-based address questions (Mariupol, Sevastopol, Kharkiv, etc.).</p></div>
+    </div>
+    <div class="note"><strong>🚨 Compliance-Critical questions</strong> are highlighted with red badges and worth 150 points (vs 100 for regular questions). Getting these wrong shows a detailed explanation — these are the questions that matter most on the job.</div>
+  </div>
+
+  <!-- DIRECT LINKS -->
+  <div class="section" id="direct-links">
+    <div class="section-header">
+      <span class="section-icon">🔗</span>
+      <div>
+        <div class="section-title">Direct Links</div>
+        <div class="section-sub">Send someone straight to a specific section</div>
+      </div>
+    </div>
+    <table class="link-table">
+      <thead><tr><th>Section</th><th>Direct URL</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Knowledge Base</td><td><code>…/compliance-k-base/#kb</code></td><td>Opens KB with slideshow</td></tr>
+        <tr><td>Decision Matrix</td><td><code>…/compliance-k-base/#matrix</code></td><td>Opens straight to matrix</td></tr>
+        <tr><td>Training Simulator</td><td><code>…/compliance-k-base/#training</code></td><td>Opens straight to difficulty picker</td></tr>
+        <tr><td>Where in the World?</td><td><code>…/compliance-k-base/geography-game.html</code></td><td>Opens the game in a new tab</td></tr>
+        <tr><td>User Guide & FAQs</td><td><code>…/compliance-k-base/guide.html</code></td><td>This page</td></tr>
+      </tbody>
+    </table>
+    <div class="note info" style="margin-top:.875rem"><strong>Base URL:</strong> <code>https://thevillanelle.github.io/risk-training-academy</code> — requires company VPN.</div>
+  </div>
+
+  <!-- THEMES -->
+  <div class="section" id="themes">
+    <div class="section-header">
+      <span class="section-icon">🎨</span>
+      <div>
+        <div class="section-title">Themes</div>
+        <div class="section-sub">Location themes + light/dark mode</div>
+      </div>
+    </div>
+    <p style="color:var(--text-sub);font-size:.87rem;line-height:1.8;margin-bottom:1.25rem">The nav bar has two controls on the right: a <strong style="color:var(--text)">🌙 light/dark toggle</strong> and a <strong style="color:var(--text)">location dropdown</strong>. Both preferences are saved in your browser and persist between sessions.</p>
+    <div class="themes-grid">
+      <div class="theme-swatch t-default"><span class="t-emoji">🌐</span>Global (Default)</div>
+      <div class="theme-swatch t-austin"><span class="t-emoji">🤠</span>Austin, TX</div>
+      <div class="theme-swatch t-elkgrove"><span class="t-emoji">🌴</span>Elk Grove, CA</div>
+      <div class="theme-swatch t-raleigh"><span class="t-emoji">🌸</span>Raleigh, NC</div>
+      <div class="theme-swatch t-singapore"><span class="t-emoji">🌃</span>Singapore</div>
+      <div class="theme-swatch t-sandiego"><span class="t-emoji">🏄</span>San Diego, CA</div>
+      <div class="theme-swatch t-arizona"><span class="t-emoji">🌵</span>Arizona</div>
+      <div class="theme-swatch t-boston"><span class="t-emoji">🦞</span>Boston, MA</div>
+      <div class="theme-swatch t-newyork"><span class="t-emoji">🗽</span>New York, NY</div>
+    </div>
+    <div class="note info" style="margin-top:.875rem"><strong>Note:</strong> Themes only apply to the main RTH site. The "Where in the World?" game has its own standalone design and is not affected by location themes.</div>
+  </div>
+
+  <!-- FAQs -->
+  <div class="section" id="faqs">
+    <div class="section-header">
+      <span class="section-icon">❓</span>
+      <div>
+        <div class="section-title">Frequently Asked Questions</div>
+        <div class="section-sub">Click any question to expand</div>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Why do the source doc links say "Copy URL" instead of opening directly? <span class="faq-icon">+</span></div>
+      <div class="faq-a">The compliance investigations site (<code>compliance.vilecorp.com</code>) sets a <strong>Cross-Origin-Opener-Policy</strong> security header that prevents pages from being opened via direct links from external domains. This is a server-side security setting we can't override from RTH. The workaround: click <code>📋 Copy source URL</code>, then open a fresh browser tab and paste the URL. This bypasses the security restriction entirely.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Are the Knowledge Base articles the official procedure documents? <span class="faq-icon">+</span></div>
+      <div class="faq-a"><strong>No — always use the official source docs for audit and escalation decisions.</strong> The KB currently contains: <strong>Originals</strong> (condensed summaries of source documents, not verbatim) and <strong>Tech Edits</strong> (restructured rewrites for clarity). Neither is a verbatim copy of the official procedures. The official docs live at <code>compliance.vilecorp.com</code>. Full database migration with complete doc content is in progress.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Do I need VPN to use RTH? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes. RTH is hosted on GitHub Pages (<code>pages.github.com</code>), which is only accessible from Apple's internal network. You need to be on company VPN or on-site to access it. If you see a connection error, check your VPN status first.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Why is the Knowledge Base "in progress"? <span class="faq-icon">+</span></div>
+      <div class="faq-a">We're building a proper database backend to store the full procedure documents with real-time update capability — so content can be updated without touching code. Until then, the KB has condensed summaries with links to the official source docs. The <strong>Dictionary, Decision Matrix, Training Simulator, and Geography Training are fully complete</strong> and ready to use now.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">How do I send a colleague directly to the Decision Matrix (or Training, or any section)? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Use these direct links — they work on any device on VPN:<br><br>
+        Knowledge Base: <code>…/compliance-k-base/#kb</code><br>
+        Decision Matrix: <code>…/compliance-k-base/#matrix</code><br>
+        Training Simulator: <code>…/compliance-k-base/#training</code><br>
+        Geography Game: <code>…/compliance-k-base/geography-game.html</code><br><br>
+        You can also navigate to any section and copy the URL from your browser's address bar — it updates live as you switch tabs.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">What's the difference between "Original" and "Tech Edit" in the Knowledge Base? <span class="faq-icon">+</span></div>
+      <div class="faq-a"><strong>Originals</strong> are condensed summaries of the source procedure documents — same structure and content as the official docs, but shorter. They include a "Copy source URL" button to access the full official version.<br><br><strong>Tech Edits</strong> are complete rewrites of the same content by a technical writer — cleaner structure, less redundancy, decision tables instead of paragraph descriptions. Same coverage, better readability.<br><br>Both cover the same material. Use whichever format works better for you.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Is the Training Simulator based on real compliance cases? <span class="faq-icon">+</span></div>
+      <div class="faq-a">The Training Simulator scenarios are based directly on patterns described in the official procedure documents — the same situations and decision logic you encounter in CMS. They use anonymized, illustrative names and details (e.g., "Johnny Appleseed," "GG Technologies Inc") from the procedure docs themselves. No actual case data is used.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Does my Training Simulator score save? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Not currently — scores reset each session. This is one of the planned database features: persistent score tracking, leaderboards, and progress over time. For now, use it as a practice tool and note your accuracy percentage at the end of each session.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Can I use RTH on mobile? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — RTH is responsive and works on iPhone and iPad (with VPN). The Knowledge Base sidebar collapses on small screens. The Training Simulator and Decision Matrix work fully on mobile. The Geography Game is fully mobile-friendly. The best experience is on desktop due to the amount of content.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">What does "RTH" stand for, and what happened to "CMS"? <span class="faq-icon">+</span></div>
+      <div class="faq-a"><strong>RTH = Risk Training Academy.</strong> The 🎓 caduceus symbol in the logo is a nod to CMS (the Greek messenger god who carries the caduceus) — since CMS (the tool investigators use every day) stands for Case Management System. RTH was renamed from CMS to avoid confusion with the CMS tool itself.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">The Where in the World? game doesn't change when I switch location themes. Is that a bug? <span class="faq-icon">+</span></div>
+      <div class="faq-a">That's intentional. The Where in the World? game is a standalone page with its own design. Location themes only apply to the main RTH site (Knowledge Base, Decision Matrix, Training Simulator). This was a deliberate design decision to keep the game's visual design consistent.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">How current is the procedure content? <span class="faq-icon">+</span></div>
+      <div class="faq-a">The KB content was built from source documents as of <strong>May 2026</strong>. The official source docs at <code>compliance.vilecorp.com</code> are the authoritative version — always check there for the latest updates, especially after major policy changes (like Syria's removal from the sanctions list in November 2025). The RTH dictionary notes update dates for key terms.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">I found an error or want to suggest new content — who do I contact? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Reach out to <strong>Krystine Hall</strong> via Slack or the compliance investigations team channel. New training scenarios, dictionary terms, and content corrections are actively welcome. Bug reports for the RTH site itself are also very helpful — describe what you were doing and what happened.</div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <p>🎓 <strong>RTH — Risk Training Academy</strong> · Risk & Compliance Operations · <a href="index.html">Back to RTH</a></p>
+  <p style="margin-top:.4rem">For official procedure docs: <strong>compliance.vilecorp.com</strong> (copy URL and paste in new tab)</p>
+</footer>
+
+<script>
+// Apply saved theme + location immediately
+(function(){
+  const t = localStorage.getItem('cth-theme') || 'dark';
+  const loc = localStorage.getItem('cth-location') || 'default';
+  document.documentElement.setAttribute('data-theme', t);
+  if (loc !== 'default') document.documentElement.setAttribute('data-location', loc);
+})();
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+}
+
+// Highlight active section in nav as you scroll
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('.section[id], #faqs');
+  const navLinks = document.querySelectorAll('.section-nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Smooth scroll for nav links
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+});
+</script>
+</body>
+</html>

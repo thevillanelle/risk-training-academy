@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where in the World? — RTH Compliance Geography Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0c14; --bg2:#111420; --card:#161b2e; --card2:#1e2540;
+  --red:#c0392b; --red2:#e74c3c; --red3:#ff6b5b;
+  --gold:#c9a227; --gold2:#e8c96a;
+  --text:#f0ead6; --sub:#9d95b8; --muted:#5c5680;
+  --green:#27ae60; --amber:#f39c12;
+  --border:rgba(192,57,43,.25); --border2:rgba(192,57,43,.5);
+  --glow:0 0 30px rgba(192,57,43,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
+body{display:flex;flex-direction:column}
+
+/* ── HEADER ── */
+.site-header{background:rgba(10,12,20,.97);border-bottom:2px solid var(--border);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.acme-logo{display:flex;align-items:center;gap:.75rem}
+.acme-hat{font-size:1.8rem;filter:drop-shadow(0 0 12px rgba(192,57,43,.6))}
+.acme-text{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--red2);letter-spacing:.08em;line-height:1.1}
+.acme-sub{font-size:.6rem;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;display:block}
+.back-btn{background:rgba(192,57,43,.1);border:1px solid var(--border);color:var(--red3);font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.08em;padding:.45rem 1rem;border-radius:5px;cursor:pointer;text-decoration:none;transition:all .2s}
+.back-btn:hover{background:rgba(192,57,43,.2);border-color:var(--border2)}
+.sanction-silhouette{font-size:5rem;display:block;margin-bottom:1.5rem;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(192,57,43,.5))}
+
+/* ── HERO / START SCREEN ── */
+.hero{max-width:860px;margin:0 auto;padding:3rem 1.5rem;text-align:center}
+.sanction-silhouette{font-size:5rem;display:block;margin-bottom:1.5rem;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(192,57,43,.5))}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.case-stamp{display:inline-block;background:rgba(192,57,43,.12);border:2px solid var(--border2);color:var(--red3);font-family:'Playfair Display',serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;padding:.35rem 1.25rem;border-radius:3px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:900;line-height:1.1;margin-bottom:.75rem;background:linear-gradient(135deg,var(--red2),var(--red3),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{color:var(--sub);font-size:1rem;line-height:1.75;max-width:560px;margin:0 auto 2.5rem}
+.teletype{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--gold2);background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.2);border-radius:6px;padding:.875rem 1.25rem;text-align:left;max-width:520px;margin:0 auto 2.5rem;line-height:1.8}
+.teletype .label{color:var(--red3);font-weight:600}
+
+/* ── MODE SELECTOR ── */
+.modes{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:680px;margin:0 auto}
+.mode-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;cursor:pointer;text-align:left;transition:all .2s;position:relative;overflow:hidden}
+.mode-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(192,57,43,.06),transparent);opacity:0;transition:opacity .2s}
+.mode-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--glow)}
+.mode-card:hover::before{opacity:1}
+.mode-icon{font-size:2rem;display:block;margin-bottom:.75rem}
+.mode-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--red2);margin-bottom:.35rem}
+.mode-desc{font-size:.8rem;color:var(--sub);line-height:1.6}
+.mode-count{position:absolute;top:1rem;right:1rem;font-size:.65rem;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+
+/* ── GAME SCREEN ── */
+.game-screen{display:none;max-width:780px;margin:0 auto;padding:2rem 1.5rem;width:100%}
+.game-hud{display:flex;align-items:center;gap:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.75rem 1.25rem;margin-bottom:1.75rem}
+.hud-item{display:flex;flex-direction:column;gap:.1rem}
+.hud-lbl{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.hud-val{font-size:.95rem;font-weight:700;color:var(--gold2)}
+.hud-div{width:1px;height:28px;background:var(--border)}
+.hud-title{font-family:'Playfair Display',serif;color:var(--red2);font-size:.95rem;font-weight:700}
+.hud-rank{font-family:'Playfair Display',serif;color:var(--gold)}
+.progress-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:1.5rem;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--red2));border-radius:2px;transition:width .4s ease}
+
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.25rem}
+.q-header{background:linear-gradient(135deg,rgba(192,57,43,.15),rgba(22,27,46,.8));border-bottom:1px solid var(--border);padding:1.25rem 1.5rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.q-type-badge{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:rgba(192,57,43,.15);color:var(--red3);border:1px solid var(--border2);flex-shrink:0}
+.q-flavor{font-family:'Playfair Display',serif;font-size:.82rem;font-style:italic;color:var(--sub);line-height:1.5;flex:1}
+.q-body{padding:1.5rem}
+.q-text{font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:.75rem;line-height:1.45}
+.q-display{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:500;color:var(--gold2);text-align:center;padding:1.25rem;background:rgba(201,162,39,.06);border:1px solid rgba(201,162,39,.15);border-radius:8px;margin-bottom:1.25rem;letter-spacing:.05em;line-height:1.4}
+.q-display.script{font-family:'JetBrains Mono',system-ui,sans-serif;font-size:2.4rem}
+.q-note{font-size:.78rem;color:var(--muted);font-style:italic;margin-bottom:1.25rem;padding:.5rem .75rem;border-left:2px solid var(--border2);background:rgba(192,57,43,.05);border-radius:0 4px 4px 0}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.q-opt{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:.875rem 1rem;cursor:pointer;color:var(--sub);font-size:.88rem;text-align:left;font-family:'Inter',sans-serif;transition:all .15s}
+.q-opt:hover:not(:disabled){border-color:var(--border2);color:var(--text);background:rgba(192,57,43,.08)}
+.q-opt.correct{border-color:var(--green);background:rgba(39,174,96,.1);color:#27ae60}
+.q-opt.wrong{border-color:var(--red);background:rgba(192,57,43,.1);color:var(--red2)}
+.q-opt:disabled{cursor:default}
+.q-opt .opt-flag{margin-right:.35rem}
+
+.feedback{border-radius:10px;padding:1.1rem 1.25rem;margin-top:1rem;display:none}
+.feedback.show{display:block;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.feedback.correct{background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.35)}
+.feedback.wrong{background:rgba(192,57,43,.08);border:1px solid var(--border2)}
+.feedback.compliance{background:rgba(231,76,60,.12);border:2px solid rgba(231,76,60,.5)}
+.fb-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.35rem}
+.fb-title.correct{color:var(--green)}
+.fb-title.wrong{color:var(--red2)}
+.fb-title.compliance{color:#e74c3c}
+.fb-text{font-size:.83rem;color:var(--sub);line-height:1.65}
+.fb-compliance-tag{display:inline-block;background:rgba(231,76,60,.15);border:1px solid rgba(231,76,60,.4);color:#ff6b5b;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .5rem;border-radius:4px;margin-top:.4rem}
+
+.btn-next{background:rgba(192,57,43,.15);border:1px solid var(--border2);color:var(--red3);font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;letter-spacing:.1em;padding:.65rem 1.75rem;border-radius:6px;cursor:pointer;margin-top:1rem;display:none;transition:all .2s}
+.btn-next.show{display:inline-block}
+.btn-next:hover{background:rgba(192,57,43,.28);box-shadow:var(--glow)}
+
+/* ── RESULTS SCREEN ── */
+.results{display:none;max-width:680px;margin:0 auto;padding:2.5rem 1.5rem;text-align:center}
+.results.show{display:block}
+.results-icon{font-size:4.5rem;display:block;margin-bottom:1rem;animation:float 3s ease-in-out infinite}
+.results-title{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--red2);margin-bottom:.4rem}
+.results-subtitle{color:var(--sub);margin-bottom:1.5rem;font-size:.9rem}
+.score-display{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:var(--gold2);line-height:1;margin:1rem 0 .4rem}
+.score-label{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.rank-badge{display:inline-block;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;padding:.5rem 1.75rem;border-radius:20px;border:2px solid var(--border2);background:rgba(192,57,43,.1);color:var(--red2);margin:.75rem 0 1.75rem;letter-spacing:.08em}
+.results-stats{display:flex;justify-content:center;gap:2.5rem;margin-bottom:2rem}
+.stat-n{font-size:1.75rem;font-weight:700;color:var(--text)}
+.stat-l{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.results-compliance{background:rgba(192,57,43,.08);border:1px solid var(--border2);border-radius:10px;padding:1.25rem;text-align:left;margin-bottom:1.5rem}
+.results-compliance h3{font-family:'Playfair Display',serif;color:var(--red2);margin-bottom:.5rem;font-size:.95rem}
+.results-compliance p{font-size:.82rem;color:var(--sub);line-height:1.7}
+.btn-primary{background:linear-gradient(135deg,var(--red),#96281b);border:none;color:var(--text);font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.9rem 2.5rem;border-radius:8px;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(192,57,43,.3);margin-right:.75rem}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(192,57,43,.5)}
+.btn-sec{background:rgba(192,57,43,.1);border:1px solid var(--border);color:var(--red3);font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;letter-spacing:.08em;padding:.85rem 1.75rem;border-radius:8px;cursor:pointer;transition:all .2s}
+.btn-sec:hover{background:rgba(192,57,43,.2)}
+
+/* ── SCROLLBARS ── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(192,57,43,.2);border-radius:3px}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:.65rem 1.1rem;font-size:.82rem;color:var(--text);z-index:999;opacity:0;transform:translateY(8px);transition:all .3s;pointer-events:none;max-width:280px}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.red{border-color:var(--border2);color:var(--red3)}
+
+@media(max-width:600px){
+  .modes{grid-template-columns:1fr}
+  .q-opts{grid-template-columns:1fr}
+  .hero h1{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="acme-logo">
+    <span class="acme-hat">🌍</span>
+    <div class="acme-text">
+      Where in the World?<br>
+      <span class="acme-sub">Compliance Geography Training</span>
+    </div>
+  </div>
+  <a href="index.html" class="back-btn">← Back to RTH</a>
+</header>
+
+<main style="flex:1;overflow-y:auto">
+
+<!-- START SCREEN -->
+<div class="hero" id="start-screen">
+  <span class="sanction-silhouette">🚨</span>
+  <div class="case-stamp">🕵️ Global Intelligence Training</div>
+  <h1>Where in the World?</h1>
+  <p class="hero-sub">Sharp investigators recognize scripts, decode country names in any language, and know every sanctioned territory cold. This training builds the global awareness that separates a good investigator from a great one.</p>
+  <div class="teletype">
+    <span class="label">COMPLIANCE TRAINING // GLOBAL MODULE</span><br>
+    Your mission: master identification skills critical to sanctions screening.<br>
+    <br>
+    Learn to <span class="label">recognize scripts</span>, <span class="label">decode country names</span>, identify <span class="label">name origins</span>, and pinpoint every <span class="label">sanctioned territory</span> on the map.<br>
+    <br>
+    <span class="label">The investigator who knows the world catches what others miss.</span>
+  </div>
+  <div class="modes">
+    <div class="mode-card" onclick="startMode('scripts')">
+      <span class="mode-icon">🔤</span>
+      <div class="mode-count">15 questions</div>
+      <div class="mode-title">Script Intel</div>
+      <div class="mode-desc">Identify writing systems and languages from text samples. Arabic, Cyrillic, Hangul, Devanagari — you need to know them all.</div>
+    </div>
+    <div class="mode-card" onclick="startMode('countries')">
+      <span class="mode-icon">🗺️</span>
+      <div class="mode-count">18 questions</div>
+      <div class="mode-title">Country Decoder</div>
+      <div class="mode-desc">Countries don't always announce themselves in English. Can you identify a nation from its native name? Including sanctioned ones.</div>
+    </div>
+    <div class="mode-card" onclick="startMode('names')">
+      <span class="mode-icon">👤</span>
+      <div class="mode-count">16 questions</div>
+      <div class="mode-title">Name Origins</div>
+      <div class="mode-desc">José, Zhang Wei 张伟, Fatima, Giuseppe — where do these names originate? Critical for understanding your Screened Entity.</div>
+    </div>
+    <div class="mode-card" onclick="startMode('sanctioned')">
+      <span class="mode-icon">🚨</span>
+      <div class="mode-count">20 questions</div>
+      <div class="mode-title">Sanctioned or Safe?</div>
+      <div class="mode-desc">The most compliance-critical skill: instant recognition of which countries and regions trigger a direct escalation. No hesitation.</div>
+    </div>
+  </div>
+</div>
+
+<!-- GAME SCREEN -->
+<div class="game-screen" id="game-screen">
+  <div class="game-hud">
+    <div class="hud-item"><span class="hud-lbl">Intel</span><span class="hud-val" id="hud-score">0</span></div>
+    <div class="hud-div"></div>
+    <div class="hud-item"><span class="hud-lbl">Case</span><span class="hud-val" id="hud-case">1/15</span></div>
+    <div class="hud-div"></div>
+    <div class="hud-item"><span class="hud-lbl">Streak</span><span class="hud-val" id="hud-streak">0 🔥</span></div>
+    <div class="hud-div"></div>
+    <div class="hud-item"><span class="hud-lbl">Mission</span><span class="hud-title" id="hud-mode">Script Intel</span></div>
+    <div style="flex:1"></div>
+    <div class="hud-item"><span class="hud-lbl">Rank</span><span class="hud-rank" id="hud-rank">Rookie</span></div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <div id="q-area"></div>
+  <div class="feedback" id="feedback">
+    <div class="fb-title" id="fb-title"></div>
+    <div class="fb-text" id="fb-text"></div>
+  </div>
+  <button class="btn-next" id="btn-next" onclick="nextQ()">Continue →</button>
+</div>
+
+<!-- RESULTS SCREEN -->
+<div class="results" id="results-screen">
+  <span class="results-icon" id="r-icon">🎩</span>
+  <div class="results-title" id="r-title">Mission Complete</div>
+  <div class="results-subtitle" id="r-sub">Knowledge that helps protect Apple from sanctions violations.</div>
+  <div class="score-label">INTEL POINTS GATHERED</div>
+  <div class="score-display" id="r-score">0</div>
+  <div class="rank-badge" id="r-rank">Rookie</div>
+  <div class="results-stats">
+    <div><div class="stat-n" id="r-correct">0</div><div class="stat-l">Correct</div></div>
+    <div><div class="stat-n" id="r-wrong">0</div><div class="stat-l">Wrong</div></div>
+    <div><div class="stat-n" id="r-acc">–</div><div class="stat-l">Accuracy</div></div>
+  </div>
+  <div class="results-compliance">
+    <h3>🚨 Compliance Reminder</h3>
+    <p>Every question about sanctioned countries directly applies to your work. Cuba (CUB), Iran (IRN), and North Korea (PRK) are always direct escalations — regardless of any other case factors. The sanctioned regions of Ukraine (Crimea, Donetsk, Luhansk, Kherson, Zaporizhzhia) are treated the same. When in doubt, escalate.</p>
+  </div>
+  <button class="btn-primary" onclick="showStart()">New Mission</button>
+  <button class="btn-sec" onclick="restartMode()">Replay This Mode</button>
+  <div style="margin-top:1.1rem"><a href="index.html" style="color:var(--text-muted);font-size:.8rem;text-decoration:none">← Back to RTH</a></div>
+</div>
+
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════
+// QUESTION BANKS
+// ══════════════════════════════════════
+
+const MODES = {
+
+scripts: {
+  name: 'Script Intel',
+  icon: '🔤',
+  flavors: [
+    'A document arrived. No translator available. What writing system is this?',
+    'PII submitted in an unknown script. Identify it before proceeding.',
+    'A Screened Entity submitted documentation in this writing system.',
+    'A case just arrived. Non-Latin characters present. What are you looking at?',
+    'The Screened Entity location is written in this script. Where is it from?',
+  ],
+  questions: [
+    { display:'你好', q:'What writing system is this?', opts:['Chinese (Simplified/Traditional)','Japanese Hiragana','Korean Hangul','Vietnamese'], correct:0, explain:'This is Chinese script (汉字/漢字). "你好" means "hello." Chinese, Japanese, and Korean all use Han characters, but Japanese Hiragana and Korean Hangul are distinct systems. Knowing the difference matters when reviewing names and locations.' },
+    { display:'Привет', q:'What writing system is this?', opts:['Cyrillic (Russian/Slavic)','Greek','Arabic','Armenian'], correct:0, explain:'This is Cyrillic script — used by Russian, Ukrainian, Bulgarian, Serbian, and other Slavic languages. "Привет" means "hello" in Russian. Russia uses Cyrillic. Ukraine (Кириличний алфавіт) also uses Cyrillic.' },
+    { display:'مرحباً', q:'What writing system is this?', opts:['Arabic / Arabic script','Hebrew','Urdu','Mongolian'], correct:0, explain:'This is Arabic script. "مرحباً" means "hello" in Arabic. Arabic script is also used for Persian/Farsi (Iran), Urdu (Pakistan), and several other languages. Reading right to left.' },
+    { display:'שָׁלוֹם', q:'What writing system is this?', opts:['Hebrew','Arabic','Aramaic','Yiddish script'], correct:0, explain:'This is Hebrew script. "שָׁלוֹם" means "shalom/peace." Hebrew script is distinct from Arabic — both read right-to-left, but the letterforms are different. Used in Israel.' },
+    { display:'안녕하세요', q:'What writing system is this?', opts:['Korean Hangul','Chinese','Japanese Katakana','Thai'], correct:0, explain:'This is Korean Hangul (한글). "안녕하세요" means "hello" in Korean. Hangul was created in the 15th century specifically for Korean — distinct from Chinese characters. North Korea (PRK 🚨) and South Korea both use Hangul.' },
+    { display:'こんにちは', q:'What writing system is this?', opts:['Japanese Hiragana','Korean Hangul','Chinese','Vietnamese'], correct:0, explain:'This is Japanese Hiragana — one of three scripts used in Japanese writing (along with Katakana and Kanji). "こんにちは" means "hello." Japanese often mixes all three scripts in a single sentence.' },
+    { display:'Γεια σας', q:'What writing system is this?', opts:['Greek alphabet','Cyrillic','Latin','Hebrew'], correct:0, explain:'This is the Greek alphabet. "Γεια σας" means "hello" in Greek. The Greek alphabet is one of the oldest in the world and the ancestor of both Latin and Cyrillic scripts.' },
+    { display:'नमस्ते', q:'What writing system is this?', opts:['Devanagari (Hindi/Sanskrit)','Bengali','Gujarati','Tamil'], correct:0, explain:'This is Devanagari script, used for Hindi, Sanskrit, Marathi, and other South Asian languages. "नमस्ते" means "namaste." India\'s official languages use multiple distinct scripts.' },
+    { display:'สวัสดี', q:'What writing system is this?', opts:['Thai','Burmese','Khmer (Cambodian)','Lao'], correct:0, explain:'This is Thai script. "สวัสดี" means "hello" in Thai. Thai, Burmese, Khmer, and Lao all use distinct Southeast Asian scripts derived from ancient Indian writing systems.' },
+    { display:'ایران', q:'What language/script is this — and what does it say?', opts:['Persian/Farsi — says "Iran"','Arabic — says "Arab"','Urdu — says "Iran"','Kurdish — unknown'], correct:0, explain:'🚨 COMPLIANCE CRITICAL: This is Persian/Farsi script, and it says "Iran" — the Islamic Republic of Iran. Iran (IRN) is a SANCTIONED COUNTRY. Any PII, documentation, or address from Iran is a direct escalation.' },
+    { display:'조선민주주의인민공화국', q:'What is this — and why does it matter?', opts:['Korean — "Democratic People\'s Republic of Korea" (North Korea)','Chinese — "People\'s Republic"','Korean — "Republic of Korea" (South Korea)','Japanese — unknown text'], correct:0, explain:'🚨 COMPLIANCE CRITICAL: This Korean text says "조선민주주의인민공화국" — the official name of North Korea (PRK). North Korea is a SANCTIONED COUNTRY. Any Screened Entity linked to this country requires direct escalation.' },
+    { display:'كوبا', q:'What does this say — and what do you do?', opts:['Arabic script — "Cuba" (SANCTIONED)','Arabic script — "Qatar"','Arabic script — "Libya"','Arabic script — "Kuwait"'], correct:0, explain:'🚨 COMPLIANCE CRITICAL: This Arabic script says "كوبا" — Cuba (CUB). Cuba is a SANCTIONED COUNTRY. This is what Cuba looks like in Arabic on a document. Recognize it and escalate.' },
+    { display:'Ελλάδα', q:'What is this?', opts:['Greek — "Greece" (Hellas)','Cyrillic — "Bulgaria"','Latin — "Albania"','Greek — "Cyprus"'], correct:0, explain:'This is Greek script spelling "Ελλάδα" — the Greek name for Greece. Greece is not sanctioned. This tests your ability to distinguish Greek from Cyrillic (which look similar at a glance).' },
+    { display:'한국 / 조선', q:'Same script, different meanings. "한국" vs "조선" — what\'s the key difference?', opts:['"한국" = South Korea, "조선" = North Korea (PRK 🚨)','Both mean South Korea in different dialects','Both are historical names for Korea','한국 = formal, 조선 = informal'], correct:0, explain:'🚨 COMPLIANCE CRITICAL: In Korean, "한국" (Hanguk) refers to South Korea (Republic of Korea), while "조선" (Joseon) is used by North Korea to refer to itself. If you see "조선" on a document, it may reference North Korea (PRK) — a sanctioned country.' },
+    { display:'жзщч', q:'Which Cyrillic letters have NO equivalent in the Latin alphabet?', opts:['щ and ч — sounds that don\'t exist in English','All Cyrillic letters have Latin equivalents','ж and з only','None — all can be romanized'], correct:0, explain:'Several Cyrillic letters represent sounds with no direct Latin equivalent: щ (shch), ч (ch), ж (zh). This is why Romanized transliterations of Slavic names can vary — "Zhukova" vs "Žukova" vs "Djukova." Check both forms when reviewing names.' },
+    { display:'বাংলা', q:'What writing system is this?', opts:['Bengali (Bangla script)','Hindi Devanagari','Tamil','Sinhala'], correct:0, explain:'This is Bengali (Bangla) script. "বাংলা" means "Bengali." Used in Bangladesh and the Indian state of West Bengal. Bangladesh is the 8th most populous country — Bengali names appear frequently in compliance reviews.' },
+    { display:'မြန်မာ', q:'What writing system is this?', opts:['Burmese (Myanmar script)','Thai','Khmer','Lao'], correct:0, explain:'This is Burmese script, used in Myanmar (Burma). One of the distinctive round-lettered Southeast Asian scripts. Myanmar is not sanctioned under Apple compliance.' },
+    { display:'ქართული', q:'What writing system is this?', opts:['Georgian (Mkhedruli script)','Armenian','Amharic','Greek'], correct:0, explain:'This is Georgian script (Mkhedruli), used in the country of Georgia. Completely unique — one of the few scripts in the world with no close relatives. Georgia and Armenia both have their own distinct alphabets.' },
+    { display:'Հայerén', q:'What writing system is this?', opts:['Armenian alphabet','Georgian','Amharic','Hebrew'], correct:0, explain:'This is the Armenian alphabet, created in 405 AD. Used exclusively for the Armenian language. Armenia is not sanctioned. Armenian names often end in -yan or -ian (e.g., Vardanyan, Petrosian).' },
+    { display:'አማርኛ', q:'What writing system is this?', opts:['Amharic — Ethiopic/Ge\'ez script','Arabic','Hindi','Georgian'], correct:0, explain:'This is Ethiopic (Ge\'ez) script used for Amharic, the official language of Ethiopia. Ethiopia is not sanctioned. This script is also used for Tigrinya and other Ethiopian/Eritrean languages.' },
+    { display:'ภาษาไทย', q:'What language is written here?', opts:['Thai','Lao','Burmese','Khmer'], correct:0, explain:'"ภาษาไทย" means "Thai language" in Thai script. Thailand is not sanctioned. Thai script is distinct from neighboring Lao, Burmese, and Khmer scripts — though all share ancient Indian origins.' },
+    { display:'Việt Nam', q:'What is distinctive about the Vietnamese writing system?', opts:['Latin alphabet with tone diacritics — unique in Southeast Asia','Uses Chinese characters','Uses a script similar to Thai','Uses Cyrillic script'], correct:0, explain:'Vietnamese is the only major Southeast Asian language written in Latin script (Chữ Quốc ngữ), with extensive diacritic marks for tones (e.g., Nguyễn, Phạm, Đỗ). This makes it distinct — when you see Romanized text with Vietnamese tone marks, you know the origin.' },
+    { display:'한국어 / 朝鮮語', q:'Both terms refer to the Korean language. Which one is used by North Korea?', opts:['朝鮮語 (Joseoneo) — used by North Korea 🚨','한국어 (Hangugeo) — used by both','Both terms are interchangeable globally','Neither — North Korea uses a different language'], correct:0, explain:'🚨 COMPLIANCE: North Korea calls the Korean language "朝鮮語" (Joseoneo), while South Korea calls it "한국어" (Hangugeo). If you see a document or company name using "조선" rather than "한국," it may reference North Korea (PRK) — a sanctioned country.' },
+    { display:'فارسی', q:'What language does this word name — and which country primarily uses it?', opts:['Persian/Farsi — primary language of Iran 🚨','Arabic — used across the Middle East','Urdu — used in Pakistan','Kurdish — used in northern Iraq'], correct:0, explain:'🚨 COMPLIANCE: "فارسی" means "Farsi/Persian" — the primary language of Iran (IRN). Farsi uses Arabic script but is a completely different language from Arabic. Iran is SANCTIONED. Seeing Farsi script on a document is a strong indicator of Iranian origin.' },
+    { display:'日本語 vs 한국어', q:'Both are East Asian scripts. How do you tell Japanese and Korean apart at a glance?', opts:['Korean Hangul has geometric blocks; Japanese mixes Kanji+curved Hiragana+Katakana','They look identical — need translation','Japanese uses only straight lines; Korean uses only curves','Both use the same script with different pronunciations'], correct:0, explain:'Korean Hangul (한글) consists of geometric blocks combining consonants and vowels. Japanese uses three scripts simultaneously: Kanji (Chinese characters), curved Hiragana (ひらがな), and angular Katakana (カタカナ). Recognizing which is which matters — South Korea (safe) vs North Korea (sanctioned).' },
+    { display:'Кириллица vs Латиница', q:'In a Screened Entity name, "Aleksei" vs "Алексей" — what\'s the compliance implication?', opts:['Same person, two transliterations — check BOTH forms in your research','Different people — one Western, one Eastern','Aleksei is likely fake — real Russian names use Cyrillic','The Latin version is the legally binding one'], correct:0, explain:'This is one of the most common research pitfalls. The same person\'s name can appear as "Aleksei Petrov" or "Алексей Петров." When searching LexisNexis, MZ, or other tools, search BOTH the Romanized and Cyrillic forms. A match on either counts as a name match.' },
+    { display:'كوريا الشمالية', q:'What does this Arabic text say — and what do you do?', opts:['North Korea (PRK) in Arabic 🚨 — escalate any connection','South Korea — safe','China — safe','Russia — check for sanctioned regions'], correct:0, compliance:true, explain:'🚨 "كوريا الشمالية" is Arabic for "North Korea" (literally "Northern Korea"). If a document in Arabic script references North Korea — in any language — it\'s a sanctioned country connection requiring direct escalation.' },
+    { display:'Simplified 简体 vs Traditional 繁體', q:'A document shows 简体 Chinese. What does this likely indicate?', opts:['Mainland China — PRC uses Simplified Chinese','Taiwan — Taiwan uses Simplified','Hong Kong — HK uses Simplified','Singapore — unique script'], correct:0, explain:'Simplified Chinese (简体字) is used in Mainland China (PRC). Traditional Chinese (繁體字) is used in Taiwan, Hong Kong, and Macau. While not a compliance trigger on its own, recognizing this helps you understand the Screened Entity\'s likely origin and apply the China Company Naming Convention correctly.' },
+    { display:'Ελ λάδα vs Κύπρος', q:'Both are in Greek script. What countries do they name?', opts:['Greece and Cyprus — both use Greek script, neither sanctioned','Greece and Turkey','Greece and Albania','Cyprus and Malta'], correct:0, explain:'Ελλάδα = Greece, Κύπρος = Cyprus. Both use Greek alphabet. Neither is sanctioned. This tests your ability to recognize that the same script can be used by multiple countries — the script alone doesn\'t tell you the country.' },
+  ]
+},
+
+countries: {
+  name: 'Country Decoder',
+  icon: '🗺️',
+  flavors: [
+    'A Screened Entity listed this as their country. Where are they?',
+    'Registration document shows this country name. Identify it.',
+    'This location appears on submitted PII. Which country is it?',
+    'The Screened Entity\'s application lists this country. What is it?',
+    'A case shows this territory in the address field. Identify it.',
+  ],
+  questions: [
+    { display:'Deutschland', q:'Which country is this?', opts:['Germany','Austria','Switzerland','Denmark'], correct:0, compliance:false, explain:'"Deutschland" is the German name for Germany. Germany is a major player in international commerce and appears frequently in compliance reviews. Not sanctioned.' },
+    { display:'中国 / Zhōngguó', q:'Which country is this?', opts:['China (People\'s Republic)','Taiwan','Hong Kong','Singapore'], correct:0, compliance:false, explain:'"中国" (Zhōngguó) means "Middle Kingdom" — China. The PRC (People\'s Republic of China) is not sanctioned, but note: China Company Naming Convention applies! Same brand names in different Chinese cities may still be the same company.' },
+    { display:'Россия / Rossiya', q:'Which country is this?', opts:['Russia','Ukraine','Belarus','Kazakhstan'], correct:0, compliance:false, explain:'"Россия" is Russia in Russian script. Russia is not on Apple\'s main sanctions list, but sanctioned REGIONS include Crimea, Donetsk, Luhansk, Kherson, and Zaporizhzhia — all in Ukraine.' },
+    { display:'日本 / Nihon', q:'Which country is this?', opts:['Japan','China','Korea','Vietnam'], correct:0, compliance:false, explain:'"日本" (Nihon/Nippon) means "origin of the sun" — Japan. Japan uses three writing systems: Kanji (Chinese characters), Hiragana, and Katakana. Not sanctioned.' },
+    { display:'조선민주주의인민공화국', q:'CRITICAL: Which country is this?', opts:['North Korea (PRK) 🚨 SANCTIONED','South Korea','People\'s Republic of China','Democratic Republic of Congo'], correct:0, compliance:true, explain:'🚨 SANCTIONED: This is North Korea\'s official name in Korean. North Korea (PRK) is ALWAYS a direct escalation under Apple compliance. Any Screened Entity linked to North Korea must be escalated immediately.' },
+    { display:'جمهوری اسلامی ایران', q:'CRITICAL: Which country is this?', opts:['Iran — Islamic Republic 🚨 SANCTIONED','Iraq','Syria','Afghanistan'], correct:0, compliance:true, explain:'🚨 SANCTIONED: "جمهوری اسلامی ایران" is Persian/Farsi for "Islamic Republic of Iran." Iran (IRN) is a SANCTIONED COUNTRY. Any connection to Iran — doing business, PII issued by, or address in Iran — requires direct escalation.' },
+    { display:'Cuba', q:'CRITICAL: What is this — and is it sanctioned?', opts:['Cuba (CUB) 🚨 SANCTIONED — same in Spanish','Cuba — not sanctioned','Colombia','Costa Rica'], correct:0, compliance:true, explain:'🚨 SANCTIONED: "Cuba" is the same in Spanish as in English. Cuba (CUB) is a SANCTIONED COUNTRY. This is the simplest one to remember — the name does not change across languages.' },
+    { display:'España', q:'Which country is this?', opts:['Spain','Mexico','Argentina','Portugal'], correct:0, compliance:false, explain:'"España" is the Spanish name for Spain. Not sanctioned. Spain is a common origin country for developer enrollments and content providers.' },
+    { display:'대한민국', q:'Which country is this?', opts:['South Korea (Republic of Korea)','North Korea (PRK)','Japan','China'], correct:0, compliance:false, explain:'"대한민국" (Daehan Minguk) is the official name of South Korea. Contrast with "조선민주주의인민공화국" (North Korea). South Korea is not sanctioned — North Korea is. Know the difference.' },
+    { display:'Türkiye', q:'Which country is this?', opts:['Turkey','Azerbaijan','Turkmenistan','Kazakhstan'], correct:0, compliance:false, explain:'"Türkiye" is Turkey\'s official self-designated name (changed from "Turkey" internationally in 2022). Not sanctioned. Turkey is a common origin for compliance cases.' },
+    { display:'Magyarország', q:'Which country is this?', opts:['Hungary','Poland','Romania','Czech Republic'], correct:0, compliance:false, explain:'"Magyarország" means "Land of the Magyars" — Hungary. EU member state, not sanctioned. Hungarian is one of the more distinctive European language names.' },
+    { display:'العراق', q:'Which country is this?', opts:['Iraq','Iran','Saudi Arabia','Kuwait'], correct:0, compliance:false, explain:'"العراق" is Iraq in Arabic script. Iraq is NOT currently on Apple\'s main sanctions list (unlike Iran). Important distinction: Iraq ≠ Iran in terms of sanctions status.' },
+    { display:'الإمارات العربية المتحدة', q:'Which country is this?', opts:['UAE (United Arab Emirates)','Saudi Arabia','Qatar','Kuwait'], correct:0, compliance:false, explain:'"الإمارات العربية المتحدة" is the Arabic name for the United Arab Emirates (UAE). Not sanctioned. Dubai and Abu Dhabi are major business hubs — UAE appears frequently in developer enrollment cases.' },
+    { display:'Крым / Krym', q:'CRITICAL: What is this territory — and is it sanctioned?', opts:['Crimea 🚨 SANCTIONED REGION (Ukraine)','Crimea — part of Russia, not sanctioned','Kazakhstan — not sanctioned','Armenia — not sanctioned'], correct:0, compliance:true, explain:'🚨 SANCTIONED REGION: Crimea (Крым) is a sanctioned region in Ukraine. Despite Russian occupation, it remains a sanctioned territory under Apple compliance. Any connection to Crimea requires direct escalation.' },
+    { display:'Донецька Народна Республіка', q:'CRITICAL: What is this — and what do you do?', opts:['Donetsk People\'s Republic 🚨 SANCTIONED REGION','Region of eastern Ukraine — not sanctioned','Belarus — not sanctioned','Part of Russia — not sanctioned'], correct:0, compliance:true, explain:'🚨 SANCTIONED REGION: This Ukrainian text says "Donetsk People\'s Republic" (DPR). Along with Luhansk, Kherson, and Zaporizhzhia regions in Ukraine, this is a SANCTIONED REGION. Always escalate.' },
+    { display:'Sverige', q:'Which country is this?', opts:['Sweden','Switzerland','Slovakia','Slovenia'], correct:0, compliance:false, explain:'"Sverige" is the Swedish name for Sweden. NATO member, EU member, not sanctioned. Swedish names and Nordic script appearances can look unfamiliar — worth learning.' },
+    { display:'भारत / Bhārat', q:'Which country is this?', opts:['India','Nepal','Sri Lanka','Bangladesh'], correct:0, compliance:false, explain:'"भारत" (Bhārat) is the official Hindi name for India. This is Devanagari script. India has a massive developer community and appears very frequently in compliance reviews. Not sanctioned.' },
+    { display:'Syriya / سوريا', q:'Is Syria currently sanctioned under Apple compliance?', opts:['No — Syria was REMOVED from sanctioned list November 2025','Yes — Syria is sanctioned (CUB/IRN/PRK level)','Yes — Syria is a sanctioned region','Unclear — treat as sanctioned to be safe'], correct:0, compliance:false, explain:'Syria was removed from Apple\'s sanctions list in November 2025. It is NO LONGER sanctioned. This is a recent change — make sure you\'re working from the current list. Always reference the most recent guidance.' },
+    { display:'France / La France', q:'Which country is this?', opts:['France','Belgium','Switzerland','Monaco'], correct:0, compliance:false, explain:'"France" is the same in English and French. Straightforward, but French-speaking countries include France, Belgium, Switzerland, Canada, and many African nations — don\'t assume "France" = only France without checking location context.' },
+    { display:'Polska', q:'Which country is this?', opts:['Poland','Czech Republic','Slovakia','Slovenia'], correct:0, compliance:false, explain:'"Polska" is Poland\'s name in Polish. EU and NATO member, not sanctioned. Poland borders Ukraine — Polish addresses near the Ukrainian border are not sanctioned, but if the actual address is in a Ukrainian sanctioned region, it still escalates.' },
+    { display:'Pilipinas', q:'Which country is this?', opts:['Philippines','Indonesia','Malaysia','Brunei'], correct:0, compliance:false, explain:'"Pilipinas" is the Filipino name for the Philippines. Uses Latin script. Philippines is not sanctioned and has a significant developer community.' },
+    { display:'Việt Nam', q:'Which country is this?', opts:['Vietnam','Cambodia','Laos','Thailand'], correct:0, compliance:false, explain:'"Việt Nam" is Vietnam\'s official name. Note the diacritic marks — these are part of the official spelling in Vietnamese. Vietnam is not sanctioned.' },
+    { display:'مصر', q:'Which country is this?', opts:['Egypt','Iraq','Syria','Libya'], correct:0, compliance:false, explain:'"مصر" is Egypt in Arabic. Egypt is not sanctioned. One of the most common Arabic-script country names in compliance reviews — worth memorizing.' },
+    { display:'پاکستان', q:'Which country is this?', opts:['Pakistan','Iran','Afghanistan','Uzbekistan'], correct:0, compliance:false, explain:'"پاکستان" is Pakistan in Urdu/Persian script. Pakistan is not sanctioned. Urdu uses the same script as Arabic and Farsi — distinguish by context and the specific letterforms.' },
+    { display:'افغانستان', q:'Which country is this?', opts:['Afghanistan','Pakistan','Iran','Uzbekistan'], correct:0, compliance:false, explain:'"افغانستان" is Afghanistan in Dari/Pashto. Afghanistan is NOT sanctioned under Apple compliance — a common misconception. Only Cuba, Iran, and North Korea are the three core sanctioned countries.' },
+    { display:'বাংলাদেশ', q:'Which country is this?', opts:['Bangladesh','India','Nepal','Sri Lanka'], correct:0, compliance:false, explain:'"বাংলাদেশ" is Bangladesh in Bengali script. Not sanctioned. Bangladesh is home to over 170 million people — one of the most populous countries in the world and an increasingly significant developer market.' },
+    { display:'Indonesia / Republik Indonesia', q:'Which country is this?', opts:['Indonesia','Malaysia','Philippines','Brunei'], correct:0, compliance:false, explain:'"Indonesia" is the same in Indonesian and English. The world\'s largest archipelago and 4th most populous country. Not sanctioned. Indonesian names often use Islamic names (Muhammad, Ahmad, Siti) alongside traditional Javanese/Balinese names.' },
+    { display:'Казахстан', q:'Which country is this?', opts:['Kazakhstan','Kyrgyzstan','Uzbekistan','Tajikistan'], correct:0, compliance:false, explain:'"Казахстан" is Kazakhstan in Russian/Kazakh Cyrillic. Not sanctioned. Central Asian country — important to distinguish from sanctioned territories. Note it uses Cyrillic (like Russian), not a distinct script.' },
+    { display:'Azərbaycan', q:'Which country is this?', opts:['Azerbaijan','Armenia','Georgia','Kazakhstan'], correct:0, compliance:false, explain:'"Azərbaycan" is Azerbaijan in Azerbaijani Latin script. Not sanctioned. Azerbaijan uses Latin script (modernized in 1991), unlike neighboring countries that use Cyrillic or unique scripts.' },
+    { display:'Марокко / المغرب', q:'Which country does "المغرب" refer to?', opts:['Morocco (means "the West" in Arabic)','Algeria','Tunisia','Libya'], correct:0, compliance:false, explain:'"المغرب" (Al-Maghrib) is the Arabic name for Morocco, meaning "the West." Morocco is not sanctioned. North African countries are commonly represented in Program Alpha/Program Beta compliance reviews.' },
+    { display:'Ísland', q:'Which country is this?', opts:['Iceland','Ireland','Finland','Estonia'], correct:0, compliance:false, explain:'"Ísland" is Iceland in Icelandic. Not sanctioned. The accent mark (Í) is part of the official name. European country with a small but active developer community.' },
+    { display:'조선민주주의인민공화국 (short: 조선)', q:'A document shows just "조선" in the company name. What does this suggest?', opts:['North Korea (PRK) 🚨 — "조선" is how NK refers to itself','South Korea — a historical name used for both','A Korean diaspora company — not location-specific','Unclear — needs further investigation'], correct:0, compliance:true, explain:'🚨 "조선" (Joseon) is how North Korea refers to itself and the Korean peninsula. Any company name containing "조선" — e.g., "조선무역" (Joseon Trading) — may have North Korean connections. This is the Inclusion Term pattern for North Korean entities. Escalate.' },
+    { display:'Oman / عُمان', q:'Is Oman sanctioned under Apple compliance?', opts:['No — Oman is not sanctioned','Yes — Gulf states are sanctioned','Yes — all Middle Eastern countries are sanctioned','Unclear'], correct:0, compliance:false, explain:'Oman is not sanctioned. No Gulf Cooperation Council (GCC) countries — Saudi Arabia, UAE, Kuwait, Qatar, Bahrain, or Oman — are on Apple\'s sanctions list. Only Cuba, Iran, and North Korea are the three core sanctioned countries.' },
+    { display:'Укра́їна', q:'A document lists "Укра́їна" as the country. Is this automatically a red flag?', opts:['No — Ukraine itself is not sanctioned; only 5 specific regions are','Yes — all of Ukraine is sanctioned due to the conflict','Yes — Cyrillic script = Eastern Bloc = escalate','Depends on the city listed'], correct:0, compliance:false, explain:'Ukraine itself is NOT sanctioned. Only five regions are: Crimea, Donetsk People\'s Republic, Luhansk People\'s Republic, Kherson, and Zaporizhzhia. Kyiv, Lviv, Odessa, Kharkiv and most other Ukrainian cities are fine. Always check the specific city/region.' },
+    { display:'Repubblica Italiana', q:'Which country is this?', opts:['Italy','France','Spain','Portugal'], correct:0, compliance:false, explain:'"Repubblica Italiana" is Italy\'s full official name. Italian appears frequently in company names (S.r.l. = Srl = Italian LLC equivalent). Italy is not sanctioned.' },
+  ]
+},
+
+names: {
+  name: 'Name Origins',
+  icon: '👤',
+  flavors: [
+    'This name appears on a submitted ID. What region does it suggest?',
+    'Understanding name origins helps build a complete Screened Entity profile.',
+    'A Screened Entity submitted this name. Where might it originate?',
+    'Knowing name patterns helps spot inconsistencies in a case.',
+    'The name on this PII suggests a regional origin. Which one?',
+  ],
+  questions: [
+    { display:'张伟', q:'Where does this name most likely originate?', opts:['China (Mandarin Chinese)','Japan','Korea','Vietnam'], correct:0, compliance:false, explain:'"Zhang Wei (张伟)" is one of the most common Chinese names. Zhang (张) is a surname; Wei (伟) means "great/mighty." This is a Mandarin Chinese name. In a compliance context, a Screened Entity named Zhang Wei likely has Chinese connections — review both the Romanized and Chinese character versions.' },
+    { display:'王芳', q:'Where does this name most likely originate?', opts:['China — typically female','Japan — male name','Korea — gender neutral','Taiwan — unique regional name'], correct:0, compliance:false, explain:'"Wang Fang (王芳)" is a common Chinese female name. Wang (王) means "king/royal" and is one of the most common Chinese surnames. Fang (芳) means "fragrant/virtuous." When you see Chinese names, always check both Romanized and character versions — they should match.' },
+    { display:'José', q:'Where does this name most likely originate?', opts:['Spanish/Portuguese speaking countries','French','Italian','Romanian'], correct:0, compliance:false, explain:'"José" is the Spanish/Portuguese form of "Joseph." It\'s extremely common throughout Latin America, Spain, and Portugal. A Screened Entity named José with a claimed location in Germany might be worth noting as a potential mismatch to research further.' },
+    { display:'Giuseppe', q:'Where does this name most likely originate?', opts:['Italy (Italian form of "Joseph")','Spain','France','Romania'], correct:0, compliance:false, explain:'"Giuseppe" is the Italian form of "Joseph." Common in Italy and Italian diaspora communities. Knowing name-country correspondence helps when evaluating whether a Screened Entity\'s name matches their claimed location.' },
+    { display:'محمد / Mohammed', q:'This name appears widely across which regions?', opts:['Arabic-speaking world + Islamic nations globally','Iran specifically','Turkey specifically','North Africa only'], correct:0, compliance:false, explain:'"Mohammed/Muhammad (محمد)" is the most common name in the world. It appears across Arabic-speaking countries, Iran (as محمد), Turkey, South Asia, sub-Saharan Africa, and Muslim communities globally. It is NOT unique to any one country — do not assume location based on this name alone.' },
+    { display:'Fatima / فاطمة', q:'Where does this name most likely originate?', opts:['Arabic-speaking world + Islamic communities globally','Hebrew origin','Persian/Iranian only','Turkish only'], correct:0, compliance:false, explain:'"Fatima (فاطمة)" is a common female name across Arabic-speaking countries, Iran, Turkey, Pakistan, and Muslim communities worldwide. Like Mohammed, it spans many countries — not location-specific alone.' },
+    { display:'Priya', q:'Where does this name most likely originate?', opts:['India/South Asia (Sanskrit origin, female)','Philippines','Indonesia','Sri Lanka only'], correct:0, compliance:false, explain:'"Priya" is a Sanskrit name meaning "beloved/dear." It\'s common across India, Sri Lanka, Nepal, and the South Asian diaspora. The Devanagari spelling is प्रिया. Not sanctioned regions.' },
+    { display:'Oleksiy / Олексій', q:'Where does this name most likely originate?', opts:['Ukraine (Ukrainian form of Alexei)','Russia','Belarus','Bulgaria'], correct:0, compliance:false, explain:'"Олексій" (Oleksiy) is the Ukrainian form of Alexei/Alexander. Notably different from the Russian "Алексей" (Aleksei). Language distinction matters: if PII shows "Олексій," the person is likely Ukrainian. Ukraine is NOT sanctioned — but the sanctioned regions within Ukraine are.' },
+    { display:'Mehmet', q:'Where does this name most likely originate?', opts:['Turkey (Turkish form of Mohammed)','Arabic-speaking countries','Iran','Afghanistan'], correct:0, compliance:false, explain:'"Mehmet" is the Turkish form of Mohammed. It\'s distinctly Turkish and helps identify Turkish origin — different from the Arabic "Mohammed" or Persian "Mohammad." Turkey is not sanctioned.' },
+    { display:'Hamid / حامد', q:'Where does this name most likely originate?', opts:['Persian/Iranian or Arabic origin','Turkish origin','Indian origin','Chinese origin'], correct:0, compliance:false, explain:'"Hamid (حامد)" is common in Iran (Persian) and Arabic-speaking countries. If a Screened Entity is named Hamid and claims to be from Iran, this name does NOT contradict that. But Iran (IRN) is still SANCTIONED — escalate regardless.' },
+    { display:'Yuki / 雪', q:'Where does this name most likely originate?', opts:['Japan (means "snow" or "happiness")','China','Korea','Vietnam'], correct:0, compliance:false, explain:'"Yuki (雪 or 幸)" is a Japanese name — meaning "snow" or "happiness" depending on the kanji used. Japanese names often have multiple possible kanji for the same sound. Japan is not sanctioned.' },
+    { display:'Ivan / Иван', q:'Where does this name most likely originate?', opts:['Slavic origin (Russia, Ukraine, Bulgaria, Serbia, etc.)','Greek origin','German origin','Arabic origin'], correct:0, compliance:false, explain:'"Ivan (Иван)" is a Slavic form of "John." It spans Russian, Ukrainian, Bulgarian, Serbian, Polish, and other Slavic countries. You cannot determine the exact country from this name alone — but you can narrow to the Slavic region.' },
+    { display:'Min-jun / 민준', q:'Where does this name most likely originate?', opts:['Korea (Korean male name)','China','Japan','Vietnam'], correct:0, compliance:false, explain:'"민준" (Min-jun) is one of the most popular Korean male names. Korean names use Hangul script and follow a family name + given name structure. South Korea (not sanctioned) vs North Korea (SANCTIONED 🚨) — you cannot tell from the name alone. Location context matters.' },
+    { display:'Bogdan', q:'Where does this name most likely originate?', opts:['Eastern Europe (Romanian, Ukrainian, Polish, Bulgarian)','Western Europe','Middle East','East Asia'], correct:0, compliance:false, explain:'"Bogdan" is a common Eastern European name meaning "given by God." Found in Romania, Ukraine, Poland, Bulgaria, and other Slavic/Eastern European countries. Important compliance note: Ukraine has sanctioned regions — if the location is Crimea, Donetsk, Luhansk, Kherson, or Zaporizhzhia, escalate.' },
+    { display:'Karim / كريم', q:'Where does this name most likely originate?', opts:['Arabic-speaking world (means "generous")','Persian/Iranian primarily','Turkish primarily','South Asian primarily'], correct:0, compliance:false, explain:'"Karim (كريم)" means "generous/noble" in Arabic. It\'s common across the Arabic-speaking world, North Africa, and Muslim communities globally. If a Screened Entity named Karim claims to be from Iran (IRN) — the name fits, but Iran is still SANCTIONED. Escalate.' },
+    { display:'Thanh', q:'Where does this name most likely originate?', opts:['Vietnam (very common Vietnamese name)','Thailand','Cambodia','Philippines'], correct:0, compliance:false, explain:'"Thanh" is one of the most common names in Vietnam, used for both males and females. Vietnamese names are written in Latin script (with diacritical marks) — unique among East Asian languages. Vietnam is not sanctioned.' },
+    { display:'Nguyễn', q:'This is the world\'s most common Vietnamese surname. What does it tell you about origin?', opts:['Vietnam — ~40% of all Vietnamese people share this surname','China — it\'s a Cantonese name','Korea — common Korean family name','Cambodia — Khmer surname'], correct:0, compliance:false, explain:'"Nguyễn" is borne by approximately 40% of the Vietnamese population — making it arguably the most common surname in the world relative to population. The diacritics (ễ) are distinctive markers of Vietnamese. Vietnam is not sanctioned.' },
+    { display:'李伟 / Li Wei', q:'What is significant about this Chinese name for compliance purposes?', opts:['One of China\'s most common names — search Romanized AND character forms','Exclusively a female name — narrow your research','Rare name — likely a unique individual','Japanese name — different origin than it appears'], correct:0, compliance:false, explain:'"李伟" (Li Wei) is among the most common Chinese names — Li (李) is one of the top 3 Chinese surnames, Wei (伟) is a very common given name. Because it\'s so common, a Screened Entity named Li Wei requires extra research to distinguish from Matched Data. Always check both 李伟 and "Li Wei."' },
+    { display:'陈 / Chen / 陳', q:'This character appears in many Chinese names. What does it tell you?', opts:['It\'s a very common Chinese surname — Simplified (陈) and Traditional (陳) versions both used','It\'s a given name meaning "morning"','It\'s specific to Taiwanese names only','It indicates Cantonese origin exclusively'], correct:0, compliance:false, explain:'"陈/陳" (Chen) is one of the most common Chinese surnames, appearing in both Simplified Chinese (陈, Mainland China) and Traditional Chinese (陳, Taiwan/HK). When researching, search all forms: Chen, Chan (Cantonese romanization), and both character versions.' },
+    { display:'Kim / 김', q:'Why is "Kim" significant in Korean compliance cases?', opts:['~22% of all South Koreans have this surname — extremely common','It\'s a North Korean-specific surname','It\'s primarily a female given name in Korea','It indicates Chinese-Korean ancestry'], correct:0, compliance:false, explain:'"Kim (김)" is the most common surname in Korea — approximately 22% of South Koreans are named Kim. When a Screened Entity is named Kim, this alone tells you very little about the individual. Research needs to focus on the given name, DOB, and location to distinguish between potential matches.' },
+    { display:'Leila / ليلى', q:'Where does this name most likely originate?', opts:['Persian/Arabic — widespread across Iran, Arab world, and diaspora','Turkish only','Indian/Hindi origin','Eastern European origin'], correct:0, compliance:false, explain:'"Leila/Layla (ليلى)" is common across Persian-speaking countries (Iran, Afghanistan, Tajikistan) and Arabic-speaking countries. If a Screened Entity named Leila claims Iranian origin — the name fits, but Iran (IRN) is still SANCTIONED regardless.' },
+    { display:'Reza / رضا', q:'Where does this name most likely originate?', opts:['Persian/Iranian (very common male name in Iran)','Arabic exclusively','Turkish exclusively','South Asian'], correct:0, compliance:false, explain:'"Reza (رضا)" is a very common male name in Iran and other Persian-speaking countries. It means "contentment/satisfaction" in Arabic. A Screened Entity named Reza with an Iranian address is consistent — but Iran (IRN) is SANCTIONED. Escalate.' },
+    { display:'Kofi', q:'Where does this name most likely originate?', opts:['Ghana — Akan/Twi name meaning "born on Friday"','Nigeria','Kenya','Senegal'], correct:0, compliance:false, explain:'"Kofi" is an Akan name from Ghana, meaning "born on Friday" in the Twi language. The most famous bearer is Kofi Annan. West African names often encode birth day (Kofi=Friday, Kwame=Saturday, Ama=Saturday for females). Ghana is not sanctioned.' },
+    { display:'Chioma', q:'Where does this name most likely originate?', opts:['Nigeria — Igbo name (southeastern Nigeria)','Ghana','Ethiopia','Kenya'], correct:0, compliance:false, explain:'"Chioma" is an Igbo name from Nigeria, meaning "good God" or "good omen." Nigerian names appear frequently in compliance reviews — Nigeria is one of Africa\'s largest developer markets. Not sanctioned.' },
+    { display:'Amara', q:'This name appears across multiple continents. Which origins are correct?', opts:['West Africa (Temne/Mende), South Asia (Sanskrit: eternal), and Arabic (moon)','Exclusively West African','Exclusively Arabic','Exclusively South Asian'], correct:0, compliance:false, explain:'"Amara" is a cross-cultural name. In West Africa it means "grace/eternal." In Sanskrit it means "immortal." In Arabic it means "moon." Multiple Screened Entities with different origins could share this name — don\'t assume a single geographic origin.' },
+    { display:'Elif', q:'Where does this name most likely originate?', opts:['Turkey — the letter "elif" is the first letter of the Arabic alphabet','Iran — Persian name','Arabic-speaking countries — Arabic origin','South Asia'], correct:0, compliance:false, explain:'"Elif" is a Turkish female name derived from the Arabic letter "alif/elif" (the first letter). Very distinctly Turkish — while the letter comes from Arabic, "Elif" as a given name is characteristic of Turkish culture. Turkey is not sanctioned.' },
+    { display:'Anastasia / Анастасия', q:'Where does this name most likely originate?', opts:['Slavic/Greek origin — common in Russia, Ukraine, Greece, Bulgaria','Exclusively Russian','Exclusively Greek','Italian origin'], correct:0, compliance:false, explain:'"Anastasia" is used across Slavic-speaking countries (Russia, Ukraine, Belarus, Bulgaria, Serbia) and Greece. The name comes from Greek. When you see this name with a Cyrillic spelling (Анастасия), it indicates Slavic origin. Ukraine has sanctioned regions — always check the specific location.' },
+    { display:'Alejandro / Santiago', q:'Both are common in the same language/region. Which one?', opts:['Spanish-speaking countries — Latin America and Spain','Portuguese — Brazil and Portugal','Italian — Southern Europe','French — France and Quebec'], correct:0, compliance:false, explain:'"Alejandro" (Alexander in Spanish) and "Santiago" (Saint James) are both distinctly Spanish names. Common across Spain, Mexico, Argentina, Colombia, Chile, and the broader Spanish-speaking world. None of these countries are sanctioned.' },
+    { display:'François', q:'Where does this name most likely originate?', opts:['France / French-speaking world','Italy','Spain','Romania'], correct:0, compliance:false, explain:'"François" is the French form of "Francis/Frank." The cedilla (ç) is a distinctive marker of French. Common in France, Belgium, Switzerland, Quebec (Canada), and Francophone African countries. None are sanctioned.' },
+    { display:'Valentina', q:'This name is popular in multiple European countries. Which ones?', opts:['Italy, Spain, and Slavic countries — all use it widely','France exclusively','Germany exclusively','Scandinavian countries only'], correct:0, compliance:false, explain:'"Valentina" is widely used in Italy, Spain, Latin America, and Slavic countries (Russia, Ukraine, etc.). It\'s a Latin-origin name (from Valentinus) that spread across Romance and Slavic languages. Origin alone doesn\'t narrow the geography precisely.' },
+    { display:'Ahmad / أحمد', q:'Where does this name most likely originate — and why does it span so many countries?', opts:['Arabic origin — widespread across all Muslim-majority countries globally','Saudi Arabia exclusively','Iran exclusively','Malaysia exclusively'], correct:0, compliance:false, explain:'"Ahmad (أحمد)" is an Arabic name meaning "most praiseworthy" — one of the 99 names of Allah in Islam. Because it has Islamic religious significance, it\'s used across ALL Muslim-majority countries: Indonesia, Pakistan, Bangladesh, Egypt, Saudi Arabia, Iran, Nigeria, Malaysia, Turkey, and more. Never assume country from this name alone.' },
+  ]
+},
+
+sanctioned: {
+  name: 'Sanctioned or Safe?',
+  icon: '🚨',
+  flavors: [
+    'Quick assessment — is this territory sanctioned under Apple compliance?',
+    'A Screened Entity\'s PII was issued by this country. Direct escalation required?',
+    'The case shows this location. Does it trigger an escalation?',
+    'This territory appears in System Notes. Do you escalate?',
+    'Address on file lists this region. What\'s the compliance call?',
+  ],
+  questions: [
+    { display:'🇨🇺 Cuba (CUB)', q:'Is Cuba sanctioned under Apple compliance?', opts:['🚨 YES — Direct Escalation Required','✅ No — Safe to proceed'], correct:0, compliance:true, explain:'🚨 SANCTIONED: Cuba (CUB) is one of the three core sanctioned countries. Any connection — doing business with, PII issued by, or address in Cuba — requires immediate direct escalation. T2 Escalation Required: Sanctioned Country.' },
+    { display:'🇮🇷 Iran (IRN) / ایران', q:'Is Iran sanctioned under Apple compliance?', opts:['🚨 YES — Direct Escalation Required','✅ No — Safe to proceed'], correct:0, compliance:true, explain:'🚨 SANCTIONED: Iran (IRN) is one of the three core sanctioned countries. This includes the Islamic Republic of Iran in any form — Persian, Farsi script, "Iran," "ایران," "جمهوری اسلامی ایران." Always a direct escalation.' },
+    { display:'🇰🇵 North Korea (PRK)', q:'Is North Korea sanctioned under Apple compliance?', opts:['🚨 YES — Direct Escalation Required','✅ No — Safe to proceed'], correct:0, compliance:true, explain:'🚨 SANCTIONED: North Korea (PRK) is one of the three core sanctioned countries. This includes any reference to "조선민주주의인민공화국," "DPRK," "Democratic People\'s Republic of Korea," or "朝鲜/朝鮮." Always a direct escalation.' },
+    { display:'Crimea / Крим', q:'Is Crimea a sanctioned region under Apple compliance?', opts:['🚨 YES — Sanctioned Region (Ukraine)','✅ No — Russia annexed it, not sanctioned'], correct:0, compliance:true, explain:'🚨 SANCTIONED REGION: Crimea is a sanctioned region in Ukraine. Despite Russian occupation, Apple compliance treats it as sanctioned. Any connection to Crimea — address, PII issued, doing business — requires direct escalation.' },
+    { display:'Donetsk People\'s Republic\nДонецька Народна Республіка', q:'Is the Donetsk People\'s Republic sanctioned?', opts:['🚨 YES — Sanctioned Region (Ukraine)','✅ No — disputed territory, not sanctioned'], correct:0, compliance:true, explain:'🚨 SANCTIONED REGION: The Donetsk People\'s Republic (DPR) is a sanctioned region in Ukraine. All five Ukrainian sanctioned regions (Crimea, Donetsk, Luhansk, Kherson, Zaporizhzhia) are treated identically — direct escalation required.' },
+    { display:'Luhansk People\'s Republic\nЛуганська Народна Республіка', q:'Is the Luhansk People\'s Republic sanctioned?', opts:['🚨 YES — Sanctioned Region (Ukraine)','✅ No — not sanctioned'], correct:0, compliance:true, explain:'🚨 SANCTIONED REGION: The Luhansk People\'s Republic (LPR) is a sanctioned region in Ukraine. Any Screened Entity with an address in LPR or PII issued there requires direct escalation.' },
+    { display:'Kherson Region, Ukraine', q:'Is the Kherson region of Ukraine sanctioned?', opts:['🚨 YES — Sanctioned Region (Ukraine)','✅ No — standard Ukrainian territory'], correct:0, compliance:true, explain:'🚨 SANCTIONED REGION: The Kherson region of Ukraine is sanctioned under Apple compliance. Along with Zaporizhzhia, these regions were added to the sanctioned list alongside the DPR and LPR. Direct escalation required for any connection.' },
+    { display:'Zaporizhzhia Region, Ukraine', q:'Is the Zaporizhzhia region of Ukraine sanctioned?', opts:['🚨 YES — Sanctioned Region (Ukraine)','✅ No — standard Ukrainian territory'], correct:0, compliance:true, explain:'🚨 SANCTIONED REGION: The Zaporizhzhia region of Ukraine is sanctioned. This is the fifth of five sanctioned Ukrainian regions: Crimea, Donetsk, Luhansk, Kherson, Zaporizhzhia. Know all five.' },
+    { display:'🇷🇺 Russia (RUS)', q:'Is Russia sanctioned under Apple compliance (as of current guidance)?', opts:['✅ No — Russia is NOT on Apple\'s main sanctions list','🚨 YES — Full sanctions apply'], correct:0, compliance:false, explain:'Russia is NOT currently on Apple\'s main sanctions list (unlike Iran, Cuba, and North Korea). However, the sanctioned REGIONS within Ukraine (Crimea, Donetsk, Luhansk, Kherson, Zaporizhzhia) are sanctioned. Know the difference: Russia ≠ sanctioned, but occupied Ukrainian regions = sanctioned.' },
+    { display:'Syria / سوريا', q:'Is Syria currently sanctioned under Apple compliance?', opts:['✅ No — Syria was REMOVED from list November 2025','🚨 YES — Syria is still sanctioned'], correct:0, compliance:false, explain:'Syria was removed from Apple\'s sanctioned countries list in November 2025. It is NO LONGER a sanctioned country. This is a recent change — always verify you\'re using current guidance. Historical documents from before November 2025 may reference Syria as sanctioned.' },
+    { display:'🇨🇳 China (CHN)', q:'Is China sanctioned under Apple compliance?', opts:['✅ No — China is not sanctioned','🚨 YES — China is fully sanctioned'], correct:0, compliance:false, explain:'China is NOT sanctioned under Apple compliance. However: (1) China Company Naming Convention applies — same brand names in different Chinese cities must be escalated. (2) Some Chinese-linked accounts show gibberish/scripted account patterns — watch for those patterns.' },
+    { display:'🇸🇦 Saudi Arabia (SAU)', q:'Is Saudi Arabia sanctioned under Apple compliance?', opts:['✅ No — not sanctioned','🚨 YES — Middle East = sanctioned'], correct:0, compliance:false, explain:'Saudi Arabia is NOT sanctioned. Being in the Middle East does not make a country sanctioned. Only Cuba (CUB), Iran (IRN), and North Korea (PRK) are the three core sanctioned countries — plus the five Ukrainian regions.' },
+    { display:'🇦🇫 Afghanistan (AFG)', q:'Is Afghanistan sanctioned under Apple compliance?', opts:['✅ No — Afghanistan is not sanctioned','🚨 YES — Afghanistan is sanctioned'], correct:0, compliance:false, explain:'Afghanistan is NOT on Apple\'s current sanctions list. While geopolitically complex, Afghanistan (AFG) is not among the sanctioned countries for compliance purposes. Only Cuba, Iran, and North Korea are the core three.' },
+    { display:'🇧🇾 Belarus (BLR)', q:'Is Belarus sanctioned under Apple compliance?', opts:['✅ No — Belarus is not sanctioned','🚨 YES — Belarus is sanctioned'], correct:0, compliance:false, explain:'Belarus is NOT on Apple\'s current main sanctions list. Like Russia, Belarus may be subject to other governmental sanctions in various jurisdictions, but for Apple compliance screening purposes, it is not in the same category as Cuba, Iran, or North Korea.' },
+    { display:'Kyiv, Ukraine 🇺🇦', q:'A Screened Entity lists "Kyiv, Ukraine" as their address. What do you do?', opts:['✅ Safe — Kyiv is not in a sanctioned region','🚨 Escalate — Ukraine is fully sanctioned'], correct:0, compliance:false, explain:'Kyiv (the capital of Ukraine) is NOT in a sanctioned region. Only five specific regions of Ukraine are sanctioned: Crimea, Donetsk People\'s Republic, Luhansk People\'s Republic, Kherson region, and Zaporizhzhia region. Kyiv = not sanctioned.' },
+    { display:'Donetsk City, Ukraine', q:'A Screened Entity lists "Donetsk, Ukraine" as their address. Action?', opts:['🚨 ESCALATE — Donetsk is a sanctioned region','✅ Safe — it\'s a regular Ukrainian city'], correct:0, compliance:true, explain:'🚨 ESCALATE: Donetsk is in the Donetsk People\'s Republic — a sanctioned region of Ukraine. Even if listed as "Ukraine," the city of Donetsk falls within the sanctioned territory. T2 Escalation Required: Sanctioned Country/Region.' },
+    { display:'🇮🇳 India (IND)', q:'Is India sanctioned under Apple compliance?', opts:['✅ No — India is not sanctioned','🚨 YES — India is sanctioned'], correct:0, compliance:false, explain:'India is absolutely NOT sanctioned. India is one of the largest developer communities in the world. The Devanagari script (Hindi/Sanskrit) and Indian names appear frequently in compliance reviews — this is routine, not a red flag.' },
+    { display:'🇩🇪 Germany (DEU)', q:'Is Germany sanctioned?', opts:['✅ No — Germany is not sanctioned','🚨 YES — EU country, possible sanctions'], correct:0, compliance:false, explain:'Germany is a NATO member, EU member state, and not sanctioned. This is a confidence-building question — EU member states are not sanctioned under Apple compliance. Focus your escalation attention on Cuba, Iran, North Korea, and the five Ukrainian regions.' },
+    { display:'All 5 Ukrainian Sanctioned Regions — name them all', q:'Which FIVE regions of Ukraine are sanctioned?', opts:['Crimea, Donetsk, Luhansk, Kherson, Zaporizhzhia','Kyiv, Lviv, Odessa, Kharkiv, Dnipro','Crimea, Donetsk, Luhansk, Mariupol, Kharkiv','Crimea only — the others were delisted'], correct:0, compliance:true, explain:'🚨 KNOW ALL FIVE: The five sanctioned regions of Ukraine are: (1) Crimea, (2) Donetsk People\'s Republic, (3) Luhansk People\'s Republic, (4) Kherson region, (5) Zaporizhzhia region. These are treated identically to the three core sanctioned countries for compliance purposes.' },
+    { display:'The Three Core Sanctioned Countries — final check', q:'Name Apple\'s three core sanctioned countries with their ISO codes.', opts:['Cuba (CUB), Iran (IRN), North Korea (PRK)','Cuba (CUB), Iran (IRN), Syria (SYR)','Cuba (CUB), Russia (RUS), North Korea (PRK)','Iran (IRN), North Korea (PRK), Afghanistan (AFG)'], correct:0, compliance:true, explain:'🚨 MEMORIZE THIS: The three core sanctioned countries are Cuba (CUB), Iran (IRN), and North Korea (PRK). Syria was removed in November 2025. Russia is not on the list (but its occupied Ukrainian territories are). This is the most important fact in compliance screening.' },
+    { display:'Sevastopol, Crimea', q:'A Screened Entity lists "Sevastopol, Crimea" as their address. Action?', opts:['🚨 ESCALATE — Sevastopol is in sanctioned Crimea','✅ Safe — Sevastopol is a Russian city now','✅ Safe — it\'s a port city, not a sanctioned region','Unclear — research needed'], correct:0, compliance:true, explain:'🚨 ESCALATE: Sevastopol is located in Crimea — a sanctioned region of Ukraine. Regardless of political designation, Crimea remains sanctioned under Apple compliance. T2 Escalation Required: Sanctioned Country.' },
+    { display:'Address: Tehran, Iran', q:'Screened Entity address shows Tehran, Iran. Action?', opts:['🚨 ESCALATE — Tehran is the capital of Iran (IRN)','✅ Safe — just a city, need more context','✅ Safe — Iran and Tehran are different things','Research needed — check the specific district'], correct:0, compliance:true, explain:'🚨 ESCALATE: Tehran is the capital city of Iran (IRN) — a sanctioned country. Any address in Iran requires direct escalation. No exceptions.' },
+    { display:'System Notes: "also does business in Cuba"', q:'System Notes for a German company show they also do business in Cuba. Action?', opts:['🚨 ESCALATE — doing business with Cuba is a sanctioned country connection','✅ Safe — the company itself is German, not Cuban','✅ Safe — European companies can legally do business with Cuba','Research more before deciding'], correct:0, compliance:true, explain:'🚨 ESCALATE: The Screened Entity indicates they do business with Cuba — a sanctioned country. This connection, found in System Notes, is a direct escalation trigger regardless of where the company itself is based. T2 Escalation Required: Sanctioned Country.' },
+    { display:'Address: Pyongyang, DPRK', q:'A developer application shows headquarters in Pyongyang. Action?', opts:['🚨 ESCALATE — Pyongyang is the capital of North Korea (PRK)','✅ Safe — only military entities in Pyongyang are sanctioned','Research needed — verify the address','✅ Safe — most Pyongyang developers are in the diaspora'], correct:0, compliance:true, explain:'🚨 ESCALATE: Pyongyang is the capital of North Korea (PRK) — a sanctioned country. Any address in North Korea is an automatic direct escalation.' },
+    { display:'Address: Havana, Cuba', q:'Company registration shows Havana, Cuba as address. Action?', opts:['🚨 ESCALATE — Havana is in Cuba (CUB), sanctioned','✅ Safe — only specific Cuban industries are sanctioned','Research Cuban sanctions specifics first','✅ Safe — creative industry exemptions apply'], correct:0, compliance:true, explain:'🚨 ESCALATE: Havana is the capital of Cuba (CUB) — a sanctioned country. Any Cuban address triggers direct escalation. No industry exemptions apply in this context.' },
+    { display:'Address: Mariupol, Ukraine', q:'Screened Entity lists Mariupol as their address. Is this sanctioned?', opts:['🚨 YES — Mariupol is in the Donetsk region 🚨','✅ No — Mariupol is a separate city, not in DPR','Depends on the district within Mariupol','Only since 2022'], correct:0, compliance:true, explain:'🚨 ESCALATE: Mariupol is located within the Donetsk Oblast (region) of Ukraine — which is the sanctioned Donetsk People\'s Republic territory. This requires direct escalation. T2 Escalation Required: Sanctioned Country/Region.' },
+    { display:'Address: Kharkiv, Ukraine', q:'Screened Entity lists Kharkiv as their address. Is this sanctioned?', opts:['✅ No — Kharkiv is NOT in a sanctioned region','🚨 Yes — all eastern Ukraine is sanctioned','🚨 Yes — Kharkiv borders Russia, it\'s sanctioned','Unclear — treat as sanctioned to be safe'], correct:0, compliance:false, explain:'Kharkiv is in northeastern Ukraine but is NOT in any of the five sanctioned regions (Crimea, Donetsk, Luhansk, Kherson, Zaporizhzhia). Proximity to Russia does not make it sanctioned. Only the five specifically named regions are sanctioned.' },
+    { display:'Address: Odesa (Odessa), Ukraine', q:'Screened Entity lists Odesa, Ukraine as their address. Action?', opts:['✅ Safe — Odesa is not in a sanctioned region','🚨 Escalate — southern Ukraine is all sanctioned','🚨 Escalate — Odesa is near Crimea','Research first'], correct:0, compliance:false, explain:'Odesa (also spelled Odessa) is in southern Ukraine but is NOT in any of the five sanctioned regions. It is near the Zaporizhzhia and Kherson regions but is itself not sanctioned. Always verify the specific region, not just proximity.' },
+    { display:'PII issued by: Iran', q:'A Screened Entity submits a passport issued by Iran. Action?', opts:['🚨 Direct Escalate — PII from Iran (IRN) is a sanctioned country connection','✅ Use it to clear the case — DOB is still useful','Research the Screened Entity\'s current location first','Only escalate if the current address is also in Iran'], correct:0, compliance:true, explain:'🚨 DIRECT ESCALATION: PII issued by Iran is a sanctioned country connection regardless of where the Screened Entity currently lives. T2 Escalation Required: Sanctioned Country. You do not use the PII to clear — the document itself triggers escalation.' },
+    { display:'PII issued by: North Korea', q:'Screened Entity submits a DPRK national ID. Action?', opts:['🚨 Direct Escalate — DPRK-issued ID is sanctioned country PII','✅ Use it — the DOB is still verifiable','Research the current address first','Only escalate if they still live there'], correct:0, compliance:true, explain:'🚨 DIRECT ESCALATION: Any PII issued by North Korea (PRK) immediately triggers direct escalation. You do not continue the review. T2 Escalation Required: Sanctioned Country.' },
+    { display:'🇻🇪 Venezuela', q:'Is Venezuela sanctioned under Apple compliance?', opts:['✅ No — Venezuela is not on Apple\'s sanctions list','🚨 Yes — OFAC has Venezuela sanctions','🚨 Yes — South American socialist countries are sanctioned','Depends on the specific business type'], correct:0, compliance:false, explain:'Venezuela is NOT on Apple\'s main sanctions list for compliance screening purposes. While the U.S. government has some Venezuela-related sanctions, these don\'t directly apply to Apple\'s compliance screening categories (which focus on Cuba, Iran, and North Korea).' },
+    { display:'🇸🇩 Sudan', q:'Is Sudan sanctioned under Apple compliance?', opts:['✅ No — Sudan is not on Apple\'s current sanctions list','🚨 Yes — Sudan is sanctioned','🚨 Yes — all African conflict zones are sanctioned','Research needed'], correct:0, compliance:false, explain:'Sudan is NOT on Apple\'s current sanctions list. Sudan had its own complex sanctions history, but for Apple compliance screening purposes, the focus remains on Cuba, Iran, and North Korea as the three core sanctioned countries.' },
+    { display:'🇱🇾 Libya', q:'Is Libya sanctioned under Apple compliance?', opts:['✅ No — Libya is not on Apple\'s sanctions list','🚨 Yes — Libya is sanctioned','🚨 Yes — North Africa is a sanctioned region','Depends on the current regime'], correct:0, compliance:false, explain:'Libya is NOT on Apple\'s sanctions list. North Africa (Morocco, Algeria, Tunisia, Libya, Egypt) is not sanctioned. Only Cuba, Iran, and North Korea are Apple\'s core sanctioned countries.' },
+    { display:'Address: Luhansk City, Ukraine', q:'Screened Entity lists "Luhansk" as their city. Action?', opts:['🚨 ESCALATE — Luhansk is in the sanctioned Luhansk People\'s Republic','✅ Safe — it\'s a Ukrainian city','Depends on the specific street address','Only escalate if they\'re in the eastern district'], correct:0, compliance:true, explain:'🚨 ESCALATE: Luhansk City is located in the Luhansk People\'s Republic — one of the five sanctioned regions in Ukraine. T2 Escalation Required: Sanctioned Country/Region.' },
+    { display:'Address: Zaporizhzhia City, Ukraine', q:'Screened Entity lists "Zaporizhzhia" as their city. Is the entire region sanctioned?', opts:['🚨 Yes — the Zaporizhzhia region is sanctioned, including the city','✅ No — only the nuclear power plant area is sanctioned','✅ No — just the eastern part of Zaporizhzhia is sanctioned','Depends on which part of the city'], correct:0, compliance:true, explain:'🚨 ESCALATE: The Zaporizhzhia region of Ukraine — including Zaporizhzhia City — is a sanctioned region under Apple compliance. T2 Escalation Required: Sanctioned Country/Region.' },
+    { display:'System Notes: "developer is from Cuban diaspora, lives in Miami"', q:'SE is Cuban-American, lives in Miami, FL, USA. Their PII is a US passport. Action?', opts:['✅ Safe — US address, US passport, not a Cuba connection','🚨 Escalate — Cuban origin = Cuba connection','Research their business connections to Cuba first','Only escalate if they visit Cuba regularly'], correct:0, compliance:false, explain:'A Screened Entity who is Cuban-American with a US address and US passport does NOT trigger a Cuba escalation. The sanctioned country connection requires an actual connection to Cuba — doing business with Cuba, PII from Cuba, or an address in Cuba. Ethnicity and heritage are NOT escalation triggers.' },
+    { display:'🇵🇸 Palestine / Gaza', q:'Is Palestine (including Gaza) sanctioned under Apple compliance?', opts:['✅ No — Palestine is not on Apple\'s sanctions list','🚨 Yes — Gaza is sanctioned','🚨 Yes — conflict zones in the Middle East are sanctioned','Depends on the specific territory'], correct:0, compliance:false, explain:'Palestine (including Gaza and the West Bank) is NOT on Apple\'s sanctions list. Only Cuba, Iran, and North Korea are the three core sanctioned countries. Geographic complexity does not automatically equal sanctions status.' },
+    { display:'Quick fire: Cuba, Iran, North Korea, Syria — which is NOT sanctioned?', q:'Quick! Which of these four is currently NOT sanctioned?', opts:['Syria (removed November 2025)','Cuba — it\'s still sanctioned','Iran — it\'s still sanctioned','North Korea — it\'s still sanctioned'], correct:0, compliance:true, explain:'🚨 Syria was removed from Apple\'s sanctions list in November 2025. Cuba (CUB), Iran (IRN), and North Korea (PRK) remain sanctioned. This is a critical recent change that investigators must know.' },
+    { display:'The five sanctioned regions of Ukraine — speed round', q:'Which FIVE regions of Ukraine are sanctioned? Name them all.', opts:['Crimea · Donetsk · Luhansk · Kherson · Zaporizhzhia','Crimea · Donetsk · Luhansk · Mariupol · Odesa','Crimea · Donetsk · Luhansk · Kharkiv · Dnipro','Crimea only — the others are not officially sanctioned'], correct:0, compliance:true, explain:'🚨 CRITICAL: All five must be memorized: (1) Crimea, (2) Donetsk People\'s Republic, (3) Luhansk People\'s Republic, (4) Kherson region, (5) Zaporizhzhia region. These are treated exactly like Cuba/Iran/North Korea for Apple compliance purposes.' },
+  ]
+}
+
+};
+
+// ══════════════════════════════════
+// RANKS
+// ══════════════════════════════════
+const RANKS = [
+  { min:0,   rank:'Trainee',            icon:'🔍', flavor:'Still building global awareness. Keep training.' },
+  { min:200, rank:'Field Investigator',  icon:'🎒', flavor:'Your global knowledge is growing. Sanctioned parties beware.' },
+  { min:400, rank:'Senior Investigator', icon:'🏅', flavor:'Solid grasp of scripts, countries, and sanctions.' },
+  { min:600, rank:'Compliance Specialist',icon:'⭐', flavor:'You\'re spotting what others miss. Sanctioned parties can\'t hide from you.' },
+  { min:800, rank:'Global Expert',       icon:'🌍', flavor:'Maximum sanctions and geography expertise. No sanctioned party gets through.' },
+];
+function getRank(s){ let r=RANKS[0]; for(const x of RANKS){ if(s>=x.min) r=x; } return r; }
+
+// ══════════════════════════════════
+// GAME STATE
+// ══════════════════════════════════
+let gs = { mode:'', questions:[], idx:0, score:0, streak:0, correct:0, wrong:0, answered:false };
+
+const FLAVOR_CACHE = {};
+function getFlavor(mode) {
+  const fl = MODES[mode].flavors;
+  return fl[Math.floor(Math.random()*fl.length)];
+}
+
+function startMode(mode) {
+  gs.mode = mode;
+  // Shuffle questions
+  gs.questions = [...MODES[mode].questions];
+  for(let i=gs.questions.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [gs.questions[i],gs.questions[j]]=[gs.questions[j],gs.questions[i]];
+  }
+  gs.idx=0; gs.score=0; gs.streak=0; gs.correct=0; gs.wrong=0; gs.answered=false;
+  document.getElementById('start-screen').style.display='none';
+  document.getElementById('results-screen').classList.remove('show');
+  document.getElementById('game-screen').style.display='block';
+  document.getElementById('hud-mode').textContent=MODES[mode].name;
+  updateHUD();
+  renderQ();
+}
+
+function renderQ() {
+  gs.answered = false;
+  document.getElementById('feedback').className='feedback';
+  document.getElementById('btn-next').className='btn-next';
+  const q = gs.questions[gs.idx];
+  const total = gs.questions.length;
+  document.getElementById('progress-fill').style.width = `${(gs.idx/total)*100}%`;
+  const isScript = gs.mode==='scripts';
+  const isSanctioned = q.compliance;
+  const opts = q.opts.map((o,i) =>
+    `<button class="q-opt" onclick="answer(${i})">${o}</button>`
+  ).join('');
+  document.getElementById('q-area').innerHTML = `
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-flavor">"${getFlavor(gs.mode)}"</div>
+        <span class="q-type-badge">${isSanctioned?'🚨 Compliance Critical':MODES[gs.mode].name}</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">${q.q}</div>
+        <div class="q-display ${isScript?'script':''}">${q.display}</div>
+        <div class="q-opts">${opts}</div>
+      </div>
+    </div>`;
+}
+
+function answer(idx) {
+  if(gs.answered) return;
+  gs.answered = true;
+  const q = gs.questions[gs.idx];
+  const correct = idx === q.correct;
+  document.querySelectorAll('.q-opt').forEach((o,i) => {
+    o.disabled=true;
+    if(i===q.correct) o.classList.add('correct');
+    else if(i===idx) o.classList.add('wrong');
+  });
+  const fb = document.getElementById('feedback');
+  const fbt = document.getElementById('fb-title');
+  const fbx = document.getElementById('fb-text');
+  if(correct) {
+    gs.streak++; gs.correct++;
+    const bonus = gs.streak>=3 ? 50 : 0;
+    const pts = q.compliance ? 150 : 100;
+    gs.score += pts + bonus;
+    fb.className = 'feedback show' + (q.compliance ? ' compliance' : ' correct');
+    fbt.className = 'fb-title ' + (q.compliance ? 'compliance' : 'correct');
+    fbt.textContent = q.compliance ? '🚨 Correct — Critical Knowledge' : (gs.streak>=3 ? `✅ Correct — ${gs.streak} streak! 🔥` : '✅ Correct — Intel secured');
+    fbx.innerHTML = q.explain + (q.compliance ? '<br><span class="fb-compliance-tag">🚨 Sanctioned — Always Direct Escalate</span>' : '');
+    showToast(`+${pts+bonus} intel${bonus>0?' 🔥':''}`, '');
+  } else {
+    gs.streak=0; gs.wrong++;
+    fb.className = 'feedback show wrong';
+    fbt.className = 'fb-title wrong';
+    fbt.textContent = q.compliance ? '⚠️ Miss — This one matters' : '❌ Not quite — the sanctioned party got through';
+    fbx.innerHTML = q.explain + (q.compliance ? '<br><span class="fb-compliance-tag">🚨 Review this — it\'s a direct escalation trigger</span>' : '');
+    showToast('-1 miss');
+  }
+  updateHUD();
+  document.getElementById('btn-next').className = 'btn-next show';
+}
+
+function nextQ() {
+  gs.idx++;
+  if(gs.idx >= gs.questions.length) { endGame(); return; }
+  renderQ(); updateHUD();
+}
+
+function updateHUD() {
+  document.getElementById('hud-score').textContent = gs.score.toLocaleString();
+  document.getElementById('hud-case').textContent = `${Math.min(gs.idx+1,gs.questions.length)}/${gs.questions.length}`;
+  document.getElementById('hud-streak').textContent = gs.streak > 0 ? `${gs.streak} 🔥` : '0';
+  document.getElementById('hud-rank').textContent = getRank(gs.score).rank;
+}
+
+function endGame() {
+  document.getElementById('game-screen').style.display='none';
+  const rs = document.getElementById('results-screen');
+  rs.classList.add('show');
+  const total = gs.correct+gs.wrong;
+  const acc = total>0 ? Math.round(gs.correct/total*100) : 0;
+  const rank = getRank(gs.score);
+  document.getElementById('r-icon').textContent = rank.icon;
+  document.getElementById('r-title').textContent = gs.score >= 600 ? 'Sanctioned Party Identified!' : gs.score >= 300 ? 'Strong Performance' : 'Keep Training';
+  document.getElementById('r-sub').textContent = rank.flavor;
+  document.getElementById('r-score').textContent = gs.score.toLocaleString();
+  document.getElementById('r-rank').textContent = rank.rank;
+  document.getElementById('r-correct').textContent = gs.correct;
+  document.getElementById('r-wrong').textContent = gs.wrong;
+  document.getElementById('r-acc').textContent = acc+'%';
+}
+
+function showStart() {
+  document.getElementById('results-screen').classList.remove('show');
+  document.getElementById('game-screen').style.display='none';
+  document.getElementById('start-screen').style.display='block';
+}
+
+function restartMode() {
+  startMode(gs.mode);
+}
+
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent=msg; t.className=`toast show ${type}`;
+  setTimeout(()=>t.className='toast',2400);
+}
+</script>
+</body>
+</html>
