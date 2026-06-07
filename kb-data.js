@@ -44,7 +44,7 @@ const KB = [
 {id:"d-ofaclist",  cat:"glossary", title:"OFAC List / SDN List",                 body:"The Specially Designated Nationals and Blocked Persons List. Maintained by OFAC. Lists terrorists, narcotics traffickers, and other entities that U.S. persons are generally prohibited from dealing with.", tags:["sdn","specially designated nationals","ofac list","blocked persons"]},
 {id:"d-ownership", cat:"glossary", title:"Ownership",                             body:"The structure of who ultimately controls and benefits from a company, whether directly or indirectly. If owner percentage is less than 100% to the Screened Entity, the case must be escalated so the other owner(s) may be screened.", tags:["ownership","co-owner","percentage","escalate"]},
 {id:"d-partial",   cat:"glossary", title:"Partial Match",                         body:"One of the Screened Entity names matches any of the Matched Data names (Primary or AKA), but not the complete name.", tags:["partial match","name match","aka"]},
-{id:"d-pcd",       cat:"glossary", title:"PCD — Pending Cancel Date",            body:"The date on which a suspended case automatically cancels if no action is taken. Digital ID Program: 14 days. Media Platform batch registrant: 30 days. After cancellation, a new case auto-generates with the same TID plus a suffix (_1, _2, etc.).", tags:["pcd","pending cancel date","suspend","cancel","14 days","30 days"]},
+{id:"d-pcd",       cat:"glossary", title:"PCD — Provisional Cancel Date",            body:"The date on which a suspended case automatically cancels if no action is taken. Digital ID Program: 14 days. Media Platform batch registrant: 30 days. After cancellation, a new case auto-generates with the same TID plus a suffix (_1, _2, etc.).", tags:["pcd","pending cancel date","suspend","cancel","14 days","30 days"]},
 {id:"d-pii",       cat:"glossary", title:"PII — Personally Identifiable Information", body:"Information that identifies a specific individual — passport, national ID, date of birth, ID number. Customer-submitted PII must meet Acceptable PII Criteria before it can be used to clear a case.", tags:["pii","personally identifiable","passport","national id","identification"]},
 {id:"d-risk-cat",  cat:"glossary", title:"Risk Category",                         body:"A rating of Low, Medium, or High based on the Risk Score. Low: 0.0 (Inclusion Terms) or 72.0–79.9. Medium: 80.0–89.9. High: 90.0–100.0.", tags:["risk category","low","medium","high","risk score"]},
 {id:"d-risk-sc",   cat:"glossary", title:"Risk Score",                            body:"A numerical score (0–100) calculated by the screening system based on the similarity of the Screened Entity to the Matched Data hit. Higher similarity = higher risk.", tags:["risk score","hcm","numerical","similarity"]},
@@ -54,7 +54,7 @@ const KB = [
 {id:"d-tid",       cat:"glossary", title:"TID — Transaction ID",                  body:"The unique ID number CMS assigns to each case. When a case expires and is auto-regenerated, the new TID shares the same prefix plus a suffix (_1, _2, _3…).", tags:["tid","transaction id","case id","regenerated"]},
 {id:"d-truematch", cat:"glossary", title:"True Match",                             body:"When research confirms the Screened Entity is the same individual or company as the sanctioned party on the Matched Data list. Requires escalation.", tags:["true match","confirmed","sanctions","escalate"]},
 {id:"d-weak",      cat:"glossary", title:"Weak Alias / Low Quality AKA",          body:"A generic or common nickname that alone is insufficient to establish a true sanctions match. OFAC guidance: https://ofac.treasury.gov/faqs/topic/1646", tags:["weak alias","low quality","aka","nickname","insufficient"]},
-{id:"d-wwdr",      cat:"glossary", title:"Developer Program — Worldwide Developer Relations",  body:"The Apple team supporting developers globally. The Developer Program compliance client screens developer enrollments into the Apple Developer Program. Events: enrollment check (individual level, first screening) and rt_enrollment_final (entity level, completion).", tags:["wwdr","worldwide developer relations","developer","enrollment","precheck","final"]},
+{id:"d-wwdr",      cat:"glossary", title:"Developer Program — DevConnect",  body:"The Apple team supporting developers globally. The Developer Program compliance client screens developer enrollments into the Apple Developer Program. Events: enrollment check (individual level, first screening) and rt_enrollment_final (entity level, completion).", tags:["wwdr","worldwide developer relations","developer","enrollment","precheck","final"]},
 {id:"d-23match",   cat:"glossary", title:"2/3 Name Match (Digital ID Program Only)",            body:"Digital ID Program cases only, without PII: the Screened Entity's full name matches 2 of 3 name components in the Matched Data name. Classified as a partial match.\n\nExamples:\n• John Smith vs John Jacob Smith → 2/3 match (first + last match; middle missing)\n• Aleksandr Muskov vs Aleksandr Muskov Sergeevich → 2/3 match\n\nNOT a 2/3 match (regular partial match, can clear):\n• John Allen Smith vs John Jacob Smith — different middle names\n• Aleksandr Vladimirovich Muskov vs Aleksandr Muskov Sergeevich", tags:["2/3 name match","two thirds","idms","partial match","name criteria"]},
 {id:"d-close",     cat:"glossary", title:"Close Name Match (Companies)",          body:"When a company's brand name is the same as the Matched Data but the legal identifier differs (e.g., LLC vs. GmbH). Classified as a partial match.\n\nExamples:\n• Biotech vs. Biotech LLC → close match\n• Cheer Flyer Company Unlimited vs. Cheer Flyer Company → close match\n\nEquivalent legal identifiers: LLC (US) = GmbH (Germany) = OOO (Russia)", tags:["close name match","brand name","legal identifier","llc","gmbh","ooo","company"]},
 {id:"d-sanctioned",cat:"glossary", title:"Sanctioned Countries & Regions",       body:"Any connection to these countries or regions is a direct escalation for ALL clients, regardless of the Matched Data comparison.\n\nSanctioned Countries:\n• Cuba (CUB)\n• Iran (IRN)\n• North Korea (PRK)\n\nSanctioned Regions in Ukraine:\n• Crimea\n• Donetsk People's Republic\n• Luhansk People's Republic\n• Kherson region\n• Zaporizhzhia region\n\nA 'connection' includes: doing business with, PII issued by, or address in any of the above.", tags:["sanctioned countries","cuba","iran","north korea","ukraine","crimea","donetsk","luhansk","kherson","zaporizhzhia","direct escalation"]},
@@ -68,7 +68,7 @@ tags:["amp","batch registrant","batch bank record","rt_agreement","pii","escalat
 body:`Compliance Operations Procedure - SC-02 | Updated 5/7/2026
 
 OVERVIEW
-This document serves as a step by step guide to manually reviewing a case for the Apple Media Products (Media Platform) client in CMS Non-Regulated.
+This document serves as a step by step guide to manually reviewing a case for the NovaPay (Media Platform) client in CMS Non-Regulated.
 
 DEFINING CMS NON-REGULATED
 Cases in CMS Non-Regulated include business activity that is not strictly controlled by laws. These cases screen developer enrollment and digital content distributed in the Apple ecosystem. Doing business with a sanctioned entity will result in an OFAC violation, including fines and publication.
@@ -236,8 +236,8 @@ MORE THAN 25 MATCHED DATA HITS
 4. Resolve → Escalate → "Unable to waive compliance concerns."
 
 LINKED CASES
-Linked cases appear as multiple TIDs in the case header (status: Open, In Progress, or Pending).
-Your case = In Progress. Open cases are also yours. Pending cases must NOT be actioned.
+Linked cases appear as multiple TIDs in the case header (status: Open, In Progress, or Provisional).
+Your case = In Progress. Open cases are also yours. Provisional cases must NOT be actioned.
 1. Work each case individually — info may differ.
 2. All notes (Overview, Research, Summary) on each individual case.
 3. Confirm correct case(s) selected when actioning.
@@ -277,7 +277,7 @@ tags:["wwdr","enrollment check","rt_enrollment_final","ip location","ekata","pii
 body:`Compliance Operations Procedure - SC-01 | Updated 5/7/2026
 
 OVERVIEW
-This document serves as a step by step guide to manually reviewing a case for the Worldwide Developer Relations (Developer Program) client in CMS Non-Regulated.
+This document serves as a step by step guide to manually reviewing a case for the DevConnect (Developer Program) client in CMS Non-Regulated.
 
 DEFINING CMS NON-REGULATED
 Cases in CMS Non-Regulated include business activity that is not strictly controlled by laws. These cases screen developer enrollment and digital content distributed in the Apple ecosystem. Doing business with a sanctioned entity will result in an OFAC violation, including fines and publication.
@@ -375,7 +375,7 @@ MORE THAN 25 MATCHED DATA HITS
 4. Resolve → Escalate → "Unable to waive compliance concerns."
 
 LINKED CASES
-Multiple TIDs in header. Your case = In Progress. Open cases = also yours. Pending = do NOT action.
+Multiple TIDs in header. Your case = In Progress. Open cases = also yours. Provisional = do NOT action.
 1. Work each case individually.
 2. All notes on each individual case.
 3. Confirm correct case(s) when actioning.
@@ -400,7 +400,7 @@ tags:["idms","lifecycle","suspend","pcd","14 days","year of birth","yob","2/3 na
 body:`Compliance Operations Procedure - SC-00 | Updated 5/7/26
 
 OVERVIEW
-The Identity Management Services (Digital ID Program) case review procedure serves as a step by step guide to manually reviewing a case. In this line of business, we are screening Apple IDs. When a customer adds a form of payment to their Apple wallet, they must be screened to ensure they are not a sanctioned party. Phase 1 is limited to customers in 35 high risk countries. Payment restriction is applied when a person is a possible match. If confirmed as a true sanctions match, their account is deactivated.
+The IdentityCore (Digital ID Program) case review procedure serves as a step by step guide to manually reviewing a case. In this line of business, we are screening Apple IDs. When a customer adds a form of payment to their Apple wallet, they must be screened to ensure they are not a sanctioned party. Phase 1 is limited to customers in 35 high risk countries. Payment restriction is applied when a person is a possible match. If confirmed as a true sanctions match, their account is deactivated.
 
 THE LIFECYCLE OF AN IDMS CASE
 1. Customer in high-risk country adds payment to Apple account → name matches sanctions list → case created in CMS.
@@ -553,15 +553,15 @@ CASE CREATED AT THE REQUEST OF THE BUSINESS
 Search TID prefix in CMS to find core case. Use core case Matched Data.
 Special scenario: If core case Screened Entity name is completely different from current case → compare current Screened Entity to original Matched Data, and clear by name and/or DOB variance.`},
 
-{id:"orig-cp003", cat:"pending", docType:"original", title:"SC-03 — Pending Case Review Guidelines (Original)",
+{id:"orig-cp003", cat:"pending", docType:"original", title:"SC-03 — Provisional Case Review Guidelines (Original)",
 tags:["pending","pending case tracker","quip","escalated hold","gibberish","scripted account","full name match","2/3 name match","load tids","query builder","typinator","2025 CI onboarding"],
 body:`Compliance Operations Procedure - SC-03 | Updated 12/22/25
 
 OVERVIEW
-Non-regulated Media Platform and Developer Program cases are created in CMS without PII attachments. Cases remain in Pending status until the Screened Entity uploads PII or company documentation, which changes the case status to Open. Reviews of Pending cases are conducted by investigators when Open case volume is finished or when otherwise instructed.
+Non-regulated Media Platform and Developer Program cases are created in CMS without PII attachments. Cases remain in Provisional status until the Screened Entity uploads PII or company documentation, which changes the case status to Open. Reviews of Provisional cases are conducted by investigators when Open case volume is finished or when otherwise instructed.
 
 ACCESSING THE PENDING CASE TRACKER
-The Pending Case Tracker is a spreadsheet with each Non-Regulated client's pending cases from the previous 7 days. The document is collaborative so each investigator only reviews the cases assigned to them within the spreadsheet.
+The Provisional Case Tracker is a spreadsheet with each Non-Regulated client's pending cases from the previous 7 days. The document is collaborative so each investigator only reviews the cases assigned to them within the spreadsheet.
 1. Go to the Backlog Tracker Quip.
 2. Find the group of cases that has your name in the "Investigator Name" column next to it.
 3. As each case is reviewed, put an X in the 3rd column to further avoid duplicate reviews.
@@ -587,7 +587,7 @@ c. Paste the TID into the basic search bar immediately followed by a comma.
 NOTE: Multiple cases can be searched at once separated by commas. Inserting a comma after a single TID in basic search makes results return faster.
 
 REVIEW PROCEDURE
-Cases reviewed while in Pending status are identified by the note "2025 CI ONBOARDING PENDING CASE REVIEW." This note is mandatory and automatically populates with the approved Typinator snippet.
+Cases reviewed while in Provisional status are identified by the note "2025 CI ONBOARDING PENDING CASE REVIEW." This note is mandatory and automatically populates with the approved Typinator snippet.
 
 As long as the Screened Entity name appears to be complete (at least one first and one last), if it is obviously different from the Matched Data name(s), no additional research is required. Complete the Case Overview and Summary notes, and action accordingly.
 
@@ -681,7 +681,7 @@ Discover common terms used in compliance investigation along with proper notatio
 COMMON TERMS GLOSSARY
 AML: Anti Money Laundering - Legal controls requiring institutions and entities to prevent, detect, and report money laundering activities.
 Apple Developer Program: A program for customers around the world to access beta software, advanced app capabilities, extensive beta testing tools, and app analytics.
-Apple Media Products (Media Platform): Manages the iTunes, Apple App Store, and Apple Services. Compliance screens anyone with access to those accounts on iTunes Connect which allows a person or company to distribute media. Vendors, Banks, and Bank Account Holders receive funding from those sales.
+NovaPay (Media Platform): Manages the iTunes, Apple App Store, and Apple Services. Compliance screens anyone with access to those accounts on iTunes Connect which allows a person or company to distribute media. Vendors, Banks, and Bank Account Holders receive funding from those sales.
 applepaymentsinc (API): Apple Payments Inc - a subsidiary of Apple Inc. that supports the disbursement platform covering daily cash rebates to customers from Apple Card and allows for Direct Bill Payment by customers from Apple Cash to Apple Card.
 CIP: The Customer Identification Program, a United States requirement for financial institutions to verify a customers identity.
 Client: The application or program from which the screened case data originated.
@@ -700,7 +700,7 @@ Entity: May refer to an individual, organization, business, or company that has 
 Event: The interaction, transaction, enrollment, or account update that triggered CMS to open a case.
 False hit or false positive: A system identified potential match caused by a common name, missing information, or reason other than a true match.
 Full Match: The entire name of the Screened Entity matches the name from the sanctions list.
-IDMS: Identity Management Services. Provides authentication and authorization services and is the repository for all Apple identities.
+IDMS: IdentityCore. Provides authentication and authorization services and is the repository for all Apple identities.
 IP: A numerical code that identified the geographical location of a computer accessing the internet.
 KYC: Know Your Customer program for businesses, a process of verifying the identity of a customer.
 Matched Data Hit: The potential match to the Screened Entity on a sanctions list.
@@ -1051,7 +1051,7 @@ Tier 2 Support:
 • Use Due Diligence Business Report (USA Only) to search company names (including DBA), executives, and street addresses.
 • Use D&B WorldBase (foreign and domestic) to search DUNS Number or company name with country.
 • For API: document DOB, LexID, names, new locations, screenshot new info.
-• For Escalations and Pending Cases: download records with new information and upload in CMS via Attach File.
+• For Escalations and Provisional Cases: download records with new information and upload in CMS via Attach File.
 Note: Screenshots must contain only information relevant to the individual being researched.
 
 MZ Support
@@ -1135,7 +1135,7 @@ CMS DASHBOARD
 • Basic Search: Search using billing, bank, or developer names and addresses.
 
 CASE VOLUME WIDGET
-Client / Open Total / Tier / Suspended / In Progress / Pending / Missed SLA
+Client / Open Total / Tier / Suspended / In Progress / Provisional / Missed SLA
 
 MY METRICS
 Toggle Yesterday/Today/Week. Metrics displayed per LOB if provisioned for multiple.
@@ -1157,8 +1157,8 @@ CASE HEADER DETAILS
 • Risk Score: Numerical score assigned by HDS, based on triggered rules.
 • Risk Category: Low (0.0 or 72.0-79.9), Medium (80.0-89.9), or High (90.0-100).
 • Product: Apple financing product associated with the case (Breakout only).
-• Case Status: Open, In Review, Clear, Pending, or Rejected.
-• PCD: Pending Cancel Date.
+• Case Status: Open, In Review, Clear, Provisional, or Rejected.
+• PCD: Provisional Cancel Date.
 • Assigned To: Investigator the case is currently assigned to.
 • VIP: Not currently a functioning service.
 • Last Actioned By: Name of the Investigator who last actioned the case.
@@ -1268,7 +1268,7 @@ tags:["amp","batch registrant","batch bank record","rt_agreement","pii","escalat
 body:`Media Platform Review Guidelines | Tech Edit | May 2026
 
 WHAT IS Media Platform?
-Apple Media Products manages iTunes, the App Store, and Apple Services. Compliance screens developers, vendors, banks, and bank account holders who access iTunes Connect to distribute media.
+NovaPay manages iTunes, the App Store, and Apple Services. Compliance screens developers, vendors, banks, and bank account holders who access iTunes Connect to distribute media.
 
 BEFORE YOU BEGIN — QUICK REFERENCE
 
@@ -1422,7 +1422,7 @@ Non-direct escalation (for batch registrant — full review required first):
 4. Resolve → Escalate → Unable to Waive.
 
 Linked Cases:
-Your case = In Progress. Open cases = also assigned to you. Pending cases = do NOT action.
+Your case = In Progress. Open cases = also assigned to you. Provisional cases = do NOT action.
 Work each case individually. All notes on each case. Confirm correct case(s) when actioning.
 
 DBA Scenarios ("[Name] ; [DBA Name]"):
@@ -1446,7 +1446,7 @@ tags:["wwdr","enrollment check","rt_enrollment_final","ip location","ekata","pii
 body:`Developer Program Review Guidelines | Tech Edit | May 2026
 
 WHAT IS Developer Program?
-Worldwide Developer Relations screens developer enrollments into the Apple Developer Program. Two events:
+DevConnect screens developer enrollments into the Apple Developer Program. Two events:
 • enrollment check — Individual-level screening (first check)
 • rt_enrollment_final — Entity-level screening (completes enrollment if cleared)
 
@@ -1546,7 +1546,7 @@ tags:["idms","lifecycle","suspend","pcd","14 days","year of birth","yob","2/3 na
 body:`Digital ID Program Review Guidelines | Tech Edit | May 2026
 
 WHAT IS IDMS?
-Identity Management Services screens Apple IDs when customers in high-risk countries (Phase 1: 35 countries) add a payment method to Apple Wallet. A potential match creates a case in CMS. Confirmed true matches → account deactivated.
+IdentityCore screens Apple IDs when customers in high-risk countries (Phase 1: 35 countries) add a payment method to Apple Wallet. A potential match creates a case in CMS. Confirmed true matches → account deactivated.
 
 BEFORE YOU BEGIN
 
@@ -1680,12 +1680,12 @@ Case Created at the Request of the Business:
 Find core case (search TID prefix). Use core case Matched Data.
 If core case SE name is completely different → compare current SE to original Matched Data → clear by name/DOB variance if applicable.`},
 
-{id:"edit-cp003", cat:"pending", docType:"edit", title:"SC-03 — Pending Case Review Guidelines (Tech Edit)",
+{id:"edit-cp003", cat:"pending", docType:"edit", title:"SC-03 — Provisional Case Review Guidelines (Tech Edit)",
 tags:["pending","pending case tracker","quip","escalated hold","gibberish","full name match","2/3 name match","typinator","2025 CI onboarding"],
-body:`Pending Case Review | Tech Edit | December 2025
+body:`Provisional Case Review | Tech Edit | December 2025
 
 WHAT IS A PENDING CASE REVIEW?
-Media Platform and Developer Program (non-regulated) cases start in Pending status because no PII is attached yet. The Pending Case Tracker (Quip) lists cases from the past 7 days that have not yet moved to Open. Review these when your Open queue is finished, or when instructed.
+Media Platform and Developer Program (non-regulated) cases start in Provisional status because no PII is attached yet. The Provisional Case Tracker (Quip) lists cases from the past 7 days that have not yet moved to Open. Review these when your Open queue is finished, or when instructed.
 
 BEFORE YOU BEGIN
 ⚠️ Do NOT download the Quip tracker. Edit in-browser only — downloading blocks real-time updates.
@@ -2145,7 +2145,7 @@ Tabs: Identity (address/phone/Apple ID), Security (2FA devices + enrollment devi
 
 D&B Business Directory
 URL: https://www.dnb.com/business-directory.html
-Use for: T1 company research (batch registrant, Pending Cases)
+Use for: T1 company research (batch registrant, Provisional Cases)
 Search by: DUNS number or company name
 Note: If DUNS returns a different company name → Suspend (PCD 30 days), attach findings.
 
@@ -2183,8 +2183,8 @@ Client / App/program that originated the case
 Event / Action that created the case (enrollment, agreement, etc.)
 Risk Score / 0–100 numerical score from HDS screening rules
 Risk Category / Low (0.0 or 72–79.9), Medium (80–89.9), High (90–100)
-Case Status / Open / In Review / Clear / Pending / Rejected
-PCD / Pending Cancel Date — when a Suspended case auto-cancels
+Case Status / Open / In Review / Clear / Provisional / Rejected
+PCD / Provisional Cancel Date — when a Suspended case auto-cancels
 Assigned To / Investigator currently assigned
 
 CASE DETAILS — WHAT YOU'LL SEE
